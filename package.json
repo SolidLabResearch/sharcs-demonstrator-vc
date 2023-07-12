@@ -1,0 +1,37 @@
+{
+  "name": "sharcs-demo",
+  "version": "0.0.0",
+  "description": "demo for SHARCS",
+  "keywords": [
+    "signature",
+    "json-ld",
+    "ZKP",
+    "solid",
+    "linked-data"
+  ],
+  "scripts": {
+    "build": "rm -r ./dist && npm run build:ts",
+    "build:ts": "tsc",
+    "prepare": "npm run build:ts",
+    "release": "npm run build && npm publish --access public"
+  },
+  "dependencies": {
+    "@comunica/query-sparql": "^2.8.0",
+    "@inrupt/solid-client-authn-core": "^1.16.0",
+    "@mattrglobal/jsonld-signatures-bbs": "^1.1.2",
+    "@rubensworks/solid-client-authn-isomorphic": "^2.0.1",
+    "@solid/community-server": "^6.0.0",
+    "cron": "^2.3.1",
+    "dotenv": "^16.3.1",
+    "n3": "^1.17.0",
+    "node-fetch": "^2.6.9",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@comunica/types": "^2.8.0",
+    "@types/node": "^18.14.6",
+    "@types/node-fetch": "^2.6.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  }
+}
