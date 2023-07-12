@@ -62,7 +62,7 @@ const customDocLoader = (url: string): any => {
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
 const documentLoader: any = extendContextLoader(customDocLoader);
 
-export const main = async (inputDocument: any): Promise<void> => {
+const main = async (): Promise<void> => {
   //Import the example key pair
   const keyPair = await new Bls12381G2KeyPair(keyPairOptions);
 
@@ -107,3 +107,5 @@ export const main = async (inputDocument: any): Promise<void> => {
   console.log("Verification result");
   console.log(JSON.stringify(verified, null, 2));
 };
+
+main();

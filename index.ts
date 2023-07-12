@@ -96,7 +96,11 @@ async function writePrescriptionsToNewDocument(data: string[]) {
 
 async function sharcsDemo() {
 
-  await sharcsDemoInitialization().then(async () => extractPrescriptions() )
+  await sharcsDemoInitialization()
+    .then(async () => extractPrescriptions() )
+    .then(
+() => console.log('')
+    )
 
 }
 
