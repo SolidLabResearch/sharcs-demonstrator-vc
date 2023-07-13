@@ -39,6 +39,11 @@ async function sharcsDemoInitialization() {
     body: JSON.stringify(inputDocument, null, 2)
   })
 
+  const jsonld = require('jsonld');
+// serialize a document to N-Quads (RDF)
+const nquads = await jsonld.toRDF(inputDocument, {format: 'application/n-quads'});
+// nquads is a string of N-Quads
+  console.log(nquads)
 }
 
 
