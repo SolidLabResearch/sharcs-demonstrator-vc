@@ -25,6 +25,16 @@
 - do we actually need agents?
 - does usage of Comunica for existing/creating the prescription-document make sense?
 
+## Actors in the demo/system
+
+![Actors](./img/actors.png)[^1] 
+
+- Signer :: produces original signed message/document and sends it to holder/prover
+- Holder/prover ("Alice") :: holds the credentials 
+    - this is 'us'; this is where the pod and the agent operate on
+    - can choose what to disclose ('selective disclosure')
+- Verifier/receiver ("Bob") :: wants to know something; receives the proof and disclosed messages
+
 ## Questions
 
 
@@ -41,5 +51,9 @@
 
 ## Resouces
 
-- https://github.com/mattrglobal/jsonld-signatures-bbs/tree/master
-  - use for creating the VCs -> JSON-LD?
+- https://github.com/mattrglobal/jsonld-signatures-bbs
+    - use for creating the VCs -> JSON-LD?
+- https://github.com/SolidLabResearch/Solid-Agent/tree/main/documentation/ucp 
+  - use for setup (and remote code execution? to be evaluated)
+
+[^1]: https://identity.foundation/bbs-signature/draft-irtf-cfrg-bbs-signatures.html#figure-1
