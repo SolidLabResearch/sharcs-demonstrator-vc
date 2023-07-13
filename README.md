@@ -4,7 +4,9 @@
 
 1. Install `yarn i`
 2. Start the CSS `npx @solid/community-server -c @css:config/file-no-setup.json -f ./.data`
-3. Run the demo `yarn exec ts-node index.ts`
+3. Run the demo `ts-node index.ts`
+3. Run the jsonld-proof-demo `ts-node jsonld-signature-bbs.ts`
+
 
 ## Steps
 
