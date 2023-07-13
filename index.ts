@@ -1,10 +1,11 @@
-import { ACL, RDF } from "@solid/community-server";
 import { Bindings, QueryBindings } from "@comunica/types";
+import inputDocument from "./data/inputDocument.json";
 
 const baseUrl = "http://localhost:3000/"
 const webID = "https://jsteinba.pod.knows.idlab.ugent.be/"
 const resource = baseUrl + "diagnosis"
 const extractedResource = baseUrl + "prescriptions"
+const vc = baseUrl + "residenceCard"
 
 // - Does this require the server to be running?
 // - How to PUT with correct r/w? By PUT'ing a .acl file?
@@ -24,13 +25,19 @@ async function sharcsDemoInitialization() {
     <https://example.org/Vocabria>.`
   })
 
-  // setup CSS with idp for agent
-  // const app = await instantiateCSS(agentPort)
-  // await app.start();
-
-  // create account for agent
-  // await createAccount(agentBaseUrl, { email: solidAgentMail, password: solidAgentWW, podName: solidAgentPodName })
-  // await sleep(500) // TODO: Why sleep?
+  // put (signed) credential
+  // - can this be stored as non-JSON-LD?
+  // - how do we handle this if it is being split up
+  // - is this always a 'single' resource/document?
+  // - can this be saved as single triples and then re-combined again?
+  // - how to deal with different JSON-LD interpretations? flatten, expand, compact, ...
+  await fetch(vc, {
+    method: "PUT",
+    headers: {
+      "content-type": "application/ld+json"
+    },
+    body: JSON.stringify(inputDocument, null, 2)
+  })
 
 }
 
