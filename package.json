@@ -15,6 +15,7 @@
     "prepare": "npm run build:ts",
     "release": "npm run build && npm publish --access public"
   },
+  "private": true,
   "dependencies": {
     "@comunica/query-sparql": "^2.8.0",
     "@inrupt/solid-client-authn-core": "^1.16.0",
