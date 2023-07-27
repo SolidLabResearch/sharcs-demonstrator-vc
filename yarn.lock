@@ -2044,6 +2044,16 @@
     lodash.clonedeep "^4.5.0"
     uuid "^9.0.0"
 
+"@inrupt/solid-client-authn-core@^1.17.1":
+  version "1.17.1"
+  resolved "https://registry.npmjs.org/@inrupt/solid-client-authn-core/-/solid-client-authn-core-1.17.1.tgz#1128dc4f3482a9006679b2bcfd879a9aea84407e"
+  integrity sha512-UKTtZH0lISgWaiUYRr0zRkvFHIjYzVaWEC0IJoLUFIEfJdYogMXmPKoHyJEw7MdJ6qVYMLdPo9k2OSLfdUfYjA==
+  dependencies:
+    "@inrupt/universal-fetch" "^1.0.1"
+    events "^3.3.0"
+    jose "^4.10.0"
+    uuid "^9.0.0"
+
 "@inrupt/solid-client-authn-node@^1.12.1":
   version "1.16.0"
   resolved "https://registry.npmjs.org/@inrupt/solid-client-authn-node/-/solid-client-authn-node-1.16.0.tgz#11e26fa1f2cc43134219c897449cfbeff1aeb222"
@@ -2053,6 +2063,17 @@
     "@inrupt/universal-fetch" "^1.0.1"
     jose "^4.3.7"
     openid-client "^5.1.0"
+    uuid "^9.0.0"
+
+"@inrupt/solid-client-authn-node@^1.17.1":
+  version "1.17.1"
+  resolved "https://registry.npmjs.org/@inrupt/solid-client-authn-node/-/solid-client-authn-node-1.17.1.tgz#ade4ad76071aff5cb130153ea6514ffd29b0769b"
+  integrity sha512-4ISQPIz6mIcTLk2sVUEc6q7iD69SuXP50P1A8y8qAAzh/UvFyl2MDwCCXS7+WTpaYKAo2uc54WyYuJhDnu/Ujw==
+  dependencies:
+    "@inrupt/solid-client-authn-core" "^1.17.1"
+    "@inrupt/universal-fetch" "^1.0.1"
+    jose "^4.3.7"
+    openid-client "~5.4.2"
     uuid "^9.0.0"
 
 "@inrupt/universal-fetch@^1.0.1":
@@ -3406,6 +3427,11 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
+data-uri-to-buffer@^4.0.0:
+  version "4.0.1"
+  resolved "https://registry.npmjs.org/data-uri-to-buffer/-/data-uri-to-buffer-4.0.1.tgz#d8feb2b2881e6a4f58c2e08acfd0e2834e26222e"
+  integrity sha512-0R9ikRb668HB7QDxT1vkpuUBtqc53YyAwMwGeUFKRojY/NWKvdZ+9UYtRfGmhqNbRkTSVpMbmyhXipFFv2cb/A==
+
 debug@4, debug@^4.3.2, debug@^4.3.4:
   version "4.3.4"
   resolved "https://registry.npmjs.org/debug/-/debug-4.3.4.tgz#1319f6579357f2338d3337d2cdd4914bb5dcc865"
@@ -3704,6 +3730,14 @@ fecha@^4.2.0:
   resolved "https://registry.npmjs.org/fecha/-/fecha-4.2.3.tgz#4d9ccdbc61e8629b259fdca67e65891448d569fd"
   integrity sha512-OP2IUU6HeYKJi3i0z4A19kHMQoLVs4Hc+DPqqxI2h/DPZHTm/vjsfC6P0b4jCMy14XizLBqvndQ+UilD7707Jw==
 
+fetch-blob@^3.1.2, fetch-blob@^3.1.4:
+  version "3.2.0"
+  resolved "https://registry.npmjs.org/fetch-blob/-/fetch-blob-3.2.0.tgz#f09b8d4bbd45adc6f0c20b7e787e793e309dcce9"
+  integrity sha512-7yAQpD2UMJzLi1Dqv7qFYnPbaPx7ZfFK6PiIxQ4PfkGPyNyl2Ugx+a/umUonmKqjhM4DnfbMvdX6otXq83soQQ==
+  dependencies:
+    node-domexception "^1.0.0"
+    web-streams-polyfill "^3.0.3"
+
 fetch-sparql-endpoint@^3.2.1, fetch-sparql-endpoint@^3.3.2, fetch-sparql-endpoint@^3.3.3:
   version "3.3.3"
   resolved "https://registry.npmjs.org/fetch-sparql-endpoint/-/fetch-sparql-endpoint-3.3.3.tgz#7b1fda7f980564fd62945ca880664d68c6994b93"
@@ -3779,6 +3813,13 @@ form-data@~2.3.2:
     asynckit "^0.4.0"
     combined-stream "^1.0.6"
     mime-types "^2.1.12"
+
+formdata-polyfill@^4.0.10:
+  version "4.0.10"
+  resolved "https://registry.npmjs.org/formdata-polyfill/-/formdata-polyfill-4.0.10.tgz#24807c31c9d402e002ab3d8c720144ceb8848423"
+  integrity sha512-buewHzMvYL29jdeQTVILecSaZKnt/RJWjoZCF5OW60Z67/GmSLBkOFM7qh1PI3zFNtJbaZL5eQu1vLfazOwj4g==
+  dependencies:
+    fetch-blob "^3.1.2"
 
 fresh@~0.5.2:
   version "0.5.2"
@@ -4871,12 +4912,26 @@ neon-cli@0.8.2:
     validate-npm-package-license "^3.0.4"
     validate-npm-package-name "^3.0.0"
 
-node-fetch@^2.6.12, node-fetch@^2.6.7, node-fetch@^2.6.9:
+node-domexception@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/node-domexception/-/node-domexception-1.0.0.tgz#6888db46a1f71c0b76b3f7555016b63fe64766e5"
+  integrity sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==
+
+node-fetch@^2.6.12, node-fetch@^2.6.7:
   version "2.6.12"
   resolved "https://registry.npmjs.org/node-fetch/-/node-fetch-2.6.12.tgz#02eb8e22074018e3d5a83016649d04df0e348fba"
   integrity sha512-C/fGU2E8ToujUivIO0H+tpQ6HWo4eEmchoPIoXtxCrVghxdKq+QOHqEZW7tuP3KlV3bC8FRMO5nMCC7Zm1VP6g==
   dependencies:
     whatwg-url "^5.0.0"
+
+node-fetch@^3.3.2:
+  version "3.3.2"
+  resolved "https://registry.npmjs.org/node-fetch/-/node-fetch-3.3.2.tgz#d1e889bacdf733b4ff3b2b243eb7a12866a0b78b"
+  integrity sha512-dRB78srN/l6gqWulah9SrxeYnxeddIG30+GOqK/9OlLVyLg3HPnr6SqOWTWOXKRwC2eGYCkZ59NNuSgvSrpgOA==
+  dependencies:
+    data-uri-to-buffer "^4.0.0"
+    fetch-blob "^3.1.4"
+    formdata-polyfill "^4.0.10"
 
 node-forge@^0.10.0, node-forge@~0.10.0:
   version "0.10.0"
@@ -5080,7 +5135,7 @@ only@~0.0.2:
   resolved "https://registry.npmjs.org/only/-/only-0.0.2.tgz#2afde84d03e50b9a8edc444e30610a70295edfb4"
   integrity sha512-Fvw+Jemq5fjjyWz6CpKx6w9s7xxqo3+JCyM0WXWeCSOboZ8ABkyvP8ID4CZuChA/wxSx+XSJmdOm8rGVyJ1hdQ==
 
-openid-client@^5.1.0:
+openid-client@^5.1.0, openid-client@~5.4.2:
   version "5.4.3"
   resolved "https://registry.npmjs.org/openid-client/-/openid-client-5.4.3.tgz#c75d2f6d07a25d383a72c8ff34605a36b7e2cd73"
   integrity sha512-sVQOvjsT/sbSfYsQI/9liWQGVZH/Pp3rrtlGEwgk/bbHfrUDZ24DN57lAagIwFtuEu+FM9Ev7r85s8S/yPjimQ==
@@ -6316,6 +6371,11 @@ verror@1.10.0:
     assert-plus "^1.0.0"
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
+
+web-streams-polyfill@^3.0.3:
+  version "3.2.1"
+  resolved "https://registry.npmjs.org/web-streams-polyfill/-/web-streams-polyfill-3.2.1.tgz#71c2718c52b45fd49dbeee88634b3a60ceab42a6"
+  integrity sha512-e0MO3wdXWKrLbL0DgGnUV7WHVuw9OUvL4hjgnPkIeEvESk74gAITi5G606JtZPp39cd8HA9VQzCIvA49LpPN5Q==
 
 web-streams-ponyfill@^1.4.2:
   version "1.4.2"

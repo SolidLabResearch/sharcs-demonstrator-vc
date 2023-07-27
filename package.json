@@ -19,13 +19,14 @@
   "dependencies": {
     "@comunica/query-sparql": "^2.8.0",
     "@inrupt/solid-client-authn-core": "^1.16.0",
+    "@inrupt/solid-client-authn-node": "^1.17.1",
     "@mattrglobal/jsonld-signatures-bbs": "^1.1.2",
     "@rubensworks/solid-client-authn-isomorphic": "^2.0.1",
     "@solid/community-server": "^6.0.0",
     "cron": "^2.3.1",
     "dotenv": "^16.3.1",
     "n3": "^1.17.0",
-    "node-fetch": "^2.6.9",
+    "node-fetch": "^3.3.2",
     "path": "^0.12.7"
   },
   "devDependencies": {
