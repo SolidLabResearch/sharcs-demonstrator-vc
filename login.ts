@@ -1,16 +1,11 @@
 // import fetch from 'node-fetch';
-import { KeyPair, createDpopHeader, generateDpopKeyPair } from '@inrupt/solid-client-authn-core';
-import { buildAuthenticatedFetch } from '@inrupt/solid-client-authn-core';
-
+import { KeyPair, buildAuthenticatedFetch, createDpopHeader, generateDpopKeyPair } from '@inrupt/solid-client-authn-core';
 import inputDocument from "./data/inputDocument.json";
-
+const jsonld = require('jsonld');
 
 const baseUrl = "http://localhost:3000/"
-const webID = "https://jsteinba.pod.knows.idlab.ugent.be/"
-const resource = baseUrl + "diagnosis"
-const extractedResource = baseUrl + "prescriptions"
-const vc = baseUrl + "residenceCard"
-const private_vc = baseUrl + "private/vc"
+const privateUrl = baseUrl + "private/"
+const private_vc = privateUrl + "vc"
 
 
 const login = "a@a", password = "a"
@@ -110,10 +105,23 @@ async function sharcsDemo() {
   await putInitialDoc(authFetch).then(async () => {
 
     console.log('response');
-    const response = await authFetch('http://localhost:3000/a/profile/');
+    //const response = await authFetch('http://localhost:3000/a/profile/'); // TTL!
+    const response = await authFetch('http://localhost:3000/private/vc');
     console.log(response);
-    console.log(JSON.stringify(await response.text()));
-    console.log(JSON.stringify(await response.json()));
+    const response_t = JSON.stringify(await response.text());
+    console.log(response_t);
+
+    const response_j = JSON.stringify(await response.json())
+    console.log(response_j)
+
+    const canonized = await jsonld.canonize(response_j, {
+      algorithm: 'URDNA2015',
+      format: 'application/n-quads'
+    });
+    console.log(canonized);
+
+
+
 
     // console.log('response2');
     // const response2 = await authFetch('http://localhost:3000/private/vc');
