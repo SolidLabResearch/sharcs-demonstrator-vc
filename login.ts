@@ -1,17 +1,9 @@
 // import fetch from 'node-fetch';
 import { KeyPair, buildAuthenticatedFetch, createDpopHeader, generateDpopKeyPair } from '@inrupt/solid-client-authn-core';
-import inputDocument from "./data/inputDocument.json";
 const jsonld = require('jsonld');
 
-const baseUrl = "http://localhost:3000/"
-const privateUrl = baseUrl + "private/"
-const private_vc = privateUrl + "vc"
-
-const login = "a@a", password = "a"
-
-
 // https://communitysolidserver.github.io/CommunitySolidServer/6.x/usage/client-credentials/
-const getToken = async (): Promise<AuthPair> => {
+const getToken = async (email: string, password: string): Promise<AuthPair> => {
 
   // This assumes your server is started under http://localhost:3000/.
   // This URL can also be found by checking the controls in JSON responses when interacting with the IDP API,
@@ -21,7 +13,7 @@ const getToken = async (): Promise<AuthPair> => {
     headers: { 'content-type': 'application/json' },
     // The email/password fields are those of your account.
     // The name field will be used when generating the ID of your token.
-    body: JSON.stringify({ email: login, password: password, name: 'my-token' }),
+    body: JSON.stringify({ email: email, password: password, name: 'my-token' }),
   });
 
   // These are the identifier and secret of your token.
@@ -83,46 +75,9 @@ const buildAuthFetch = async (accessToken: string, dpopKey: KeyPair): Promise<ty
   //const response = await authFetch('http://localhost:3000/private');
 }
 
-const putInitialDoc = async (authFetch: any) => {
-  await authFetch(private_vc, {
-    method: "PUT",
-    headers: {
-      "content-type": "application/ld+json",
-      "rel": "http://www.w3.org/ns/json-ld#context"
-    },
-    body: JSON.stringify(inputDocument, null, 2)
-  })
-}
-
-async function sharcsDemo() {
-  const { accessToken, dpopKey } = await getToken()
+export async function login(email: string, password: string) {
+  const { accessToken, dpopKey } = await getToken(email, password)
   const authFetch = await buildAuthFetch(accessToken, dpopKey)
-  await putInitialDoc(authFetch).then(async () => {
 
-    console.log('response');
-    //const response = await authFetch('http://localhost:3000/a/profile/'); // TTL!
-    const response = await authFetch('http://localhost:3000/private/vc'); // JSON-LD
-    console.log(response);
-
-    console.log('parsed');
-    const response_t: JSON = JSON.parse(await response.text());
-    console.log(response_t);
-
-    console.log('canonized');
-    const canonized = await jsonld.canonize(response_t, {
-      algorithm: 'URDNA2015',
-      format: 'application/n-quads'
-    });
-    console.log(canonized);
-
-    return response_t
-  }).then((json) => {
-    console.log('received\n %o', json)
-  })
-
+  return { accessToken, dpopKey, authFetch }
 }
-
-
-sharcsDemo()
-
-
