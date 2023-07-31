@@ -7,13 +7,8 @@ const baseUrl = "http://localhost:3000/"
 const privateUrl = baseUrl + "private/"
 const private_vc = privateUrl + "vc"
 
-
 const login = "a@a", password = "a"
 
-interface Auth {
-  token: any,
-  key: KeyPair
-}
 
 // https://communitysolidserver.github.io/CommunitySolidServer/6.x/usage/client-credentials/
 const getToken = async (): Promise<AuthPair> => {
@@ -106,35 +101,23 @@ async function sharcsDemo() {
 
     console.log('response');
     //const response = await authFetch('http://localhost:3000/a/profile/'); // TTL!
-    const response = await authFetch('http://localhost:3000/private/vc');
+    const response = await authFetch('http://localhost:3000/private/vc'); // JSON-LD
     console.log(response);
-    const response_t = JSON.stringify(await response.text());
+
+    console.log('parsed');
+    const response_t: JSON = JSON.parse(await response.text());
     console.log(response_t);
 
-    const response_j = JSON.stringify(await response.json())
-    console.log(response_j)
-
-    const canonized = await jsonld.canonize(response_j, {
+    console.log('canonized');
+    const canonized = await jsonld.canonize(response_t, {
       algorithm: 'URDNA2015',
       format: 'application/n-quads'
     });
     console.log(canonized);
 
-
-
-
-    // console.log('response2');
-    // const response2 = await authFetch('http://localhost:3000/private/vc');
-    // console.log(response2);
-    // const r2j = JSON.stringify(response2)
-    // const r2p = JSON.parse(JSON.stringify(response2))
-    // console.log(r2j);
-    // console.log(r2p);
-    //
-    // console.log('response3');
-    // const response3 = await authFetch('http://localhost:3000/a/profile/');
-    // const r3j = JSON.parse(JSON.stringify(response3))
-    // console.log(r3j);
+    return response_t
+  }).then((json) => {
+    console.log('received\n %o', json)
   })
 
 }
