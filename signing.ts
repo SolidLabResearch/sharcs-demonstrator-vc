@@ -13,6 +13,7 @@ import revealDocument from "./data/deriveProofFrame.json";
 import citizenVocab from "./data/citizenVocab.json";
 import credentialContext from "./data/credentialsContext.json";
 import suiteContext from "./data/suiteContext.json";
+import { VerifiedResults } from "./interfaces";
 
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
 const documents: any = {
@@ -48,8 +49,7 @@ const customDocLoader = (url: string): any => {
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
 const documentLoader: any = extendContextLoader(customDocLoader);
 
-// TODO: split signing and deriving
-export const signDocument = async (inputDocument: any): Promise<any> => {
+export const signDocument = async (inputDocument: any): Promise<VerifiedResults> => {
   //Import the example key pair
   const keyPair = await new Bls12381G2KeyPair(keyPairOptions);
 
@@ -67,7 +67,7 @@ export const signDocument = async (inputDocument: any): Promise<any> => {
   console.log(JSON.stringify(signedDocument, null, 2));
 
   //Verify the proof
-  let verified = await verify(signedDocument, {
+  const verified = await verify(signedDocument, {
     suite: new BbsBlsSignature2020(),
     purpose: new purposes.AssertionProofPurpose(),
     documentLoader,
@@ -76,16 +76,26 @@ export const signDocument = async (inputDocument: any): Promise<any> => {
   console.log("Verification result");
   console.log(JSON.stringify(verified, null, 2));
 
+  return { document: signedDocument, verification: verified }
+};
+
+export const deriveDocument = async (signedDocument: any): Promise<VerifiedResults> => {
+
+  console.log("Signed document");
+  console.log(JSON.stringify(signedDocument, null, 2));
+
   //Derive a proof
   const derivedProof = await deriveProof(signedDocument, revealDocument, {
     suite: new BbsBlsSignatureProof2020(),
     documentLoader,
   });
 
+
+  console.log("Derived proof");
   console.log(JSON.stringify(derivedProof, null, 2));
 
   //Verify the derived proof
-  verified = await verify(derivedProof, {
+  const verified = await verify(derivedProof, {
     suite: new BbsBlsSignatureProof2020(),
     purpose: new purposes.AssertionProofPurpose(),
     documentLoader,
@@ -94,6 +104,6 @@ export const signDocument = async (inputDocument: any): Promise<any> => {
   console.log("Verification result");
   console.log(JSON.stringify(verified, null, 2));
 
-  return signedDocument
-};
+  return { document: derivedProof, verification: verified }
+}
 

@@ -1,5 +1,6 @@
 // import fetch from 'node-fetch';
 import { KeyPair, buildAuthenticatedFetch, createDpopHeader, generateDpopKeyPair } from '@inrupt/solid-client-authn-core';
+import { LoginCredentials } from './interfaces';
 const jsonld = require('jsonld');
 
 // https://communitysolidserver.github.io/CommunitySolidServer/6.x/usage/client-credentials/
@@ -75,8 +76,8 @@ const buildAuthFetch = async (accessToken: string, dpopKey: KeyPair): Promise<ty
   //const response = await authFetch('http://localhost:3000/private');
 }
 
-export async function login(email: string, password: string) {
-  const { accessToken, dpopKey } = await getToken(email, password)
+export async function login(credentials: LoginCredentials) {
+  const { accessToken, dpopKey } = await getToken(credentials.email, credentials.password)
   const authFetch = await buildAuthFetch(accessToken, dpopKey)
 
   return { accessToken, dpopKey, authFetch }
