@@ -1,7 +1,5 @@
-// import fetch from 'node-fetch';
 import { KeyPair, buildAuthenticatedFetch, createDpopHeader, generateDpopKeyPair } from '@inrupt/solid-client-authn-core';
 import { LoginCredentials } from './interfaces';
-const jsonld = require('jsonld');
 
 // https://communitysolidserver.github.io/CommunitySolidServer/6.x/usage/client-credentials/
 const getToken = async (email: string, password: string): Promise<AuthPair> => {

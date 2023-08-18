@@ -106,4 +106,3 @@ export const deriveDocument = async (signedDocument: any): Promise<VerifiedResul
 
   return { document: derivedProof, verification: verified }
 }
-
