@@ -1,16 +1,21 @@
 # SHARCS Readme
 
+## Prerequisies / Tested with
+
+- [Node.js](https://nodejs.org/en), ~v18.18.2
+- [yarn](https://yarnpkg.com/)
+
 ## Run
 
 1. Install `yarn i`
 2. Start the CSS `npx @solid/community-server -c @css:config/file-no-setup.json -f ./.data`
-3. Run the demo `ts-node index.ts`
-3. Run the jsonld-proof-demo `ts-node jsonld-signature-bbs.ts`
+3. Run the demo `.\node_modules\.bin\ts-node index.ts`
+3. Run the jsonld-proof-demo `.\node_modules\.bin\ts-node jsonld-signature-bbs.ts`
 
 
 ## Steps
 
-- [X] create resorce for medical report (diagnosis)
+- [X] create resource for medical report (diagnosis)
   - [ ] store VC/signature about origin of medical report; must show it has not been tampered with
   - [ ] ACL, allow only agent to access the medical record
 - [X] extract prescriptions from medical report
