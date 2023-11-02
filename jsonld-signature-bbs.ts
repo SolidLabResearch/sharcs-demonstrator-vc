@@ -9,6 +9,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
+ * Note: This is basically the example demo from the https://github.com/mattrglobal/jsonld-signatures-bbs/ repo --> https://github.com/mattrglobal/jsonld-signatures-bbs/blob/master/sample/ts-node/src/demo_single.ts
  */
 
 /*
@@ -75,7 +77,7 @@ const documentLoader: any = extendContextLoader(customDocLoader);
 const main = async (): Promise<void> => {
   console.log("Input document");
   console.log(JSON.stringify(inputDocument, null, 2));
-  
+
   //STEP 1
   //Import the example key pair
   const keyPair = await new Bls12381G2KeyPair(keyPairOptions);

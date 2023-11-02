@@ -12,53 +12,34 @@
 3. Run the demo `.\node_modules\.bin\ts-node index.ts`
 3. Run the jsonld-proof-demo `.\node_modules\.bin\ts-node jsonld-signature-bbs.ts`
 
+## Files to note
 
-## Steps
+This repo contains two runnable examples of notice
 
-- [X] create resource for medical report (diagnosis)
-  - [ ] store VC/signature about origin of medical report; must show it has not been tampered with
-  - [ ] ACL, allow only agent to access the medical record
-- [X] extract prescriptions from medical report
-- [X] write prescriptions to new document
-  - [ ] issue new VC about prescription-document
-    - [ ] prescription-VC must show provenance and link to original medical report; is proof that created prescription-document has not been tampered with
-  - [ ] ACL, allow only agent to access prescription-document
+1. `index.ts` :: the entry point for the main demo. Shows how the _jsonld-signatures_ library can be used to store/sign/derive/validate credentials on a Solid Pod. Run it with `.\node_modules\.bin\ts-node index.ts` (or `ts-node index.ts` if `ts-node` is in PATH)
+  - `login.ts` :: requests login credentials from the CSS. Needed to to HTTP fetch from the Pod. Will build an authenticated fetch (`authFetch`) from the credentials. See the [CSS docs](https://communitysolidserver.github.io/CommunitySolidServer/6.x/usage/client-credentials/) for more info.
+  - `signing.ts` :: uses the _jsonld-signatures_ to sign/derive/validate credentials.
 
-### Fixme/Other
+2. `jsonld-signature-bbs.ts` :: commented sample code from the https://github.com/mattrglobal/jsonld-signatures-bbs/ repo. Shows the capabilities of the _jsonld-signatures_ library, useful for testing the signing process. Run it with `.\node_modules\.bin\ts-node jsonld-signatures-bbs.ts` (or `ts-node jsonld-signatures-bbs.ts` if `ts-node` is in PATH)
 
-- how to set correct prefixes in the created turtle document? 
-- do we actually need agents?
-- does usage of Comunica for existing/creating the prescription-document make sense?
+This repo only demonstrates how to store/sign/verify/derive credentials on a single Solid Pod. An extended workflow between multiple Pods via LDN can be found in the [tri-pod-demo](https://gitlab.ilabt.imec.be/KNoWS/projects/sharcs/tri-pod-demo/-/tree/master) repository.
 
-## Actors in the demo/system
+## Stakeholders/Actors in the system
 
 ![Actors](./img/actors.png)[^1] 
 
-- Signer :: produces original signed message/document and sends it to holder/prover
+- Signer ("Government") :: produces original signed message/document and sends it to Holder/prover
 - Holder/prover ("Alice") :: holds the credentials 
-    - this is 'us'; this is where the pod and the agent operate on
+    - this is 'us'; this is where the Pod and the agent operate on
     - can choose what to disclose ('selective disclosure')
 - Verifier/receiver ("Bob") :: wants to know something; receives the proof and disclosed messages
-
-## Questions
-
-
-- What happens if the medical report gets updated/changes? Can existing prescription-VCs still be used?
-  - Assumption: It doesn't change; if it does we need to change it
-- The prescription-VC (or signature?) shows that Alice is the owner/creator, but it does not show that she didn't tamper with the data, ie. make up some numbers
-  - https://w3c.github.io/vc-data-integrity/
-  - use hash/derivation of medical-report/VC?
-  - does ZKP make senes? --> I don't fully understand it yet
-    - ZKP is a wrapper around the medical report; it can be used to reveal only the prescriptions?
-    - ZKP proof that the extracted triples indeed come from the medical report, without needing to show the medical report
-    - Alice is prover, Bob is verified? Alice needs to proove to Bob that she knows the medical report?
-
 
 ## Resouces
 
 - https://github.com/mattrglobal/jsonld-signatures-bbs
     - use for creating the VCs -> JSON-LD?
 - https://github.com/SolidLabResearch/Solid-Agent/tree/main/documentation/ucp 
-  - use for setup (and remote code execution? to be evaluated)
+  - used for setup (and remote code execution? to be evaluated)
+  - update: not used anymore; but some code remains remain! (TODO: delete/clean them)
 
 [^1]: https://identity.foundation/bbs-signature/draft-irtf-cfrg-bbs-signatures.html#figure-1
