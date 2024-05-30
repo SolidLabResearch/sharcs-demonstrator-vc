@@ -1,0 +1,22 @@
+{
+  "https://solid.api.vlaanderen.be/v1/credentials/0a781bac-9e99-4d81-9e58-642967be620c": {
+    "index": 64361,
+    "revoked": false
+  },
+  "https://solid.api.vlaanderen.be/v1/credentials/8b3912tnc-4f42-2d35-4dk4-848kf84kd89k": {
+    "index": 105334,
+    "revoked": true
+  },
+  "https://solid.api.vlaanderen.be/v1/credentials/2ddh35kd-8djd-d3jr-k32l-k3d83lkcje8jcny6": {
+    "index": 72426,
+    "revoked": false
+  },
+  "https://solid.api.vlaanderen.be/v1/credentials/0a781bac-9e99-4d81-9e58-642967be620d": {
+    "index": 46153,
+    "revoked": false
+  },
+  "https://solid.api.vlaanderen.be/v1/credentials/0a781bac-9e99-4d81-9e58-642967be620e": {
+    "index": 56351,
+    "revoked": false
+  }
+}

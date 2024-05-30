@@ -29,7 +29,7 @@ import {
 } from "@mattrglobal/jsonld-signatures-bbs";
 import { extendContextLoader, sign, verify, purposes } from "jsonld-signatures";
 
-import oldSignedDocument from "./data/credential/getuigschirft_opticien-beroepskennis_Ed25519Signature2020.json"; // Original data, without signing hashes etc
+import oldSignedDocument from "./data/credential/getuigschrift_opticien-beroepskennis_Ed25519Signature2020.json"; // Original data, without signing hashes etc
 
 import keyPairOptions from "./data/keyPair.json"; // keypair needed to create original VC
 import issuerDoc from "./data/issuer.json";
@@ -37,12 +37,14 @@ import keyPairPublic from "./data/keyPair_public.json"; // public key needed to 
 
 import bbsContext from "./data/context/bbs.json";
 import credentialContext from "./data/context/credentials.json";
+import credential2Context from "./data/context/credentials2.json";
 import suiteContext from "./data/context/suite.json";
 
 import leercredentialContext from "./data/context/leercredential-ap.json";
 import leercredentialskosContext from "./data/context/skos-ap.json";
 
 import revealDocument from "./data/frame/frame_leercredential_diplomaniveau.json"; // configuration file for selectively disclosing parts of the VC into a VP
+import statusDB from './data/status_db.json';
 
 import fsp from 'fs/promises';
 import path from 'path';
@@ -53,10 +55,10 @@ const documents: any = {
   "did:example:magda_mock#keypair": keyPairPublic,
   "https://w3id.org/security/bbs/v1": bbsContext,
   "https://www.w3.org/2018/credentials/v1": credentialContext,
+  "https://www.w3.org/ns/credentials/v2": credential2Context,
   "https://w3id.org/security/suites/jws-2020/v1": suiteContext, // it's not clear where this context comes from
   "https://solid.data.vlaanderen.be/doc/implementatiemodel/leercredential/2023-02-01/context/leercredential-ap.jsonld": leercredentialContext,
   "https://solid.data.vlaanderen.be/doc/implementatiemodel/skos/2023-02-01/context/skos-ap.jsonld": leercredentialskosContext,
-  // TODO https://w3id.org/security/v2 ?
 };
 
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
@@ -81,17 +83,27 @@ const documentLoader: any = extendContextLoader(customDocLoader);
 
 const main = async (): Promise<void> => {
   // remove proof
-  const { proof: oldProof, ...inputDocument } = oldSignedDocument;
-  let oldContexts = ['https://w3id.org/security/suites/ed25519-2020/v1', 'https://w3id.org/vc-revocation-list-2020/v1'];
+  const { proof: oldProof, ...inputDocument } = oldSignedDocument as any;
+  let oldContexts = ['https://w3id.org/security/suites/ed25519-2020/v1', 'https://w3id.org/vc-revocation-list-2020/v1', 'https://www.w3.org/2018/credentials/v1'];
   for (const oldContext of oldContexts) {
     const oldProofContextIndex = inputDocument["@context"].indexOf(oldContext);
     if (oldProofContextIndex !== -1) {
       inputDocument["@context"].splice(oldProofContextIndex, 1);
     }
   }
-  const newProofContextIndex = inputDocument["@context"].indexOf('https://w3id.org/security/bbs/v1');
-  if (newProofContextIndex === -1) {
-    inputDocument["@context"].push('https://w3id.org/security/bbs/v1'); // This context must be added to use BBS
+  let newContexts = ['https://w3id.org/security/bbs/v1', 'https://www.w3.org/ns/credentials/v2'];
+  for (const newContext of newContexts) {
+    const newProofContextIndex = inputDocument["@context"].indexOf(newContext);
+    if (newProofContextIndex === -1) {
+      inputDocument["@context"].push(newContext);
+    }
+  }
+  inputDocument['credentialStatus'] = {
+    "id": `https://example.com/credentials/status/3#${statusDB[inputDocument['id']].index}`,
+    "type": "BitstringStatusListEntry",
+    "statusPurpose": "revocation",
+    "statusListIndex": statusDB[inputDocument['id']].index,
+    "statusListCredential": "https://example.com/credentials/status/3"
   }
   console.log("Input document");
   // console.log(JSON.stringify(inputDocument, null, 2));

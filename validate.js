@@ -13,6 +13,7 @@ async function main() {
     "https://solid.data.vlaanderen.be/doc/implementatiemodel/leercredential/2023-02-01/context/leercredential-ap.jsonld": JSON.parse(await fsp.readFile(path.resolve(__dirname, './data/context/leercredential-ap.json'))),
     "https://solid.data.vlaanderen.be/doc/implementatiemodel/skos/2023-02-01/context/skos-ap.jsonld": JSON.parse(await fsp.readFile(path.resolve(__dirname, './data/context/skos-ap.json'))),
     "https://www.w3.org/2018/credentials/v1": JSON.parse(await fsp.readFile(path.resolve(__dirname, './data/context/credentials.json'))),
+    "https://www.w3.org/ns/credentials/v2": JSON.parse(await fsp.readFile(path.resolve(__dirname, "./data/context/credentials2.json"))),
     "https://w3id.org/security/bbs/v1": {}
   };
 
