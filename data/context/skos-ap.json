@@ -1,0 +1,58 @@
+{
+  "@context": {
+    "Concept": "http://www.w3.org/2004/02/skos/core#Concept",
+    "Concept.alternativeLabel": {
+      "@container": "@set",
+      "@id": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+    },
+    "Concept.definition": {
+      "@id": "http://www.w3.org/2004/02/skos/core#definition",
+      "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+    },
+    "Concept.inScheme": {
+      "@id": "http://www.w3.org/2004/02/skos/core#inScheme",
+      "@type": "@id"
+    },
+    "Concept.narrower": {
+      "@container": "@set",
+      "@id": "http://www.w3.org/2004/02/skos/core#narrower",
+      "@type": "@id"
+    },
+    "Concept.notation": {
+      "@container": "@set",
+      "@id": "http://www.w3.org/2004/02/skos/core#notation",
+      "@type": "http://www.w3.org/2000/01/rdf-schema#Literal"
+    },
+    "Concept.note": {
+      "@container": "@set",
+      "@id": "http://www.w3.org/2004/02/skos/core#note",
+      "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+    },
+    "Concept.preferredLabel": {
+      "@container": "@set",
+      "@id": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+    },
+    "Concept.status": {
+      "@id": "http://www.w3.org/ns/adms#status",
+      "@type": "@id"
+    },
+    "Concept.topConceptOf": {
+      "@id": "http://www.w3.org/2004/02/skos/core#topConceptOf",
+      "@type": "@id"
+    },
+    "ConceptScheme": "http://www.w3.org/2004/02/skos/core#ConceptScheme",
+    "ConceptScheme.hasTopConcept": {
+      "@container": "@set",
+      "@id": "http://www.w3.org/2004/02/skos/core#hasTopConcept",
+      "@type": "@id"
+    },
+    "ConceptScheme.status": {
+      "@id": "http://www.w3.org/ns/adms#status",
+      "@type": "@id"
+    },
+    "LanguageString": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+    "Literal": "http://www.w3.org/2000/01/rdf-schema#Literal"
+  }
+}

@@ -29,23 +29,34 @@ import {
 } from "@mattrglobal/jsonld-signatures-bbs";
 import { extendContextLoader, sign, verify, purposes } from "jsonld-signatures";
 
-import inputDocument from "./data/inputDocument.json"; // Original data, without signing hashes etc
+import oldSignedDocument from "./data/credential/getuigschirft_opticien-beroepskennis_Ed25519Signature2020.json"; // Original data, without signing hashes etc
+
 import keyPairOptions from "./data/keyPair.json"; // keypair needed to create original VC
-import exampleControllerDoc from "./data/controllerDocument.json";
-import bbsContext from "./data/bbs.json";
-import revealDocument from "./data/deriveProofFrame.json"; // configuration file for selectively disclosing parts of the VC into a VP
-import citizenVocab from "./data/citizenVocab.json"; // vocabulary used to describe the original data
-import credentialContext from "./data/credentialsContext.json";
-import suiteContext from "./data/suiteContext.json";
+import issuerDoc from "./data/issuer.json";
+import keyPairPublic from "./data/keyPair_public.json"; // public key needed to verify VCs
+
+import bbsContext from "./data/context/bbs.json";
+import credentialContext from "./data/context/credentials.json";
+import suiteContext from "./data/context/suite.json";
+
+import leercredentialContext from "./data/context/leercredential-ap.json";
+import leercredentialskosContext from "./data/context/skos-ap.json";
+
+import revealDocument from "./data/frame/frame_leercredential_diplomaniveau.json"; // configuration file for selectively disclosing parts of the VC into a VP
+
+import fsp from 'fs/promises';
+import path from 'path';
 
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
 const documents: any = {
-  "did:example:489398593#test": keyPairOptions,
-  "did:example:489398593": exampleControllerDoc,
+  "did:example:magda_mock": issuerDoc,
+  "did:example:magda_mock#keypair": keyPairPublic,
   "https://w3id.org/security/bbs/v1": bbsContext,
-  "https://w3id.org/citizenship/v1": citizenVocab,
   "https://www.w3.org/2018/credentials/v1": credentialContext,
-  "https://w3id.org/security/suites/jws-2020/v1": suiteContext,
+  "https://w3id.org/security/suites/jws-2020/v1": suiteContext, // it's not clear where this context comes from
+  "https://solid.data.vlaanderen.be/doc/implementatiemodel/leercredential/2023-02-01/context/leercredential-ap.jsonld": leercredentialContext,
+  "https://solid.data.vlaanderen.be/doc/implementatiemodel/skos/2023-02-01/context/skos-ap.jsonld": leercredentialskosContext,
+  // TODO https://w3id.org/security/v2 ?
 };
 
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
@@ -60,12 +71,8 @@ const customDocLoader = (url: string): any => {
     };
   }
 
-  console.log(
-    `Attempted to remote load context : '${url}', please cache instead`
-  );
-  throw new Error(
-    `Attempted to remote load context : '${url}', please cache instead`
-  );
+  console.log(`Attempted to remote load context : '${url}', please cache instead`);
+  throw new Error(`Attempted to remote load context : '${url}', please cache instead`);
 };
 
 //Extended document load that uses local contexts
@@ -73,8 +80,22 @@ const customDocLoader = (url: string): any => {
 const documentLoader: any = extendContextLoader(customDocLoader);
 
 const main = async (): Promise<void> => {
+  // remove proof
+  const { proof: oldProof, ...inputDocument } = oldSignedDocument;
+  let oldContexts = ['https://w3id.org/security/suites/ed25519-2020/v1', 'https://w3id.org/vc-revocation-list-2020/v1'];
+  for (const oldContext of oldContexts) {
+    const oldProofContextIndex = inputDocument["@context"].indexOf(oldContext);
+    if (oldProofContextIndex !== -1) {
+      inputDocument["@context"].splice(oldProofContextIndex, 1);
+    }
+  }
+  const newProofContextIndex = inputDocument["@context"].indexOf('https://w3id.org/security/bbs/v1');
+  if (newProofContextIndex === -1) {
+    inputDocument["@context"].push('https://w3id.org/security/bbs/v1'); // This context must be added to use BBS
+  }
   console.log("Input document");
-  console.log(JSON.stringify(inputDocument, null, 2));
+  // console.log(JSON.stringify(inputDocument, null, 2));
+  await fsp.writeFile(path.resolve(__dirname, './data/output/test_00_input_document.json'), JSON.stringify(inputDocument, null, 2));
   
   //STEP 1
   //Import the example key pair
@@ -87,7 +108,8 @@ const main = async (): Promise<void> => {
   });
 
   console.log("Input document with proof");
-  console.log(JSON.stringify(signedDocument, null, 2));
+  // console.log(JSON.stringify(signedDocument, null, 2));
+  await fsp.writeFile(path.resolve(__dirname, './data/output/test_10_input_document_proof.json'), JSON.stringify(signedDocument, null, 2));
 
   //STEP 2
   //Verify the proof
@@ -98,10 +120,11 @@ const main = async (): Promise<void> => {
   });
 
   console.log("Verification result");
-  console.log(JSON.stringify(verified, null, 2));
+  // console.log(JSON.stringify(verified, null, 2));
+  await fsp.writeFile(path.resolve(__dirname, './data/output/test_20_verified_document.json'), JSON.stringify(verified, null, 2));
 
   //STEP 3
-  // see ./data/deriveProofFrame.json
+  // see ./data/frame
 
   //STEP 4
   //Derive a proof
@@ -111,7 +134,8 @@ const main = async (): Promise<void> => {
   });
 
   console.log("Derivation result");
-  console.log(JSON.stringify(derivedProof, null, 2));
+  // console.log(JSON.stringify(derivedProof, null, 2));
+  await fsp.writeFile(path.resolve(__dirname, './data/output/test_30_derived_document.json'), JSON.stringify(derivedProof, null, 2));
 
   //STEP 5
   //Verify the derived proof
@@ -122,7 +146,8 @@ const main = async (): Promise<void> => {
   });
 
   console.log("Verification result");
-  console.log(JSON.stringify(verified, null, 2));
+  // console.log(JSON.stringify(verified, null, 2));
+  await fsp.writeFile(path.resolve(__dirname, './data/output/test_40_verified_derived_document.json'), JSON.stringify(verified, null, 2));
 };
 
 main();

@@ -6,7 +6,7 @@
   ],
   "id": "https://issuer.oidp.uscis.gov/credentials/83627465",
   "type": ["VerifiableCredential", "PermanentResidentCard"],
-  "issuer": "did:example:489398593",
+  "issuer": "did:example:magda_mock",
   "identifier": "83627465",
   "name": "Permanent Resident Card",
   "description": "Government of Example Permanent Resident Card.",
