@@ -1,25 +1,30 @@
 const fsp = require('fs/promises');
 
+const config = require('./config.json');
+
+function init(db, id) {
+    db[id] = {
+        index: Math.floor(Math.random() * 131072),
+        listId: "https://example.com/credentials/status/3"
+    }
+}
+
 async function revoke(id) {
-    const db = JSON.parse(await fsp.readFile('./data/status_db.json', 'utf8'));
+    const db = config.status
     if (!db[id]) {
-        db[id] = {
-            index: Math.floor(Math.random() * 131072)
-        }
+        init(db, id);
     }
     db[id].revoked = true;
-    await fsp.writeFile('./data/status_db.json', JSON.stringify(db, null, 2));
+    await fsp.writeFile('./config.json', JSON.stringify(config, null, 2));
 }
 
 async function enable(id) {
-    const db = JSON.parse(await fsp.readFile('./data/status_db.json', 'utf8'));
+    const db = config.status
     if (!db[id]) {
-        db[id] = {
-            index: Math.floor(Math.random() * 131072)
-        }
+        init(db, id);
     }
     db[id].revoked = false;
-    await fsp.writeFile('./data/status_db.json', JSON.stringify(db, null, 2));
+    await fsp.writeFile('./config.json', JSON.stringify(config, null, 2));
 }
 
 async function main() {
@@ -30,11 +35,11 @@ async function main() {
         sociologie: "https://solid.api.vlaanderen.be/v1/credentials/0a781bac-9e99-4d81-9e58-642967be620d",
         bio_master: "https://solid.api.vlaanderen.be/v1/credentials/0a781bac-9e99-4d81-9e58-642967be620e"
     };
-    for (let index = 0; index < Object.keys(ids).length; index++) {
+    for (let index = 0; index < Object.keys(config.status).length; index++) {
         const key = Object.keys(ids)[index];
         await enable(ids[key]);
     }
-    await revoke(ids.latijn);
+    await revoke(config.original_credentials[1].id);
 }
 
 main();

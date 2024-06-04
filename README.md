@@ -2,13 +2,12 @@
 
 ## Prerequisies / Tested with
 
-- [Node.js](https://nodejs.org/en), ~v20.12.2
-- [yarn](https://yarnpkg.com/)
+- [Bun](https://bun.sh/), ~v1.0.1
 
 ## Run
 
-1. Install `yarn i`
-2. Run the jsonld-proof-demo `.\node_modules\.bin\ts-node jsonld-signature-bbs.ts`
+1. Install `bun i`
+2. Run the scripts using `bun [script name] [optional index of diploma you want to try]`
 
 ## Configuration
 
@@ -21,14 +20,17 @@
 
 ### steps
 
-- update the 'old' diplomas / store their status / store them in the solid pods
-  - TODO this is currently part of jsonld-signature-bbs.ts instead of a separate script
-  - TODO storing their status currently is hardcoded
+- update the 'old' diplomas / store their status, see `01_refresh_diploma.ts`
+  - optionally validate using `02_verify.ts`
 - minimization
-  - when a minimization request arrives, validate the diploma based on the `./data/shape`
-  - minize the diploma based on the `./data/frame`
-    - TODO this is currently part of jsonld-signature-bbs.ts instead of a separate script
-- update status
+  - when a minimization request arrives, validate the diploma based on the `./data/shape`, using `03_validate.js`
+  - minize the diploma based on the `./data/frame`, using `04_minimize.ts`
+    - optionally validate using `05_verify.ts`
+- status
+  - check status
+  - update status
+  - check status again
+  - TODO init status should also create the status doc
 
 ## Resouces
 
