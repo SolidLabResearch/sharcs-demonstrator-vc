@@ -39,5 +39,125 @@ export const demoConfigurations =
           ],
         },
       ]
+    },
+    'example-02-between-valid': {
+      description: 'Two predicates to simulate a between predicate: l < x < r',
+      vcRecords: [
+        {
+          unsigned: './resources/vc2.json',
+          disclosed: './resources/disclosed2.json',
+        }
+
+      ],
+      circuits: {
+        [cLessThanPrvPub.id]: cLessThanPrvPub,
+        [cLessThanPubPrv.id]: cLessThanPubPrv
+      },
+      predicates: [
+        {
+          '@context': 'https://zkp-ld.org/context.jsonld',
+          type: 'Predicate',
+          circuit: 'circ:lessThanPubPrv',
+          private: [
+            {
+              type: 'PrivateVariable',
+              var: 'greater',
+              val: '_:Y',
+            },
+          ],
+          public: [
+            {
+              type: 'PublicVariable',
+              var: 'lesser',
+              val: {
+                '@value': '9999',
+                '@type': 'xsd:integer',
+              },
+            },
+          ],
+        },
+        {
+          '@context': 'https://zkp-ld.org/context.jsonld',
+          type: 'Predicate',
+          circuit: 'circ:lessThanPrvPub',
+          private: [
+            {
+              type: 'PrivateVariable',
+              var: 'lesser',
+              val: '_:Y',
+            },
+          ],
+          public: [
+            {
+              type: 'PublicVariable',
+              var: 'greater',
+              val: {
+                '@value': '50000',
+                '@type': 'xsd:integer',
+              },
+            },
+          ],
+        },
+      ]
+    },
+    'example-02-between-invalid': {
+      description: 'Two predicates to simulate a between predicate: l < x < r',
+      vcRecords: [
+        {
+          unsigned: './resources/vc2.json',
+          disclosed: './resources/disclosed2.json',
+        }
+
+      ],
+      circuits: {
+        [cLessThanPrvPub.id]: cLessThanPrvPub,
+        [cLessThanPubPrv.id]: cLessThanPubPrv
+      },
+      predicates: [
+        {
+          '@context': 'https://zkp-ld.org/context.jsonld',
+          type: 'Predicate',
+          circuit: 'circ:lessThanPubPrv',
+          private: [
+            {
+              type: 'PrivateVariable',
+              var: 'greater',
+              val: '_:Y',
+            },
+          ],
+          public: [
+            {
+              type: 'PublicVariable',
+              var: 'lesser',
+              val: {
+                '@value': '10001',
+                '@type': 'xsd:integer',
+              },
+            },
+          ],
+        },
+        {
+          '@context': 'https://zkp-ld.org/context.jsonld',
+          type: 'Predicate',
+          circuit: 'circ:lessThanPrvPub',
+          private: [
+            {
+              type: 'PrivateVariable',
+              var: 'lesser',
+              val: '_:Y',
+            },
+          ],
+          public: [
+            {
+              type: 'PublicVariable',
+              var: 'greater',
+              val: {
+                '@value': '50000',
+                '@type': 'xsd:integer',
+              },
+            },
+          ],
+        },
+      ]
     }
   }

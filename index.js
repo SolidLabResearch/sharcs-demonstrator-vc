@@ -48,8 +48,11 @@ import {readJsonFile} from './utils.js';
 // ]
 
 
-async function main() {
-  const {circuits, predicates, vcRecords } = demoConfigurations['example-01']
+async function runDemo(demoKey) {
+  
+  const dc = demoConfigurations[demoKey]
+  const {circuits, predicates, vcRecords } = dc
+  console.log(`\n➡️ Running: ${demoKey} \nDescription: ${dc.description}`)
   console.log('SIGN')
   const vcr = vcRecords[0] // ⚠️ TODO: loop through vcRecords
   
@@ -58,6 +61,7 @@ async function main() {
   
   // TODO: document vc
   const vc = await zjp.sign(vcDraft, keypairs, documentLoader)
+  console.log(vc)
   // TODO: document vcDisclosed
   const vcDisclosed = readJsonFile(vcr.disclosed)
   
@@ -93,4 +97,10 @@ async function main() {
   console.log({verificationResult})
   
 }
+
+async function main() {
+  for (const demoKey in demoConfigurations) {
+    await runDemo(demoKey)
+  }
+} 
 main().then(() => console.log('done')).catch(console.error)
