@@ -4,7 +4,7 @@ import keypairs from './resources/keypairs.json' assert { type: "json" };
 // import vcDraft from './resources/vc2.json' assert { type: "json" };
 // import vcDisclosed from './resources/disclosed2.json' assert { type: "json" };
 // import circuit from './resources/less_than_prv_pub_64.json' assert { type: "json" };
-// import cLessThanPrvPub from './resources/less_than_prv_pub_64.json' assert { type: "json" };
+import cLessThanPrvPub from './resources/less_than_prv_pub_64.json' assert { type: "json" };
 // import cLessThanPubPrv from './resources/less_than_pub_prv_64.json' assert { type: "json" };
 import {demoConfigurations} from './demoConfigurations.js';
 import {documentLoader} from './documentloader.js';
@@ -65,9 +65,9 @@ async function main() {
   const vcPairs = [
     { original: vc, disclosed: vcDisclosed },
   ]
-  
+  const challenge = 'abc123'
   const deriveOptions = {
-    challenge: 'abc123',
+    challenge,
     predicates,
     circuits
   }
@@ -78,8 +78,24 @@ async function main() {
     documentLoader,
     deriveOptions
   )
-  // console.log(vp)
 
+  console.log('VERIFY')
+  
+  const verifyOptions = {
+    challenge,
+    snarkVerifyingKeys: {
+      [cLessThanPrvPub.id]: cLessThanPrvPub.provingKey
+    }
+  }
+  
+  const verificationResult = await zjp.verifyProof(
+    vp,
+    keypairs,
+    documentLoader,
+    verifyOptions
+  )
+
+  console.log({verificationResult})
   
 }
 main().then(() => console.log('done')).catch(console.error)
