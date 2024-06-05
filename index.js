@@ -80,19 +80,14 @@ async function main() {
   )
 
   console.log('VERIFY')
-  
-  const verifyOptions = {
-    challenge,
-    snarkVerifyingKeys: {
-      [cLessThanPrvPub.id]: cLessThanPrvPub.provingKey
-    }
-  }
-  
+  const snarkVerifyingKeys = Object.fromEntries(
+    Object.entries(circuits).map(([cId, c]) => [cId, c.provingKey])
+  )
   const verificationResult = await zjp.verifyProof(
     vp,
     keypairs,
     documentLoader,
-    verifyOptions
+    { challenge, snarkVerifyingKeys }
   )
 
   console.log({verificationResult})
