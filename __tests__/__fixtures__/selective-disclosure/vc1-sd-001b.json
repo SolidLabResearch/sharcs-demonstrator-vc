@@ -1,0 +1,23 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://www.w3.org/ns/data-integrity/v1",
+    "https://schema.org/",
+    "https://gddmulde.be/customvocab/"
+  ],
+  "id": "urn:diploma:123",
+  "type": "VerifiableCredential",
+  "credentialSubject": {
+    "@explicit": true,
+    "id": {},
+    "holder": {},
+    "title": {},
+    "awardingInstitution": {}
+  },
+  "proof": {
+    "type": "DataIntegrityProof",
+    "cryptosuite": "bbs-termwise-signature-2023",
+    "verificationMethod": "did:example:issuer0#bls12_381-g2-pub001",
+    "@context": "https://www.w3.org/ns/data-integrity/v1"
+  }
+}
