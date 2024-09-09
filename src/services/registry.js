@@ -15,6 +15,9 @@ const registry = new Registry()
  *
  * /register:
  *   post:
+ *     tags:
+ *        - Backend
+ *        - Registry service
  *     produces:
  *       - application/json
  *     parameters:
@@ -45,6 +48,9 @@ app.post('/register', async (req, res) => {
  *
  * /resolve:
  *   post:
+ *     tags:
+ *       - Backend
+ *       - Registry service
  *     produces:
  *       - application/json
  *     parameters:

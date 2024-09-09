@@ -14,9 +14,11 @@ const deriver = new Deriver(
 
 /**
  * @swagger
- *
  * /derive:
  *   post:
+ *     tags:
+ *        - Backend
+ *        - Deriver service
  *     produces:
  *       - application/json
  *     parameters:
