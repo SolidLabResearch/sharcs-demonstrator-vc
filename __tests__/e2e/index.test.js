@@ -1,6 +1,6 @@
 import {Deriver} from "../../src/controllers/deriver.js";
 import {_frame, logv2, readJsonFile} from "../../src/utils.js";
-import config, {urlDerive} from "../../src/config.js"
+import config, {urlDerive} from "../../src/config/config.js"
 import {RegistryWebserviceProxy} from "../../src/proxies/RegistryWebserviceProxy.js";
 // Global variables
 const registry = new RegistryWebserviceProxy(

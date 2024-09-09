@@ -1,6 +1,6 @@
 import express from 'express'
 import bodyParser from 'body-parser'
-import config from "../config.js";
+import config from "../config/config.js";
 import {Deriver} from "../controllers/deriver.js";
 import {RegistryWebserviceProxy} from "../proxies/RegistryWebserviceProxy.js";
 

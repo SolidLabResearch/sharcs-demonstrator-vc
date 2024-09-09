@@ -1,7 +1,7 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import {Registry} from "../controllers/registry.js";
-import config from '../config.js'
+import config from '../config/config.js'
 
 const app = express()
 app.use(bodyParser.json())
