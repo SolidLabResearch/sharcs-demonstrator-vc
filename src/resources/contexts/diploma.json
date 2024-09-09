@@ -1,0 +1,42 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "id": "@id",
+    "holder": {
+      "@id": "https://w3id.org/vc/v1#holder"
+    },
+    "title": "name",
+    "degreeType": {
+      "@type": "@id",
+      "@id": "https://schema.org/EducationalOccupationalCredential"
+    },
+    "degreeName": "educationalCredentialAwarded",
+    "degreeLevel": {
+      "@type": "@id",
+      "@id": "https://schema.org/EducationalOccupationalCredential"
+    },
+    "degreeMajor": {
+      "@id": "https://schema.org/majorFieldOfStudy"
+    },
+    "degreeMinor": {
+      "@id": "https://schema.org/minorFieldOfStudy"
+    },
+    "graduationDate": "dateGraduated",
+    "gradePointAverage": {
+      "@id": "https://schema.org/grade"
+    },
+    "awardingInstitution": {
+      "@id": "https://schema.org/CollegeOrUniversity"
+    }
+  },
+  "id": "urn:degree:abc123",
+  "holder": "did:example:john",
+  "title": "Bachelor of Science",
+  "degreeType": "https://schema.org/BachelorDegree",
+  "degreeName": "Bachelor of Science in Mechanical Engineering",
+  "degreeLevel": "https://schema.org/Bachelor",
+  "degreeMajor": "Mechanical Engineering",
+  "degreeMinor": "Mathematics",
+  "graduationDate": "2023-01-01",
+  "gradePointAverage": "3.67"
+}
