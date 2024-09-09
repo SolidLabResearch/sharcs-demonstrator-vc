@@ -1,0 +1,67 @@
+import {logv2, readJsonFile, redactControllerDoc} from "../../src/utils.js";
+import config from "../../src/config/config.js";
+import {RegistryWebserviceProxy} from "../../src/proxies/RegistryWebserviceProxy.js";
+import {actors} from "../actors.js";
+import {Deriver} from "../../src/controllers/deriver.js";
+
+const urlGateway = `${config.gateway.baseUrl}:${config.gateway.port}`
+const urlsGateway = {
+    base: urlGateway,
+    derive: `${urlGateway}/credentials/derive`
+}
+const registry = new RegistryWebserviceProxy(
+    config.registry.baseUrl,
+    config.registry.port
+)
+const deriver = new Deriver(registry)
+beforeAll(async () => {
+    await registry.register(actors.issuer0.id,
+        redactControllerDoc(actors.issuer0) // redact secret key material
+    )
+})
+
+test('Should FAIL for unknown minimization scheme', async () => {
+
+    const response = await fetch(
+        urlsGateway.derive, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                verifiableCredential: {},
+                scheme: 'does-not-exist'
+            })
+        }
+    )
+
+    expect(response.ok).toBe(false)
+})
+
+test('TEST001 [scheme: diploma-minimal]', async () => {
+    const unsignedDiplomaCredential = readJsonFile('__tests__/__fixtures__/vc/vc1.json')
+
+    const vc = await deriver.sign(unsignedDiplomaCredential, [actors.issuer0]) // TODO: how to sign the draft vc?
+
+    const response = await fetch(
+        urlsGateway.derive, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                verifiableCredential: vc,
+                scheme: 'diploma-minimal'
+            })
+        }
+    )
+    console.log(response.status, response.statusText)
+    expect(response.ok).toBe(true)
+    const result = await response.json()
+
+    // Verify
+    const challenge = 'abc123' // TODO: HANDLE THIS APPROPRIATELY!
+    const publicKeypair = await registry.resolve(actors.issuer0.id)
+    const verificationResult = await deriver.verifyProof(result, [publicKeypair], challenge)
+    expect(verificationResult.verified).toEqual(true);
+})
