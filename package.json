@@ -18,6 +18,8 @@
     "test:service:deriver:watch": "jest --watch __tests__/services/deriver.test.js",
     "test:service:registry": "jest __tests__/services/registry.test.js",
     "test:service:registry:watch": "jest --watch __tests__/services/registry.test.js",
+    "test:service:gateway": "jest __tests__/services/gateway.test.js",
+    "test:service:gateway:watch": "jest --watch __tests__/services/gateway.test.js",
     "test:e2e": "jest --watch __tests__/e2e/index.test.js",
     "test:e2e:watch": "jest --watch __tests__/e2e/index.test.js"
   },
