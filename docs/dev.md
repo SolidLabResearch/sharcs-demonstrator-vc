@@ -17,3 +17,8 @@
                 - `predicates`: This document describes the predicate operations (e.g., less-than) and the corresponding circuits.
                 - `challenge`: Challenge string for the blind signature.
             - Output: Verifiable Presentation with derived credentials.
+
+## Resources
+
+Swagger docs
+- 3.0.0: https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.0.md
