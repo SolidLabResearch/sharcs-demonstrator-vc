@@ -8,6 +8,7 @@ let config = undefined;
 switch (testingSetup) {
     case "LOCAL":
         config = {
+            gateway: {baseUrl, port: 80},
             derive: { baseUrl,  port: 3000 },
             registry: { baseUrl,  port: 4000 }
         }

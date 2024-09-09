@@ -5,6 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "service:gateway": "node src/services/gateway.js",
+    "service:gateway:watch": "nodemon src/services/gateway.js",
     "service:deriver": "node src/services/deriver.js",
     "service:deriver:watch": "nodemon src/services/deriver.js",
     "service:registry": "node src/services/registry.js",
@@ -27,7 +29,8 @@
     "deep-diff": "^1.0.2",
     "express": "^4.19.2",
     "jsonld": "^8.3.2",
-    "swagger-jsdoc": "^6.2.8"
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

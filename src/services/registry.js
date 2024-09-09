@@ -8,6 +8,25 @@ app.use(bodyParser.json())
 const port = config.registry.port;
 const registry = new Registry()
 
+/**
+ *
+ * TODO: parameter/controllerDoc's type: refer to schema of a controller doc
+ * @swagger
+ *
+ * /register:
+ *   post:
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: id
+ *         in: body
+ *         required: true
+ *         type: string
+ *       - name: controllerDoc
+ *         in: body
+ *         required: true
+ *         type: object
+ */
 app.post('/register', async (req, res) => {
     const {id, controllerDoc} = req.body
     console.log(`@registry/register: ${id}`)
@@ -21,6 +40,19 @@ app.post('/register', async (req, res) => {
     }
 })
 
+/**
+ * @swagger
+ *
+ * /resolve:
+ *   post:
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: id
+ *         in: body
+ *         required: true
+ *         type: string
+ */
 app.post('/resolve', async (req, res) => {
     const {id} = req.body
     console.log(`@registry/resolve: ${id}`)

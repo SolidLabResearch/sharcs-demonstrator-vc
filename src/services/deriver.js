@@ -6,13 +6,27 @@ import {RegistryWebserviceProxy} from "../proxies/RegistryWebserviceProxy.js";
 
 const app = express()
 const port = config.derive.port;
-
 app.use(bodyParser.json({limit: '50mb'}));
 
 const deriver = new Deriver(
     new RegistryWebserviceProxy(config.registry.baseUrl, config.registry.port)
 )
 
+/**
+ * @swagger
+ *
+ * /derive:
+ *   post:
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: vcPairs
+ *         in: body
+ *         required: true
+ *         type: array
+ *         items:
+ *          type: object
+ */
 app.post('/derive', async (req, res) => {
   let derivedResult = undefined
   const {vcPairs, predicates, challenge} = req.body
