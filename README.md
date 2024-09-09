@@ -22,27 +22,13 @@ npm run start
 
 ## Tests
 
-Executing the tests requires
-the registry and derive services to be running.
+Before executing the tests, make sure that all services are up and running (`npm run start`).
+Then, run the tests as follows:
+
+```bash
+npm run test
+```
 
 > More information about the tests can be found in [here](./docs/tests.md)
 
-The steps are as follows:
 
-1. Start the registry service.
-
-    ```bash
-    npm run service:registry:watch
-    ```
-
-2. Start the derive service.
-
-    ```bash
-    npm run service:deriver:watch
-    ```
-
-3. Run the tests.
-
-    ```bash
-    npm run test
-    ```
