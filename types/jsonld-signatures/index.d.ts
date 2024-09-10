@@ -14,4 +14,10 @@
 /**
  * Declare missing types for jsonld-signatures
  */
-declare module "jsonld-signatures";
+declare module "jsonld-signatures" {
+    export function extendContextLoader(customDocLoader: (url: string)=> any): any;
+    export function sign(...args: any[]): any;
+    export function verify(...args: any[]): any;
+    export const purposes: any;
+}
+

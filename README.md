@@ -2,44 +2,59 @@
 
 ## Prerequisies / Tested with
 
-- [Node.js](https://nodejs.org/en), ~v18.18.2
-- [yarn](https://yarnpkg.com/)
+- [Bun](https://bun.sh/), ~v1.0.1
+
+## Server - Docker
+
+- first time: run `./docker-build-image.sh`
+- as server: run `docker run --rm --name carcharodon -p 8080:8080 sharcs-poc:latest`
 
 ## Run
 
-1. Install `yarn i`
-2. Start the CSS `npx @solid/community-server -c @css:config/file-no-setup.json -f ./.data`
-3. Run the demo `.\node_modules\.bin\ts-node index.ts`
-3. Run the jsonld-proof-demo `.\node_modules\.bin\ts-node jsonld-signature-bbs.ts`
+- Install `bun i`
+- Run the scripts using `bun [script name] [optional index of diploma you want to try]`
+- Run the server using `bun ./server.js` 
 
-## Files to note
+## Configuration
 
-This repo contains two runnable examples of notice
+- `./data`
+  - `./data/context`: all locally downloaded contexts, so the demo doesn't rely on public resources/an internet connection
+  - `./data/credentials`: demo VCs
+    - issues with these VCs
+      - Concept.prefLabel is not defined in the context --> Concept.preferredLabel
+      - some old contexts are removed and bbs is added
 
-1. `index.ts` :: the entry point for the main demo. Shows how the _jsonld-signatures_ library can be used to store/sign/derive/validate credentials on a Solid Pod. Run it with `.\node_modules\.bin\ts-node index.ts` (or `ts-node index.ts` if `ts-node` is in PATH)
-  - `login.ts` :: requests login credentials from the CSS. Needed to to HTTP fetch from the Pod. Will build an authenticated fetch (`authFetch`) from the credentials. See the [CSS docs](https://communitysolidserver.github.io/CommunitySolidServer/6.x/usage/client-credentials/) for more info.
-  - `signing.ts` :: uses the _jsonld-signatures_ to sign/derive/validate credentials.
+### steps
 
-2. `jsonld-signature-bbs.ts` :: commented sample code from the https://github.com/mattrglobal/jsonld-signatures-bbs/ repo. Shows the capabilities of the _jsonld-signatures_ library, useful for testing the signing process. Run it with `.\node_modules\.bin\ts-node jsonld-signatures-bbs.ts` (or `ts-node jsonld-signatures-bbs.ts` if `ts-node` is in PATH)
+- update the 'old' diplomas / store their status, see `01_refresh_diploma.ts`
+  - optionally validate using `02_verify.ts`
+- minimization
+  - when a minimization request arrives, validate the diploma based on the `./data/shape`, using `03_validate.js`
+  - minize the diploma based on the `./data/frame`, using `04_minimize.ts`
+    - optionally validate using `05_verify.ts`
+- status
+  - check status
+  - update status
+  - check status again
+  - TODO init status should also create the status doc
 
-This repo only demonstrates how to store/sign/verify/derive credentials on a single Solid Pod. An extended workflow between multiple Pods via LDN can be found in the [tri-pod-demo](https://gitlab.ilabt.imec.be/KNoWS/projects/sharcs/tri-pod-demo/-/tree/master) repository.
-
-## Stakeholders/Actors in the system
-
-![Actors](./img/actors.png)[^1] 
-
-- Signer ("Government") :: produces original signed message/document and sends it to Holder/prover
-- Holder/prover ("Alice") :: holds the credentials 
-    - this is 'us'; this is where the Pod and the agent operate on
-    - can choose what to disclose ('selective disclosure')
-- Verifier/receiver ("Bob") :: wants to know something; receives the proof and disclosed messages
-
-## Resouces
+## Resources
 
 - https://github.com/mattrglobal/jsonld-signatures-bbs
-    - use for creating the VCs -> JSON-LD?
-- https://github.com/SolidLabResearch/Solid-Agent/tree/main/documentation/ucp 
-  - used for setup (and remote code execution? to be evaluated)
-  - update: not used anymore; but some code remains remain! (TODO: delete/clean them)
+    - used for creating the VCs -> JSON-LD
+- https://www.itb.ec.europa.eu/shacl/any/upload : if you don't feel like running validators locally
 
-[^1]: https://identity.foundation/bbs-signature/draft-irtf-cfrg-bbs-signatures.html#figure-1
+## Ideas
+
+- range queries: expand VC API options + add code
+  - [ ] selective disclose + range
+    - birthdate/date: diploma older than 3 year
+    - substring?
+- [ ] Proof of Signature / BBS?
+  - Evidence record cfr DocByte (Merkle Tree)
+  - [ ] VC ín VC + selective disclosure?
+- selective points to frame: both normal frame as expanded frame?
+  - [ ] test
+- VP
+- ❗ delivery
+  - options / validate / verify / minimize
