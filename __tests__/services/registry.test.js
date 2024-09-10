@@ -1,5 +1,5 @@
 import {RegistryWebserviceProxy} from "../../src/proxies/RegistryWebserviceProxy.js";
-import config from "../../src/config.js";
+import config from "../../src/config/config.js";
 import {logv2} from "../../src/utils.js";
 
 const testRecord = {

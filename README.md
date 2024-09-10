@@ -1,67 +1,115 @@
 # README
 
+This repository enables **selective disclosure** and **range query proofs**,
+applied on Verifiable Credentials.
+
+**Outline**
+
 - [README](#readme)
   - [Features](#features)
     - [Components](#components)
   - [Installation](#installation)
   - [Tests](#tests)
 
+## Overview
+
 ![Overview](img/overview.jpg)
 
-## Features
+### Services
 
-- Selective disclosure
-- Range queries
+- Backend
+  - Registry is used to register and resolve public key material.
+  - Signer is used to sign an (unsigned) credential.
+  - Deriver allows for selective disclosure and range queries.
+- Public
+  - Gateway is exposed to the end-users. Internally, the Gateway service coordinates how the backend services work together to apply minimization.
 
-### Components
+#### Documentation
 
-- Registry service
-  - Endpoints:
-    - `/register`: Registers an identifier and its corresponding public key material.
-    - `/resolve`: Resolves public key material of a registered ID.
-    - `/clear`: Clears the registry. ⚠️ Warning: endpoint is for testing purposes only.
-- Deriver service
-  - Remark: Circuits SNARK & Verifying Keys are hardcoded in the service.
-  - Endpoints:
-    - `/derive`: Enables selective disclosure and range queries on Verifiable Credentials (VCs).
-      - Parameters
-        - `vcPairs`: An array of VCPairs (`VCPair { original: VC; disclosed: VC; }`).
-          - `original`: The document to derive.
-          - `disclosed`: This document describes which attributes to selectively disclose,
-          or which attributes become (public or private) variables for a particular range query proof.
-        - `predicates`: This document describes the predicate operations (e.g., less-than) and the corresponding circuits.
-        - `challenge`: Challenge string for the blind signature.
-      - Output: Verifiable Presentation with derived credentials.
+Each service's API is documented according to the Open API Specification 3.0.0.
+Once the services are started (for which you should follow [these instruction](#usage)).
+As shown in the following figure,
+each service API documentation can be found at <http://localhost/api-docs>.
 
-## Installation
+![Swagger Service API Documentation](./img/swagger-api-docs.png)
+
+### Sequence flow
+
+As can be seen in the overview diagram, the sequences are as follows:
+
+- (#1) The issuer issues a credential to a holder.
+
+- (#2) For a particular purpose,
+the holder minimizes one of its credentials. In order to do that, the holder executes a POST requests on the SHARCS (Gateway) API
+
+- (#3) At this point, the holder received the VP with the derived credential(s) from the SHARCS platform, and presents it to the verifier.
+
+- (#4) Upon receiving the minimized VP, the verifier needs to verify the authenticity and integrity of the data.
+  For this, the verifier needs to resolve the issuer's ID.
+
+
+
+## Usage
 
 ```bash
 npm install
+npm run start
 ```
 
 ## Tests
 
-Executing the tests requires
-the registry and derive services to be running.
-
+Before executing tests,
+make sure that all services are up and running.
+These services can be run **locally** or in a **Docker** container.
 > More information about the tests can be found in [here](./docs/tests.md)
 
-The steps are as follows:
+### Setup
 
-1. Start the registry service.
+#### Local setup
 
-    ```bash
-    npm run service:registry:watch
-    ```
+```bash
+npm run start
+```
 
-2. Start the derive service.
+#### Docker setup
 
-    ```bash
-    npm run service:deriver:watch
-    ```
+```bash
+./docker-build-image.sh
+docker run --rm --name carcharodon -p80:80 -p 3000:3000 -p 4000:4000 sharcs-poc:latest
+```
 
-3. Run the tests.
+### Services
 
-    ```bash
-    npm run test
-    ```
+To test the services, execute
+
+```bash
+npm run test:service
+```
+
+### End-to-end
+
+To test end-to-end scenarios, execute:
+
+```bash
+npm run test:e2e
+```
+
+### Teardown
+
+Tearding down the test setup depends on the chosen test setup (i.e., [local](#local-setup) or [Docker](#docker-setup)) and is explained in the following. 
+
+#### Local teardown
+
+The running services can be stopped as follows:
+
+```bash
+pm2 stop all
+```
+
+#### Docker teardown
+
+Running Docker containers can be stopped as follows:
+
+```bash
+docker ps -aq | xargs docker stop -t 0
+```

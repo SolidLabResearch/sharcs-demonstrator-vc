@@ -3,7 +3,8 @@ export default {
   transform: {
     "^.+\\.js$": "babel-jest",
   },
+  "testPathIgnorePatterns": ["actors.js"],
   testEnvironment: "node",
   verbose: true,
-  testTimeout: 50000,
+  testTimeout: 3000,
 };

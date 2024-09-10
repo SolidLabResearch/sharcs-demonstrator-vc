@@ -1,30 +1,14 @@
 import {Deriver} from "../../src/controllers/deriver.js";
 import {_frame, logv2, readJsonFile} from "../../src/utils.js";
-import config, {urlDerive} from "../../src/config.js"
+import config, {urlDerive} from "../../src/config/config.js"
 import {RegistryWebserviceProxy} from "../../src/proxies/RegistryWebserviceProxy.js";
+import {actors} from "../actors.js";
 // Global variables
 const registry = new RegistryWebserviceProxy(
     config.registry.baseUrl,
     config.registry.port
 )
 const deriver = new Deriver(registry)
-const actors = {
-    issuer0: {
-        "@context": [
-            "https://www.w3.org/ns/did/v1",
-            "https://www.w3.org/ns/data-integrity/v1",
-            "https://w3id.org/security/multikey/v1"
-        ],
-        "id": "did:example:issuer0",
-        "verificationMethod": {
-            "id": "did:example:issuer0#bls12_381-g2-pub001",
-            "type": "Multikey",
-            "controller": "did:example:issuer0",
-            "secretKeyMultibase": "uekl-7abY7R84yTJEJ6JRqYohXxPZPDoTinJ7XCcBkmk",
-            "publicKeyMultibase": "ukiiQxfsSfV0E2QyBlnHTK2MThnd7_-Fyf6u76BUd24uxoDF4UjnXtxUo8b82iuPZBOa8BXd1NpE20x3Rfde9udcd8P8nPVLr80Xh6WLgI9SYR6piNzbHhEVIfgd_Vo9P"
-        }
-    }
-}
 const issuer = actors.issuer0;
 const unsignedDiplomaCredential = readJsonFile('__tests__/__fixtures__/vc/vc1.json')
 const unsignedIdentityCredential = readJsonFile('__tests__/__fixtures__/vc/vc2.json')
