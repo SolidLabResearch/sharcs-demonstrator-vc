@@ -60,7 +60,9 @@ npm run test:e2e
 
 ### Teardown
 
-#### Local setup
+Tearding down the test setup depends on the chosen test setup (i.e., [local](#local-setup) or [Docker](#docker-setup)) and is explained in the following. 
+
+#### Local teardown
 
 The running services can be stopped as follows:
 
@@ -68,7 +70,8 @@ The running services can be stopped as follows:
 pm2 stop all
 ```
 
-#### Docker setup
+#### Docker teardown
+
 Running Docker containers can be stopped as follows:
 
 ```bash
