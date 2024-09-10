@@ -1,4 +1,5 @@
 import { extendContextLoader } from "jsonld-signatures";
+import fs from 'fs'
 
 import issuerDoc from "./data/issuer.json";
 import keyPairPublic from "./data/keyPair_public.json"; // public key needed to verify VCs
@@ -10,6 +11,10 @@ import suiteContext from "./data/context/suite.json";
 
 import leercredentialContext from "./data/context/leercredential-ap.json";
 import leercredentialskosContext from "./data/context/skos-ap.json";
+
+export function readJsonFile(path) {
+  return JSON.parse(fs.readFileSync(path, 'utf-8'))
+}
 
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
 const documents: any = {

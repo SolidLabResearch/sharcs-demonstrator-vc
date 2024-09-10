@@ -15,6 +15,7 @@ const verifyDiploma = async (credentialConfig: any): Promise<void> => {
     const derivedDocument = JSON.parse(await fsp.readFile(path.resolve(__dirname, credentialConfig.path_derived), 'utf8'));
     //Verify the proof
     let verified = await verify(derivedDocument, {
+        // TODO extract this suite automatically from the proof type
         suite: new BbsBlsSignatureProof2020(),
         purpose: new purposes.AssertionProofPurpose(),
         documentLoader,

@@ -4,10 +4,16 @@
 
 - [Bun](https://bun.sh/), ~v1.0.1
 
+## Server - Docker
+
+- first time: run `./docker-build-image.sh`
+- as server: run `docker run --rm --name carcharodon -p 8080:8080 sharcs-poc:latest`
+
 ## Run
 
-1. Install `bun i`
-2. Run the scripts using `bun [script name] [optional index of diploma you want to try]`
+- Install `bun i`
+- Run the scripts using `bun [script name] [optional index of diploma you want to try]`
+- Run the server using `bun ./server.js` 
 
 ## Configuration
 
@@ -32,8 +38,23 @@
   - check status again
   - TODO init status should also create the status doc
 
-## Resouces
+## Resources
 
 - https://github.com/mattrglobal/jsonld-signatures-bbs
-    - use for creating the VCs -> JSON-LD?
+    - used for creating the VCs -> JSON-LD
 - https://www.itb.ec.europa.eu/shacl/any/upload : if you don't feel like running validators locally
+
+## Ideas
+
+- range queries: expand VC API options + add code
+  - [ ] selective disclose + range
+    - birthdate/date: diploma older than 3 year
+    - substring?
+- [ ] Proof of Signature / BBS?
+  - Evidence record cfr DocByte (Merkle Tree)
+  - [ ] VC ín VC + selective disclosure?
+- selective points to frame: both normal frame as expanded frame?
+  - [ ] test
+- VP
+- ❗ delivery
+  - options / validate / verify / minimize
