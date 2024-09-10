@@ -4,50 +4,69 @@ import config, {urlDerive} from "../config/config.js";
 import swaggerUi from "swagger-ui-express";
 import swaggerSpec from '../config/swaggerConfig.js'
 import {_frame, logv2, readJsonFile} from "../utils.js";
-
+import cors from 'cors'
 const app = express()
 const port = config.gateway.port;
-
+app.use(cors())
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 app.use(bodyParser.json({limit: '50mb'}));
 
-const schemeMap = {
+const schemeMapConfig = {
     'diploma-minimal': {
         disclosedDoc: '__tests__/__fixtures__/selective-disclosure/vc1-sd-001c.json'
+    },
+    'identity-minimal': {
+        disclosedDoc: '__tests__/__fixtures__/selective-disclosure/vc2-sd-001b.json'
     }
 }
+const schemeMap = Object.fromEntries(
+    Object.entries(schemeMapConfig)
+        .map(([k,v])=>[k, {disclosed: readJsonFile(v.disclosedDoc)}])
+)
 
 /**
- * // TODO: add verifiableCredential schema
  * @swagger
- *
  * /credentials/derive:
  *   post:
+ *     summary: Derives a Verifiable Credential
+ *     description: Takes a Verifiable Credential as input and derives a new credential based on a minimization scheme.
  *     tags:
- *        - Main
- *     produces:
- *       - application/json
- *     parameters:
- *       - name: body
- *         in: body
- *         description:
- *         required: true
- *         schema:
- *            type: "object"
- *            properties:
- *               verifiableCredential:
+ *       - Gateway service
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               options:
  *                  type: object
- *               scheme:
- *                  type: "string"
- *                  example: "diploma-minimal"
+ *                  properties:
+ *                      method:
+ *                          type: string
+ *                          example: "diploma-minimal"
+ *               verifiableCredential:
+ *                 type: object
+ *                 description: A verifiable credential in JSON-LD or JWT format.
  *     responses:
- *         '200':
- *           description: OK
- *         '400':
- *           description: Bad request.
- *         '5XX':
- *           description: Unexpected error.
+ *       200:
+ *         description: Verifiable Presentation with derived credential
  *
+ *       400:
+ *         description: Bad request or invalid credential.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: false
+ *                 message:
+ *                   type: string
+ *                   example: "Invalid credential format or missing parameters."
+ *       500:
+ *         description: Internal server error.
  */
 app.post('/credentials/derive', async (req, res) => {
     console.log('[gateway]/credentials/derive')
@@ -60,7 +79,7 @@ app.post('/credentials/derive', async (req, res) => {
 
     const disclosed = await _frame(
         verifiableCredential,
-        readJsonFile(schemeMap[scheme].disclosedDoc)
+        schemeMap[scheme].disclosed
     )
     // Backend: deriver
     // TODO: appropriate challenge generation & handling
@@ -97,21 +116,19 @@ app.post('/credentials/derive', async (req, res) => {
  * /schemes:
  *   get:
  *     tags:
- *      - Other
+ *      - Gateway service
  *     produces:
  *       - application/json
  *     responses:
  *         200:
- *           description: List of available minimization schemes
+ *           description: Available minimization schemes
  *           schema:
- *             type: array
- *             items:
- *              type: string
-
+ *             type: object
  */
 app.get('/schemes', async (req, res) => {
     console.log('[gateway]/schemes')
-    res.send(Object.keys(schemeMap))
+    // res.send(Object.keys(schemeMap))
+    res.send(schemeMap)
 })
 
 app.listen(port, () => {

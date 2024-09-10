@@ -1,27 +1,13 @@
-const testingSetups = {
-    LOCAL: "LOCAL",
-    DOCKER: "DOCKER"
-}
-const testingSetup = testingSetups.LOCAL
 const baseUrl = 'http://localhost';
-let config = undefined;
-switch (testingSetup) {
-    case "LOCAL":
-        config = {
-            gateway: {baseUrl, port: 80},
-            derive: { baseUrl,  port: 3000 },
-            registry: { baseUrl,  port: 4000 }
-        }
-        break
-    case "DOCKER":
-        config = {
-            derive: { baseUrl: 'http://deriver',  port: 3000 },
-            registry: { baseUrl: 'http://registry',  port: 4000 }
-        }
-        break;
-    default:
-        throw new Error(`Unknown testing setup: ${testingSetup}`);
+let config = {
+    gateway: { baseUrl, port: 80},
+    derive: { baseUrl,  port: 3000 },
+    registry: { baseUrl,  port: 4000 }
 }
-
+// Include key as name in each entry
+config = Object.fromEntries(
+    Object.entries(config)
+        .map(([k,v])=>[k, {name:k, ...v}])
+)
 export default config
 export const urlDerive = `${config.derive.baseUrl}:${config.derive.port}/derive`

@@ -3,10 +3,16 @@ import bodyParser from 'body-parser'
 import config from "../config/config.js";
 import {Deriver} from "../controllers/deriver.js";
 import {RegistryWebserviceProxy} from "../proxies/RegistryWebserviceProxy.js";
-
+import cors from 'cors'
+const serviceConfig = config.derive
 const app = express()
-const port = config.derive.port;
+const port = serviceConfig.port
+app.use(cors())
 app.use(bodyParser.json({limit: '50mb'}));
+app.use((req,res,next) =>{
+  console.log(`[⎔\t${serviceConfig.name}]`, req.method, req.path,);
+  next();
+});
 
 const deriver = new Deriver(
     new RegistryWebserviceProxy(config.registry.baseUrl, config.registry.port)
@@ -17,7 +23,6 @@ const deriver = new Deriver(
  * /derive:
  *   post:
  *     tags:
- *        - Backend
  *        - Deriver service
  *     produces:
  *       - application/json

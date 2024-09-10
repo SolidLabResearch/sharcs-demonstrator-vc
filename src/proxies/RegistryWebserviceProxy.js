@@ -40,6 +40,7 @@ export class RegistryWebserviceProxy extends RegistryProxy {
         )
 
         if (!response.ok) {
+            console.error(response)
             throw new Error(`Failed to register ${id}`)
         }
 
