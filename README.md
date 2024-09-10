@@ -7,7 +7,7 @@
 ## Server - Docker
 
 - first time: run `./docker-build-image.sh`
-- as server: run `docker run --rm --name carcharodon -p 8080:8080 sharcs-poc:latest`
+- as server: run `docker run --rm --name sharcs-poc-container -p 8080:8080 sharcs-poc:latest`
 
 ## Run
 
