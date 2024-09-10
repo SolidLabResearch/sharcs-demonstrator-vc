@@ -8,4 +8,3 @@ config = Object.fromEntries(
         .map(([k,v])=>[k, {name:k, ...v}])
 )
 export default config
-export const urlDerive = `${config.derive.baseUrl}:${config.derive.port}/derive`

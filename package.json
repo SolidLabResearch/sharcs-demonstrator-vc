@@ -19,7 +19,6 @@
     "express": "^4.20.0",
     "jsonld": "^8.3.2",
     "rdf-validate-shacl": "^0.5.5",
-    "sharcs-demo": "file:",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1"
   },
