@@ -28,7 +28,7 @@ async function testDerive() {
     console.log(await response.json())
 }
 
-async function testPubicKey() {
+async function testPublicKey() {
     const response = await fetch(
         urlsGateway.keys, {
         method: 'GET',
