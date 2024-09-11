@@ -6,3 +6,4 @@ dist
 *.log
 data/output/*
 !data/output/.gitkeep
+!data/output/*.01signed.json
