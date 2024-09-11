@@ -10,6 +10,7 @@ import swaggerUi from "swagger-ui-express";
 import swaggerSpec from './src/config/swaggerConfig.js'
 import cors from 'cors'
 import path from 'path'
+import fs from 'fs'
 const app = express()
 const port = config.gateway.port;
 app.use(cors())
@@ -96,6 +97,11 @@ app.post('/credentials/derive', async (req, res) => {
     return;
 })
 
+app.get('/public', async (req, res) => {
+    console.log('[gateway]/schemes')
+    // res.send(Object.keys(schemeMap))
+    res.send(schemeMap)
+})
 
 /**
  * @swagger
@@ -116,6 +122,25 @@ app.get('/schemes', async (req, res) => {
     console.log('[gateway]/schemes')
     // res.send(Object.keys(schemeMap))
     res.send(schemeMap)
+})
+
+/**
+ * @swagger
+ *
+ * /keys/public:
+ *   get:
+ *     tags:
+ *      - Gateway service
+ *     produces:
+ *       - application/json
+ *     responses:
+ *         200:
+ *           description: Public key material
+ *           schema:
+ *             type: object
+ */
+app.get('/keys/public', async (req, res) => {
+    res.send(fs.readFileSync('./data/keyPair_public.json', 'utf8'))
 })
 
 // below all route handlers
