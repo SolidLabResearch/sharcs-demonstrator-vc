@@ -1,0 +1,183 @@
+{
+    "@context": [
+      "https://solid.data.vlaanderen.be/doc/implementatiemodel/leercredential/2023-02-01/context/leercredential-ap.jsonld",
+      "https://solid.data.vlaanderen.be/doc/implementatiemodel/skos/2023-02-01/context/skos-ap.jsonld",
+      "https://www.w3.org/2018/credentials/v1",
+      "https://w3id.org/vc-revocation-list-2020/v1",
+      "https://w3id.org/security/suites/ed25519-2020/v1"
+    ],
+    "id": "https://solid.api.vlaanderen.be/v1/credentials/8b3912tnc-4f42-2d35-4dk4-848kf84kd89k",
+    "Leercredential.identificator": [
+      {
+        "type": "Identificator",
+        "Identificator.notatie": "https://solid.api.vlaanderen.be/v1/credentials/8b3912tnc-4f42-2d35-4dk4-848kf84kd89k"
+      }
+    ],
+    "type": [
+      "EuropeesDigitaalCredential",
+      "Leercredential",
+      "VerifiableCredential",
+      "Credential"
+    ],
+    "Credential.uitgiftedatum": "2022-08-11T13:15:26.544Z",
+    "Credential.geldigVan": "2022-08-11T13:15:26.544Z",
+    "expirationDate": "2024-08-11T13:15:26.544Z",
+    "issuer": "https://solid.api.vlaanderen.be/v1/webid#magda",
+    "EuropeesDigitaalCredential.voorstelling": {
+      "type": "Voorstelling",
+      "Voorstelling.hoofdtaal": "http://publications.europa.eu/resource/authority/language/NLD",
+      "Voorstelling.taal": [
+        "http://publications.europa.eu/resource/authority/language/NLD"
+      ],
+      "Voorstelling.titel": [
+        {
+          "@language": "nl",
+          "@value": "Getuigschrift A 1ste graad Secundair onderwijs Latijn"
+        }
+      ]
+    },
+    "credentialSubject": {
+      "id": "https://webid.vlaanderen.be/profiles/22222222-2222-2222-2222-222222222222",
+      "GeregistreerdPersoon.registratie":  {
+        "type": "Identificator",
+        "Identificator.notatie": "https://webid.vlaanderen.be/profiles/22222222-2222-2222-2222-222222222222"
+      },
+      "type": [
+        "Persoon",
+        "GeregistreerdPersoon"
+      ],
+      "Persoon.heeftCredential": [
+        "https://solid.api.vlaanderen.be/v1/credentials/8b3912tnc-4f42-2d35-4dk4-848kf84kd89k"
+      ],
+      "Persoon.heeftClaim": [
+        {
+          "id": "https://solid.api.vlaanderen.be/v1/credentials/claims/leerclaims/fc3a6b79-7e65-4a39-b1b4-26ca8bf3f204",
+          "type": [
+            "Leerclaim",
+            "Leerprestatie"
+          ],
+          "Leerclaim.identificator": [
+            {
+              "type": "Identificator",
+              "Identificator.notatie": "fc3a6b79-7e65-4a39-b1b4-26ca8bf3f204"
+            }
+          ],
+          "Leerclaim.authenticiteit": "https://solid.data.vlaanderen.be/id/concept/Leercredential-Authenticiteit/Authentiek",
+          "Leerclaim.titel": [
+            {
+              "@language": "nl",
+              "@value": "Getuigschrift A 1ste graad Secundair onderwijs Latijn"
+            }
+          ],
+          "Leerclaim.type": [
+            "https://solid.data.vlaanderen.be/id/concept/Leercredential-Bewijstype/Getuigschrift",
+            "https://solid.data.vlaanderen.be/id/concept/Leercredential-Bewijsstaat/Eindbewijs"
+          ],
+          "Leerclaim.uitgever": "https://data.vlaanderen.be/id/organisatie/OVO000334",
+          "Leerprestatie.specificatie": [
+            {
+              "type": [
+                "Leerprestatiespecificatie",
+                "Kwalificatie"
+              ],
+              "Leerprestatiespecificatie.type": [
+                "https://solid.data.vlaanderen.be/id/concept/Leercredential-Categorie/SecundairOnderwijs"
+              ],
+              "Leerprestatiespecificatie.onderwijsniveau": [
+                "https://solid.data.vlaanderen.be/id/concept/Leercredential-Graad/1steGraad",
+                "https://solid.data.vlaanderen.be/id/concept/Leercredential-Onderwijsvorm/A",
+                "https://solid.data.vlaanderen.be/id/concept/Leercredential-ISCEDNiveau/2",
+                "https://solid.data.vlaanderen.be/id/concept/Leercredential-VKSNiveauOnderwijskwalificatie/NBS",
+                "https://solid.data.vlaanderen.be/id/concept/Leercredential-VKSNiveauBeroepskwalificatie/NBS"
+              ],
+              "Leerprestatiespecificatie.studiegebied": [
+                "https://solid.data.vlaanderen.be/id/concept/Leercredential-Onderwerp/10001",
+                "https://solid.data.vlaanderen.be/id/concept/Leercredential-ISCEDStudiegebied/010"
+              ],
+              "Leerspecificatie.titel": [
+                {
+                  "@language": "nl",
+                  "@value": "Getuigschrift A 1ste graad Secundair onderwijs Latijn"
+                }
+              ],
+              "Leerprestatiespecificatie.onderwerp": [
+                {
+                  "@type": "Concept",
+                  "Concept.notation": [
+                    {
+                      "@language": "nl",
+                      "@value": "020096"
+                    }
+                  ],
+                  "Concept.preferredLabel": [
+                    {
+                      "@language": "nl",
+                      "@value": "Latijn"
+                    }
+                  ],
+                  "Concept.inScheme": "https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-Studierichting",
+                  "Concept.topConceptOf": "https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-Studierichting"
+                }
+              ],
+              "Leerprestatiespecificatie.beinvloedDoor": [
+                {
+                  "type": "Leeractiviteitspecificatie",
+                  "Leerspecificatie.titel": [
+                    {
+                      "@language": "nl",
+                      "@value": "Getuigschrift A 1ste graad Secundair onderwijs Latijn"
+                    }
+                  ],
+                  "Leeractiviteitspecificatie.instructietaal": [
+                    "http://publications.europa.eu/resource/authority/language/NLD"
+                  ]
+                }
+              ]
+            }
+          ],
+          "Leerclaim.toegekendDoor": {
+            "type": "Toekenningsproces",
+            "Toekenningsproces.kentToe": [
+              "https://solid.api.vlaanderen.be/v1/credentials/claims/leerclaims/fc3a6b79-7e65-4a39-b1b4-26ca8bf3f204"
+            ],
+            "Toekenningsproces.locatie": {
+              "type": "Locatie",
+              "Locatie.adres": {
+                "type": "Adresvoorstelling",
+                "Adresvoorstelling.land": "http://publications.europa.eu/resource/authority/country/BEL"
+              }
+            },
+            "Toekenningsproces.toekenningsdatum": "2014-06-30T00:00:00.000Z",
+            "Toekenningsproces.uitgevoerdDoor": [
+              {
+                "type": "Organisatie",
+                "Organisatie.voorkeursnaam": [
+                  {
+                    "@language": "nl",
+                    "@value": "GO| middenschool Ekeren"
+                  }
+                ],
+                "Organisatie.identificator": [
+                  {
+                    "type": "Identificator",
+                    "Identificator.notatie": "40601"
+                  }
+                ],
+                "Organisatie.classificatie": [
+                  "https://solid.data.vlaanderen.be/id/concept/Leercredential-Instantie/SecundaireSchool",
+                  "https://solid.data.vlaanderen.be/id/concept/Leercredential-Schooltype/Gewoon"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "proof": {
+      "type": "Ed25519Signature2020",
+      "created": "2022-08-11T13:15:26.544Z",
+      "verificationMethod": "https://solid.api.vlaanderen.be/v1/issuers/123/keys#key-0",
+      "proofPurpose": "assertionMethod",
+      "proofValue": "z5SpZtDGGz5a89PJbQT2sgbRUiyyAGhhgjcf86aJHfYcfvPjxn6vej5na6kUzmw1jMAR9PJU9mowshQFFdGmDN14D"
+    }
+  }
