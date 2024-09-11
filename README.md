@@ -8,6 +8,7 @@
 
 - first time: run `./docker-build-image.sh`
 - as server: run `docker run --rm --name sharcs-poc-container -p 8080:8080 sharcs-poc:latest`
+- API documentation available at http://localhost:8080/api-docs/
 
 ## Run
 
