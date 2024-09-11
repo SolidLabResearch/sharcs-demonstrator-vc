@@ -44,4 +44,4 @@ async function testPublicKey() {
 }
 
 testDerive().then().catch(console.error)
-testPubicKey().then().catch(console.error)
+testPublicKey().then().catch(console.error)
