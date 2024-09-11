@@ -1,11 +1,12 @@
 import * as zjp from '@zkp-ld/jsonld-proofs';
-import {documentLoader} from '../documentloader.js';
+import {documentLoader as defaultDocumentLoader} from '../documentloader.js';
 import keypairsPublic from '../resources/keypairs-public.json' with {type: 'json'};
 import cLessThanPrvPub from "../resources/less_than_prv_pub_64.json" with {type: "json"}
 import cLessThanPubPrv from '../resources/less_than_pub_prv_64.json' with {type: 'json'};
 
 export class Deriver {
-  constructor(registryProxy) {
+  constructor(registryProxy, documentLoader = defaultDocumentLoader) {
+    this.documentLoader = documentLoader;
     this.registry = registryProxy;
     this.circuits = {
       [cLessThanPrvPub.id]: cLessThanPrvPub,
@@ -35,7 +36,7 @@ export class Deriver {
     const deriveResult = await zjp.deriveProof(
         vcPairs,
         resolvedControllerDocuments,
-        documentLoader,
+        this.documentLoader,
         deriveOptions
     )
     return deriveResult
@@ -48,24 +49,24 @@ export class Deriver {
     return await zjp.deriveProof(
           vcPairs,
           resolvedControllerDocuments,
-          documentLoader,
+          this.documentLoader,
           deriveOptions
       )
   }
 
   async sign(unsigned, privateKeypairs){
-    return await zjp.sign(unsigned, privateKeypairs, documentLoader)
+    return await zjp.sign(unsigned, privateKeypairs, this.documentLoader)
   }
 
   async verify(vc, keypairs) {
-    return await zjp.verify(vc, keypairs, documentLoader)
+    return await zjp.verify(vc, keypairs, this.documentLoader)
   }
 
   async verifyProof(vp, publicKeys, challenge){
     return await zjp.verifyProof(
         vp,
         publicKeys,
-        documentLoader,
+        this.documentLoader,
         {
           challenge,
           snarkVerifyingKeys: this.snarkVerifyingKeys
