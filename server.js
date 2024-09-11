@@ -97,12 +97,6 @@ app.post('/credentials/derive', async (req, res) => {
     return;
 })
 
-app.get('/public', async (req, res) => {
-    console.log('[gateway]/schemes')
-    // res.send(Object.keys(schemeMap))
-    res.send(schemeMap)
-})
-
 /**
  * @swagger
  *
