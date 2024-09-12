@@ -1,0 +1,77 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://www.w3.org/ns/data-integrity/v1",
+    "https://zkp-ld.org/context.jsonld"
+  ],
+  "type": "VerifiablePresentation",
+  "proof": {
+    "type": "DataIntegrityProof",
+    "created": "2024-09-12T22:51:27.247Z",
+    "challenge": "abc123",
+    "cryptosuite": "bbs-termwise-proof-2023",
+    "proofPurpose": "authentication",
+    "proofValue": "uomFhWRcaAQAAAAAAAAAAhFeW_C2A9jZo9VxX1Iut9uK71eI4B6ZGuoH8jN91r5G_cTqB6D6V7yI9zmPX5Xn9j7NkUukEcozwGs-ZqtK8AbXHVSGv3eDPO2AWF1Wti8I1JDLbPmejb7l7ZScIS-gLgaihvcmeV2gVBndw2nxSDOBWpd9PknXFz7kiqt84cHRIx7XC9ZCsDavVR_O8VvBtq1aVmsD7hWeOWuRpCQhybfmpEpDIXGKjPc8LYIljfoXLBnpR79fdh_tlR3_e1VhUAgAAAAAAAAD964_bJvFy4OLoJ2XETbbHFaP17FVNN9SSW62qlSIwXMmW_6CtDUbaLa8kvdLVmBnxQoI0ETX13Fdti1TnJ24drVPvYIlXziwTXTE-J5Vg-tTxghhgdHNQKe3WKPY4HfhivYNysu8Uo3aaXPNu_frprgAAAAAAAACRyIwBW3ox3mbu0fnQPPAoSCrNF6c9Req4sBoZPiliJXphuTAtGy3WySqvkgKlJa8N43AqRRqPk5hGruWP8AY6TZ2IXMAg6gmQVxyxJAcT238YPiVHw9AXnHFj0EYDQFdB5iIPASTeqkTT0USaQUlWesFf_aIPyLtzyllc_OQVWCrMWCMlae8znMLhNxxI0jLnE62vxQzi9Q5EAv-tyP8yh3JAN9E-axVDixDIdlfVGcxc5LyKRss5976lAs-6xRghm5EeQoxlqT8UEEvyDurti4bgIdKZwRk6BtNgLblYP68vJEREDR1SBIKmtNxnX6VcmPpWr3yM8AZ0nE-KCIECdQ3YLVL1HWf-SHJEOlpCF3mM42-2F-sr6g-48fUcy2hKmfIfA6s3F9IhEV3_wOMJ0Fi78cqENu8GoXhwrJA8Ynlah-w795z01yxSrLUgtTIsr-OEfcMuIDUwQeaNCspsWhg6xUV1NdL7IUI3tQZaZXdkIp2lKnFOrkmbHevfNjXeoAlhjOIJYEUoDJXxU1w4KMynVOdBNql76TXSDFhqAVwM5XRByjCVRachnCVd4qQlZ1O7srwNDmJigoFPTx5bjmliKVfNM5mnmaWSvYZrU2HqlvOLDZdL0e6hSFk793JWV70R3NI8s_BnTChcFdENhokhLoV-mEojsA42GEo6O8JkGR-JtoiQvIBYTqTnPgpwUORugjFlLIDvxDsRqDFmOBqD7eysq1M5GcMa9z_oDIOSiTQoz3AtktDKAqD5T0d3xNdAh8_d3dRpsk_eQkea4c_6oYFMu3kblZ-2WM2OBymNE-QMYrnwzJAHg67nWg4DsKEfx04b1y8M1hJRP31Q36tWEXymOia18HJrZOzriz-7mzkZa0g6E3kMLEpQ-2xLFAk7jiKgZ46sNa-gOHbW51rQoZSYKMiuqacrnnoNRextQMmDCDQLSfc2oPZPxbX89I8z25bSHLdYoj4Q2oAOqairP1NmKmP23LJgeSNe28UtRluro_fsxIgjkhzci2ynXeH2e8BN3dCQULJsnUaco1TORrnI9atZzl0lpNiIPkNWSLfRYFa_qnzcItgX6nP1Pcv8_vbut_ac1pWDGCw_KUlQMmyXX5_gqDEAiEbWLrujLQF2sFXOqBqClNrhT15918UXMuOmfrPA38N3kK_VtkEhiC8Wp4wvxEPCkjBBX6B-03aebZ-OLL3FSu0ctWv3Eq8IrA0Mb5RoxTa5jeUGPLBK0blQyGJIEyoud0ubnvfzb3IKMLBrwJzfvOk82W9r1Un2RolgH8LXT08xBYzaj-Gqoiehw3zCoBxBLX_VC9KlmKLeksyZ6w0cMPi6mKvK258WeL1TGNIPFR-e5Y9W1QbZfp7CzyDItpWpwbjGkFEQk9xn2KrMezZL0t70WDc9i24YVLk5yxHTthaDztHWcd-aK0QXG4rd4GatIG8rH-KDzr3z2nvLYW6DcBtJdaDsKX7klS8TywWZd5xwQOgY3s-Ug2Y8rKWd58dMTyaxufEPUIYcrYuQNHXdfGrmUDtQg7I7Lgdn29JNZ7k7ebmn69mxzo294JqQ_GgtdlXbMmz8wBjVv-sMFNwRf0A_4DOqwFR6OFknUkIBDXZb_qlJgccFvzh5aPmpbp25FxeBcKSA7o-vJXOO3birTkh-NGl1VgMVb9VoY6H9Fy_qqWUb2WChYIzmu5SecKI1t4qFGamUSkOmjrthxMwfjgBDTLLy-OdeTjjZdfmVJhA47KYc3UGuQMTvM1IJYPvNvzP4bEmxNAuT-N5GhVrO1VlbkyoRjq9mQjaGTzRCjWr-YhAJAp0GtDiBH1hwNO8JKsqdYCq653ufMiMT6poD80C0sfgs4Kt_Cmx2jC7Bi9s1fsxuJipcAvJcwMjG-ia8uKHemAH0KXC2Ei3eOUkFq-sJwnGNN_cpK5UwIFBYNMDkmSR3U-wzr6NTIX2ZYQLSmrNvWCcVnyeP0Y2rco-UJZJ-v0lNwBtPAwyNCRsBf2YENUoe8dGNIE2dO1SoEKUXNcOH7_H6McIkFjpEwdQ9ope_ZVIj2kSgaEraSoIA941S2K4RmW8vveLaPU8dx1i8t3-xTB3BPr1J1HS13daEvzHTKUHBsXDqal7w1b63c_-Sl1xM1sYC4Iz5Lxd4tkOt8sIbDhc3lT3D_UiMeGjnBNxorkRvWMUiXjvAFrRlIEj38snTpyAdtqTLoHwF47OBNRIBU4G2ya4uraSFgnSgR-dmMnoxacUoFY9q3nPWcREx7SgnZ-cn3oPSdv1ZvIRDwbQuJ69AGuitJlfhtq8kfe7T-zUAsccfOpWEYlSlJrdQXHdalRQfMdXQ9CIZf4wbvYlaIqagqSYhWgnUxuJoTyhbIEtdJEiOozAK1adIC79LrWgW0Www0ayZjKi8zp7cIOq_bIV1qN5xBCgIz5gMROoORAAlIUSgpbN_UPYcvjvXrKg4lXsP21-cLvH-cdUfGCxuMk7pdEBoHSeLrFGuh-0nydtlBLo6FuyZfvoAtEpR7UxR2h9H3xgYtI8W3y1WsBPVfDV4PMUk__pUWJvHa6K_JlTztYDonUMuEDIsG3UaIyI196TNUGKV2ld0NFM_xWmoD2T3PjAOJFMK-ybq2H3xZ8KrSP7Mo4KG9Wgj1imW06krlYxMrmPD18K-gs2pFFpEdv4Km-qmSxLwNyTHbO4BbEME7LKmgDg9VnXa3KgWzA7WTSCM5-3kkBwbVcascAF7Lgfn2845Ujxor0A_fpEZ28VJ5q1iuqVPeip2_Eoixg4IJB5dGaITeBR6yFpaf5bWgL3udBd4lnCpyL3Ru8vVyS1sbAfofgn-y7q7Bsd7leacNS_MKBvkGlTTiCN3lrRPDc18v9K7OSC2ZcrPpYHYesd25LP1OdHr_W8uVx5wRg0eUuMl804iJ_3o4qt53pgJdOtYui9jiKBxxa64zVUtDx4yDjvCHrWOojIs7lTjCPjY9MoSWRBoCm--Os7ezERET6vDCZt9JbYjTMId-_iWLaJtbw0YX7OG-0YXvg6o-EEviEDibnQaP4a5EGCZy8lNoUVW4m4YDfNIG66_SA4ysEtCl6TMdYtBsEBFiKUTFecMaWnys7gDDzD46gobYkOVR7pukMy5iG6vdt5jip-NBJkkaxwOzHaK0jxVoy9n-llzG9bJpHueqHdye58FhYHh00tmIiaYd29PtJRLnmJyI0nMzp7pIhm29rFRLX3BFqWto_jPahU1HXaE5RlcUpWZE26QsM162jToHvzibl6i4NZrvBij2qRTsDkgDBn5_5wDJvRfr_nBuB4f4IZLuQeF_8UrQgNRSBHBggao1VybASlJFigM0ybMgd6_bTfQhlht3fSMeKiur07lI4-6tcNhFgIkJqRjTiL3Txlp9iCjQXTppk-XBbZ0_3rySnvoirJp80EeO_w4M-28CSSb1uhTiARouyTbWrBt1xkx7nQYo0T-VGBIgicRdVkXjtWtnA_eMy4bJm5OaiqJztKULCbCYgFtACdgZsgkVNnELSuEvDpzwbGsuGabnuHz9xHsVpcol32sBG-Kd1Nw5Jz0d8TKWxCYHaWRlKHnaR3cNZH_l0xFTaw5AruE-W0IycbiElXMQXuZ5Oq19nJsZFWAO1j6Ta-mzEzQRIEcYPwB8t1EIy97r1wzUjLIJ5ep4_DqdnNQ2kCxx6TLrwQ5Ro2CRoEf6PpJgz7dO_XbDNeBQNMlyjuT9G-EWGhw49IsGf0plF4pXyVtHAuqbVxxK8oc0N1iNDjMG31sKMQi0bvYtBUSDKTQ6DPd3dsqNT_2D2rk7rNrvW55GEvb2_l7U7WhxZnPwCAF2wFCmR4KdWjISXOxOAYiEiMo9YO-XlVEMQjncFxKY1Loxh7zioVCEpTWYXldMCw_GyH6THxdNo1ezdAuLQvv-Kv0_eL_aeFilagEtvBTJjxPMJXoI3fcdMJ_ekSIzA49oMaM4IenEE9KiiRIc1b8JZMWej7trFZ5yHS-ntivcFyGMjC3I7IpHZGluqaDGfhFf7QJ7vo8WSDVTwBdea_TNvnwJHXUlVfztBff_55uNKwohWVS40EWmV1W6LToq3Y8zcCv0rPxiLjeKy5740S6ogqfedhxZmNVoRQyn4hL_VI2YLfHntHCROYEGAqqPCP7mUUHAVPBSTCYuPtPwBcC5_hJhrjgCec6P0K7qxpZ9AeJWFRQ9h9vWwPO5JqsbkRWJwGWIgiTk_k7rNSgO0jSkUXL679hP3ORm9ZA9GgcYUZ65lbfbDVPZRvGGe_yDdk4RTiAwJM9ajJ9UJl2VIjvd8enTsC6pjm5Zou-btY0tAywk9l-R66d7VZHnWh8YESelXkilZgeWAuXr7D_eEhlBPVM97P0HnFCazFkdHi5qjcdlB-U8eYNDWC-esHbbTZ5pi82qNyZfGviKcq3_O8jL4Y5fbmP60kK0o_5vW5gsiFrRB0P0pYuNOgpIgQPsxsPy23EMaDppQ4iPCz3gwXzpXUQNmuQvW8890E-3HIHhz8U9HRNTis2U4kUcb6SYx-iMZQgQIn0mwxy-2qC3TiwrFEUFQAYNUVTcSpwuc9DmIo4i5YtnMuKZBzX79x5Ya56mbjJpsgju1rvq4H-Ljc2m2axcTPLWK6ZlipLufa1K6sgQkzCzgTLVrQ528uBGsZ0kGAlx4vOdSjOWErruISd4x17RUV36FQ5V7QlmwoyGyGiFLK5ASYpHrA4u8HE9eLHmwgmyUNSkNSfmgzDxkZI-CyMcuDkOe5m8A1xHeRChD-PDqhW-pGU_llukSkvc3_k3UxWGv_iCitdjLtKhs25NJcOz6Trh0EKHLM6g0pWXbrmlihQZyqHF7saEf5ygX5ca5Ntj0OJlQF4v2h_AQfzs5sqC7X4Yg7p23vtV5sNsDTOlH-UBDBkThLwqXlgZZEIG0gmcP1e_Ne0GtLl-9_tXUkjcxX-LxAH0vaLlpAa_zXioJcoPneRGR8-DDh6EJTt0CUIvPzjj9MEEKx8tETgMsSn4raD2NehsxF4mW8UyHBnPBeVYVfTmIE4AnoqSwmSXG6pA-kV7EiGuJquTvQmS6qmeGR_w1bBAwdtg0tF8dSUCjvEuQ6x2VjWzdHPgbvBzWeS1CCe7OPsOAldzUEkVZFWsG73rwxGWa5hIjeDV7ER56fWl0nanhSfjV6OZTUw5ScT2Gk0z8qa_ARhi3gPlChw9nc6wGZYS1x0zmpcGulKAT0C9ZTls6ncS3fYInW4QboVEmK5YzezPAkRbWF3r4FQepKp49nxmVObERT_BS9rYQDCEsD3xz79PCxhQctRleNFyahEM1eeni6H4I8NDqSuCwB6rreaFx186HwiZ-kEvzJn1hpklBUzayDfnQUC3JjXMd1LuwEUZaVJ9y0CVBtXSs2JK0-v7g9BIg46O5t9yDMCUSKQQHP-Wc8MYAHIBBXArzIl4FeUBBZOpliEvLT1aEBaw7yCY0Wq4pgiLNoZVbzidjDu1JjZDhSgUnSs9jTHespAVSHTiR-SRVtzGOdTExuGs64Y-mtueUXfqM-cJY2ZEAPAm73EeHPAOYs3Nou7xCiKZ0tcXRqXFQ3zb_9B5-0KGb2oK5ITT4QXdwO4MU7bPe2Ghs9PMW_VG6VTYnmUfYaXT5UtdslcRlbsNTbfqTbAOD3qoe-v7PZgYJcWTuF57dtvaLr4nGNPDpmXgPuSTtsA23_dt4m0nGijol_-wtKJegvFzBnFDBVxOnESDjGZRKq2sHcFnmSnemeFkq8x0XUE2mRJweNh3Cg08_O5psDkVqzwDbXARgtwzq2o_7vzuhlp4hML9NjaLi71k1_HYYMPB-my4C6NiLW6DTjKC1xI7EUUrc9_FkpSFpqwLs-8eU9kg0mKpQWhXleE0JQbH4PzzfhYdoVxijZ52lrclUCAfgPa_2FzrM6uNeVu_4zEs0NQ8N5ltVKIDRGlw__FEC3abfjV37QSKuRzfKHAxfAxTz-Jv99EwPRccQndt5EGhJoqc8nnNT3pRNG_Pwq6eXLNtBUOI64RqyW43tJJYTMXIS_C-w2oLnizP4sCyoSwGsHTuV24iMIQK-IfcD1v5KHmX9d_swhXV-f9XXNyxn3SuJwA-TDf4JRTUGnfoHka0BYO5Z9gQZyYOeJS6hY74ye4yRvYhfObfAS16ckVYmTz5bMVI2eGaCuQdXwKPYaCaEexsm5FiBYLMfo3B-7mgB4ufABa5ZWidvMsrTjxCvHiR4UHRfYbug88gF-_HLeuPwJqColu7Xai5NYcAHek_C3IvWpGcAy3lxcEUcfuH_xH8lieh8jx3XsvUx2P2XJnAplt0Ak7L66RCCzGoLHykcn63asJkox7YFfknMRTiS6SjpePBbi6nrYLtUCj45fIWIcn4RSP_04uCZvH5yVj_Usf3M_TL7eyskE8sErRuVDIYkgTKi53S5ue9_NvcgowsGvAnN-86TzZbzywStG5UMhiSBMqLndLm573829yCjCwa8Cc37zpPNlvt_FQF9IXtjQ-ssTAnAtrnaXQrV5GqNDBi5RCjGK0EjkY0lc38kOohxM4oJ1CGY6hm5nZaH2tmoK5OGSGeIoLKdCE8ygroOk0xckPkFPA-bQAD0PX0_Mzt-PRuEDXYb8GBAT4Jdr6o-4XyVb57UufDemH1_EdDZ8ej8h3hkTQvUQx26OJK61esymahVBBoxcu_PLRSjDND_Z9UnUTYZPlZguK16CQRI5eIkpRZ8jauffcG_9FLoJv6b7yMVsj9RYtPLBK0blQyGJIEyoud0ubnvfzb3IKMLBrwJzfvOk82W88sErRuVDIYkgTKi53S5ue9_NvcgowsGvAnN-86TzZbzywStG5UMhiSBMqLndLm573829yCjCwa8Cc37zpPNlvPLBK0blQyGJIEyoud0ubnvfzb3IKMLBrwJzfvOk82W88sErRuVDIYkgTKi53S5ue9_NvcgowsGvAnN-86TzZbxD0qB_WDqOjhNEaa24TWL6VVwn4wx4RqzngWHwRRX4D_g25qdA7Fo4rLC2acZKODs1J8FYsBW95px5RiyKbkzfJBxcvTUGz9SERcNewqUUVfHIz4aqOXycmVFNhvUNtOuNQ3Z0tSXnnOJbHiFWzyWQTP3-TJ-5lDn28wglZ27ZHnnymfsNSPq5EXYZew8Bltq3zkas37Z2DuvbdnEjcWEn5GPspztOgSBL_hCZvlgvw3UNb_DN7VtQgL9P45xZ6EchRdf5y2S_562Zx12MsEnRyaM9BZY3A6omYeaIbE9ByyFF1_nLZL_nrZnHXYywSdHJoz0FljcDqiZh5ohsT0HLIUXX-ctkv-etmcddjLBJ0cmjPQWWNwOqJmHmiGxPQcshRdf5y2S_562Zx12MsEnRyaM9BZY3A6omYeaIbE9ByyFF1_nLZL_nrZnHXYywSdHJoz0FljcDqiZh5ohsT0HIBBgAAAAAAAABhYmMxMjMAAGFigaRhYZQAAQIDBgwNDg8SFRYXGD4YPxhCGEMYRBhFGEZhYhhJYWOFAAECAwRhZAU"
+  },
+  "verifiableCredential": {
+    "id": "https://solid.api.vlaanderen.be/v1/credentials/8b3912tnc-4f42-2d35-4dk4-848kf84kd89k",
+    "type": [
+      "https://data.europa.eu/snb/model#EuropeanDigitalCredential",
+      "https://data.vlaanderen.be/ns/leercredential#Credential",
+      "https://data.vlaanderen.be/ns/leercredential#Leercredential",
+      "VerifiableCredential"
+    ],
+    "proof": {
+      "type": "DataIntegrityProof",
+      "created": "2024-09-12T22:51:26.596Z",
+      "cryptosuite": "bbs-termwise-signature-2023",
+      "proofPurpose": "assertionMethod",
+      "verificationMethod": "did:example:issuer0#bls12_381-g2-pub001"
+    },
+    "credentialSubject": {
+      "id": "https://webid.vlaanderen.be/profiles/22222222-2222-2222-2222-222222222222",
+      "type": [
+        "http://www.w3.org/ns/person#Person",
+        "https://data.vlaanderen.be/ns/persoon#GeregistreerdPersoon"
+      ],
+      "https://data.europa.eu/snb/model#hasClaim": {
+        "id": "https://solid.api.vlaanderen.be/v1/credentials/claims/leerclaims/fc3a6b79-7e65-4a39-b1b4-26ca8bf3f204",
+        "type": [
+          "https://data.europa.eu/snb/model#Claim",
+          "https://data.europa.eu/snb/model#LearningAchievement"
+        ],
+        "http://purl.org/dc/terms/type": [
+          {
+            "id": "https://solid.data.vlaanderen.be/id/concept/Leercredential-Bewijsstaat/Eindbewijs"
+          },
+          {
+            "id": "https://solid.data.vlaanderen.be/id/concept/Leercredential-Bewijstype/Getuigschrift"
+          }
+        ],
+        "https://data.europa.eu/snb/model#specifiedBy": {
+          "type": [
+            "https://data.europa.eu/snb/model#LearningAchievementSpecification",
+            "https://data.europa.eu/snb/model#Qualification"
+          ],
+          "https://data.europa.eu/snb/model#educationLevel": [
+            {
+              "id": "https://solid.data.vlaanderen.be/id/concept/Leercredential-Graad/1steGraad"
+            },
+            {
+              "id": "https://solid.data.vlaanderen.be/id/concept/Leercredential-ISCEDNiveau/2"
+            },
+            {
+              "id": "https://solid.data.vlaanderen.be/id/concept/Leercredential-Onderwijsvorm/A"
+            },
+            {
+              "id": "https://solid.data.vlaanderen.be/id/concept/Leercredential-VKSNiveauBeroepskwalificatie/NBS"
+            },
+            {
+              "id": "https://solid.data.vlaanderen.be/id/concept/Leercredential-VKSNiveauOnderwijskwalificatie/NBS"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
