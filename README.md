@@ -97,7 +97,7 @@ npm run test:e2e
 ### Athumi tests
 
 ```bash
-npm run vc-athumi
+npm run test:vc-athumi
 ```
 
 ### Teardown
