@@ -1,4 +1,5 @@
 import {CONTEXTS} from './resources/contexts/contexts.js'
+import {logv2} from "./utils.js";
 
 export const createDocumentLoaderOptionsDefault = {
     logging: {
@@ -22,7 +23,8 @@ export const createDocumentLoader = (contexts, options) => {
             if(options.logging.urls.present)
                 console.log(`URL: ${url}`)
             if(options.logging.documents)
-                console.log(`📄Document:`, contexts[url])
+                logv2(contexts[url], `📄Document:`)
+
 
             return {
                 contextUrl: undefined, // this is for a context via a link header

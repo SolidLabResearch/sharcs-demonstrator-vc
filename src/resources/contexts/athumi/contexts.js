@@ -7,6 +7,12 @@ import suiteContext from "./suite.json" with { type: "json" };
 import leercredentialContext from "./leercredential-ap.json" with { type: "json" };
 import leercredentialskosContext from "./skos-ap.json" with { type: "json" };
 
+// added
+import revocationListContext from "./revocationList.json" with { type: "json" };
+import data_integrity_v1 from '../data-integrity-v1.json' with { type: "json" };
+import {DATA_INTEGRITY_CONTEXT} from "../contexts.js";
+import * as assert from "node:assert";
+
 const mocks = {
     magda: {
         keypair: {
@@ -31,6 +37,13 @@ export const CONTEXTS = {
     "https://w3id.org/security/suites/jws-2020/v1": suiteContext, // it's not clear where this context comes from
     "https://solid.data.vlaanderen.be/doc/implementatiemodel/leercredential/2023-02-01/context/leercredential-ap.jsonld": leercredentialContext,
     "https://solid.data.vlaanderen.be/doc/implementatiemodel/skos/2023-02-01/context/skos-ap.jsonld": leercredentialskosContext,
+    "https://w3id.org/vc-revocation-list-2020/v1": revocationListContext,
+    "https://w3id.org/security/suites/ed25519-2020/v1": suiteContext,
+    [DATA_INTEGRITY_CONTEXT]: data_integrity_v1,
 }
 
+Object.entries(CONTEXTS).forEach(([key, value]) => {
 
+    if (!value)
+        throw new Error(`Context for ${key} is undefined`)
+})
