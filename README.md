@@ -94,6 +94,12 @@ To test end-to-end scenarios, execute:
 npm run test:e2e
 ```
 
+### Athumi tests
+
+```bash
+npm run vc-athumi
+```
+
 ### Teardown
 
 Tearding down the test setup depends on the chosen test setup (i.e., [local](#local-setup) or [Docker](#docker-setup)) and is explained in the following. 
