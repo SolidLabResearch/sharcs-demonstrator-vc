@@ -5,6 +5,7 @@ import swaggerUi from "swagger-ui-express";
 import swaggerSpec from '../config/swaggerConfig.js'
 import {_frame, logv2, readJsonFile} from "../utils.js";
 import cors from 'cors'
+import {documentLoaderAll, documentLoaderAthumi} from "../documentloader.js";
 const app = express()
 const port = config.gateway.port;
 app.use(cors())
@@ -13,9 +14,12 @@ app.use(bodyParser.json({limit: '50mb'}));
 
 const schemeMapConfig = {
     'diploma-minimal': {
+        disclosedDoc: '__tests__/__fixtures__/selective-disclosure/athumi/frame_leercredential_diplomaniveau-v2.json'
+    },
+    'diploma-minimal-example': {
         disclosedDoc: '__tests__/__fixtures__/selective-disclosure/vc1-sd-001c.json'
     },
-    'identity-minimal': {
+    'identity-minimal-example': {
         disclosedDoc: '__tests__/__fixtures__/selective-disclosure/vc2-sd-001b.json'
     }
 }
@@ -36,6 +40,18 @@ const schemeMap = Object.fromEntries(
  *       required: true
  *       content:
  *         application/json:
+ *           examples:
+ *               Bachelor of Science Biologie:
+ *                 $ref: '#/components/examples/bachelorofscience_biologie'
+ *               Getuigschrift Latijn eerste graad:
+ *                 $ref: '#/components/examples/getuigschrift_latijn-eerstegraad'
+ *               Licenciaat Sociologie:
+ *                 $ref: '#/components/examples/licentiaat_sociologie'
+ *               Opticien:
+ *                 $ref: '#/components/examples/opticien-beroepskennis'
+ *               Master of Science Biologie:
+ *                  $ref: '#/components/examples/masterofscience-biologie'
+ *
  *           schema:
  *             type: object
  *             properties:
@@ -79,7 +95,8 @@ app.post('/credentials/derive', async (req, res) => {
 
     const disclosed = await _frame(
         verifiableCredential,
-        schemeMap[scheme].disclosed
+        schemeMap[scheme].disclosed,
+        documentLoaderAll
     )
     // Backend: deriver
     // TODO: appropriate challenge generation & handling
@@ -102,10 +119,14 @@ app.post('/credentials/derive', async (req, res) => {
             })
         }
     )
-    if(deriveResponse.ok) {
-        res.send(await deriveResponse.json())
-    } else {
-        res.sendStatus(500) // TODO: check appropriate status to return
+    try {
+        // console.log('deriveResponse.json()...') // TODO: delete
+        const derivedResult = await deriveResponse.json()
+        // logv2(derivedResult) // TODO: delete
+        res.send(derivedResult)
+    } catch (err) {
+        console.error('ERROR WHILE PROCESSING DERIVE RESPONSE')
+        res.sendStatus(500)
     }
 })
 

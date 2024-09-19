@@ -2,13 +2,10 @@ import fs from 'fs';
 import path from 'path';
 import {_frame, clone, readJsonFile} from "../src/utils.js";
 import jsonld from "jsonld";
-import {createDocumentLoader, createDocumentLoaderOptionsDefault} from "../src/documentloader.js";
+import {createDocumentLoader, createDocumentLoaderOptionsDefault, getAthumiContexts} from "../src/documentloader.js";
 import {Deriver} from "../src/controllers/deriver.js";
 import {RegistryMockProxy} from "../src/proxies/RegistryMockProxy.js";
 import {actors} from "./actors.js";
-import {CONTEXTS} from "../src/resources/contexts/contexts.js";
-import {CONTEXTS as CONTEXTS_ATHUMI} from "../src/resources/contexts/athumi/contexts.js";
-import {sign} from "@zkp-ld/jsonld-proofs";
 
 /**
  * [HELPER]
@@ -43,35 +40,6 @@ describe('VC tests: athumi',  () => {
                     console.log('Directory created successfully!');
                 });
         }
-    }
-
-    function getFixedContexts() {
-        const contextsToExclude = [
-            "https://w3id.org/security/bbs/v1",
-            "https://www.w3.org/ns/credentials/v2",
-            "https://www.w3.org/ns/credentials/examples/v2",
-            "https://w3id.org/security/suites/jws-2020/v1",
-            "https://w3id.org/security/suites/ed25519-2020/v1",
-            "https://w3id.org/vc-revocation-list-2020/v1"
-        ]
-
-        const filteredContextsAthumi = Object.fromEntries(
-            Object.entries(CONTEXTS_ATHUMI)
-                .filter(([k,v])=>!contextsToExclude.includes(k))
-        )
-
-        const addedContexts = {
-            "https://w3id.org/security/multikey/v1": CONTEXTS["https://w3id.org/security/multikey/v1"],
-            "https://www.w3.org/ns/did/v1": CONTEXTS["https://www.w3.org/ns/did/v1"],
-            "https://zkp-ld.org/context.jsonld": CONTEXTS["https://zkp-ld.org/context.jsonld"]
-        }
-
-        const updatedContexts = {
-            ...filteredContextsAthumi,
-            ...addedContexts
-        }
-
-        return updatedContexts;
     }
 
     function preprocessContext(old) {
@@ -111,7 +79,7 @@ describe('VC tests: athumi',  () => {
         dlOptions.logging.urls.missing = true
         dlOptions.logging.urls.present = false
         dlOptions.logging.documents = false
-        return createDocumentLoader(getFixedContexts(), dlOptions)
+        return createDocumentLoader(getAthumiContexts(), dlOptions)
     }
 
     function getDeriverInstance() {

@@ -1,5 +1,6 @@
 import {CONTEXTS} from './resources/contexts/contexts.js'
 import {logv2} from "./utils.js";
+import {CONTEXTS as CONTEXTS_ATHUMI} from "./resources/contexts/athumi/contexts.js";
 
 export const createDocumentLoaderOptionsDefault = {
     logging: {
@@ -8,7 +9,9 @@ export const createDocumentLoaderOptionsDefault = {
             present:false, // Log URLs present in contexts
             missing: false}, // Log URLs not present in contexts
         documents: false // Log resolved document
-    }}
+    }
+}
+
 export const createDocumentLoader = (contexts, options) => {
     if (options===undefined)
         options = createDocumentLoaderOptionsDefault
@@ -44,7 +47,40 @@ export const createDocumentLoader = (contexts, options) => {
             document: {},
         }
     }
+}
 
+export function getAthumiContexts() {
+    const contextsToExclude = [
+        "https://w3id.org/security/bbs/v1",
+        "https://www.w3.org/ns/credentials/v2",
+        "https://www.w3.org/ns/credentials/examples/v2",
+        "https://w3id.org/security/suites/jws-2020/v1",
+        "https://w3id.org/security/suites/ed25519-2020/v1",
+        "https://w3id.org/vc-revocation-list-2020/v1"
+    ]
+
+    const filteredContextsAthumi = Object.fromEntries(
+        Object.entries(CONTEXTS_ATHUMI)
+            .filter(([k,v])=>!contextsToExclude.includes(k))
+    )
+
+    const addedContexts = {
+        "https://w3id.org/security/multikey/v1": CONTEXTS["https://w3id.org/security/multikey/v1"],
+        "https://www.w3.org/ns/did/v1": CONTEXTS["https://www.w3.org/ns/did/v1"],
+        "https://zkp-ld.org/context.jsonld": CONTEXTS["https://zkp-ld.org/context.jsonld"]
+    }
+
+    const updatedContexts = {
+        ...filteredContextsAthumi,
+        ...addedContexts
+    }
+
+    return updatedContexts;
 }
 
 export const documentLoader = createDocumentLoader(CONTEXTS)
+export const documentLoaderAthumi = createDocumentLoader(getAthumiContexts())
+export const documentLoaderAll = createDocumentLoader({
+    ...getAthumiContexts(),
+    ...CONTEXTS
+})

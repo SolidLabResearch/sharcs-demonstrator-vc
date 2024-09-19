@@ -4,6 +4,12 @@ import config from "../config/config.js";
 import {Deriver} from "../controllers/deriver.js";
 import {RegistryWebserviceProxy} from "../proxies/RegistryWebserviceProxy.js";
 import cors from 'cors'
+import {documentLoaderAll} from "../documentloader.js";
+
+const deriver = new Deriver(
+    new RegistryWebserviceProxy(config.registry.baseUrl, config.registry.port),
+    documentLoaderAll
+)
 const serviceConfig = config.derive
 const app = express()
 const port = serviceConfig.port
@@ -13,10 +19,6 @@ app.use((req,res,next) =>{
   console.log(`[⎔\t${serviceConfig.name}]`, req.method, req.path,);
   next();
 });
-
-const deriver = new Deriver(
-    new RegistryWebserviceProxy(config.registry.baseUrl, config.registry.port)
-)
 
 /**
  * @swagger

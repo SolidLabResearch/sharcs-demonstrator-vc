@@ -22,7 +22,7 @@ beforeAll(async () => {
     )
 })
 
-test('TEST001 [scheme: diploma-minimal]', async () => {
+test('TEST001 [scheme: diploma-minimal-example]', async () => {
     const unsignedDiplomaCredential = readJsonFile('__tests__/__fixtures__/vc/vc1.json')
 
     const vc = await deriver.sign(unsignedDiplomaCredential, [actors.issuer0]) // TODO: how to sign the draft vc?
@@ -35,7 +35,7 @@ test('TEST001 [scheme: diploma-minimal]', async () => {
             },
             body: JSON.stringify({
                 verifiableCredential: vc,
-                scheme: 'diploma-minimal'
+                scheme: 'diploma-minimal-example'
             })
         }
     )
@@ -48,8 +48,8 @@ test('TEST001 [scheme: diploma-minimal]', async () => {
     expect(verificationResult.verified).toEqual(true);
 })
 
-test('TEST002 [scheme: identity-minimal]', async () => {
-    const minimizationSchemeKey = 'identity-minimal'
+test('TEST002 [scheme: identity-minimal-example]', async () => {
+    const minimizationSchemeKey = 'identity-minimal-example'
     const unsignedIdentityCredential = readJsonFile('__tests__/__fixtures__/vc/vc2.json')
     const vc = await deriver.sign(unsignedIdentityCredential, [actors.issuer0]) // TODO: how to sign the draft vc?
     const response = await fetch(
@@ -60,7 +60,7 @@ test('TEST002 [scheme: identity-minimal]', async () => {
             },
             body: JSON.stringify({
                 verifiableCredential: vc,
-                scheme: minimizationSchemeKey
+                scheme: 'identity-minimal-example'
             })
         }
     )
