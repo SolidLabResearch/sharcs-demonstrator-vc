@@ -18,7 +18,6 @@ export class Deriver {
   }
 
   async resolveControllerDocumentsForVcPairs(vcPairs) {
-
     return await Promise.all(
         vcPairs.flatMap(({original}) => original.issuer)
             .map(async (issuer) => {

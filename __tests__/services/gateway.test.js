@@ -1,4 +1,4 @@
-import {logv2, readJsonFile, redactControllerDoc} from "../../src/utils.js";
+import {readJsonFile, redactControllerDoc} from "../../src/utils.js";
 import config from "../../src/config/config.js";
 import {RegistryWebserviceProxy} from "../../src/proxies/RegistryWebserviceProxy.js";
 import {actors} from "../actors.js";
@@ -15,6 +15,7 @@ const registry = new RegistryWebserviceProxy(
     config.registry.port
 )
 const deriver = new Deriver(registry)
+
 beforeAll(async () => {
     await registry.clearRegistry()
     await registry.register(actors.issuer0.id,

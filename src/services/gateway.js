@@ -6,11 +6,21 @@ import swaggerSpec from '../config/swaggerConfig.js'
 import {_frame, logv2, readJsonFile} from "../utils.js";
 import cors from 'cors'
 import {documentLoaderAll, documentLoaderAthumi} from "../documentloader.js";
+const serviceConfig = config.gateway
 const app = express()
-const port = config.gateway.port;
+const port = serviceConfig.port;
 app.use(cors())
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 app.use(bodyParser.json({limit: '50mb'}));
+
+if (serviceConfig.logging.enabled) {
+    app.use((req,res,next) =>{
+        console.log(`[⎔\t${serviceConfig.name}] - method: ${req.method} - path: ${req.path}`);
+        if(serviceConfig.logging.body)
+            logv2({body: req.body})
+        next();
+    });
+}
 
 const schemeMapConfig = {
     'diploma-minimal': {
@@ -85,10 +95,7 @@ const schemeMap = Object.fromEntries(
  *         description: Internal server error.
  */
 app.post('/credentials/derive', async (req, res) => {
-    console.log('[gateway]/credentials/derive')
     const {verifiableCredential, scheme} = req.body;
-    console.log({ verifiableCredential, scheme });
-
     if(!Object.keys(schemeMap).includes(scheme)) {
         res.sendStatus(400) // Bad Request
     }
@@ -120,16 +127,13 @@ app.post('/credentials/derive', async (req, res) => {
         }
     )
     try {
-        // console.log('deriveResponse.json()...') // TODO: delete
         const derivedResult = await deriveResponse.json()
-        // logv2(derivedResult) // TODO: delete
         res.send(derivedResult)
     } catch (err) {
-        console.error('ERROR WHILE PROCESSING DERIVE RESPONSE')
+        console.error('Error while processing derive response: ', err)
         res.sendStatus(500)
     }
 })
-
 
 /**
  * @swagger
@@ -147,12 +151,10 @@ app.post('/credentials/derive', async (req, res) => {
  *             type: object
  */
 app.get('/schemes', async (req, res) => {
-    console.log('[gateway]/schemes')
-    // res.send(Object.keys(schemeMap))
     res.send(schemeMap)
 })
 
 app.listen(port, () => {
-    console.log(`Service [Gateway] listening on port ${port}`)
+    console.log(`Service [${serviceConfig.name}] listening on port ${port}`)
 })
 

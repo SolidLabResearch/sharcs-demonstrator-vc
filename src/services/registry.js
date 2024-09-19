@@ -11,12 +11,15 @@ const port = serviceConfig.port
 const registry = new Registry()
 app.use(cors())
 app.use(bodyParser.json())
-app.use((req,res,next) =>{
-    console.log(`[⎔\t${serviceConfig.name}] - method: ${req.method} - path: ${req.path}`);
-    logv2({body: req.body})
-    next();
-});
 
+if (serviceConfig.logging.enabled) {
+    app.use((req,res,next) =>{
+        console.log(`[⎔\t${serviceConfig.name}] - method: ${req.method} - path: ${req.path}`);
+        if(serviceConfig.logging.body)
+            logv2({body: req.body})
+        next();
+    });
+}
 
 /**
  * @swagger
@@ -115,7 +118,6 @@ app.use((req,res,next) =>{
  */
 app.post('/register', async (req, res) => {
     const {id, controllerDoc} = req.body
-    console.log(`@registry/register: ${id}`)
     try {
         registry.register(id, controllerDoc)
         // TODO: catch & handle potential errors
@@ -222,7 +224,6 @@ app.post('/register', async (req, res) => {
  */
 app.post('/resolve', async (req, res) => {
     const {id} = req.body
-    console.log(`[⎔ ${serviceConfig.name}] ${req.method} ${req.path}`,'\n\t∟\tbody: ',req.body);
     try {
         const controllerDoc = registry.resolve(id)
         res.send(controllerDoc)

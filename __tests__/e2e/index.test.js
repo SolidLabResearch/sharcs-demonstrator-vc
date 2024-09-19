@@ -29,9 +29,7 @@ const checkVP = (vp) => {
 
 beforeEach(async () => {
     // Register (context: Issuer)
-    console.log('clearing registry')
     await registry.clearRegistry()
-    console.log(`registering: ${issuer.id}`)
     await registry.register(issuer.id, issuer)
 })
 
@@ -274,7 +272,6 @@ test.skip('register - sign - derive (SD(VC_ID)+RQ(VC_D)) - resolve - verify ', a
     // Sign (context: Issuer)
     const vcId = await deriver.sign(unsignedIdentityCredential, [issuer])
     const vcD = await deriver.sign(unsignedDiplomaCredential, [issuer])
-
     // Derive (context: Holder)
     // Disclosure document for VC Identity
     const disclosedDocVcId = await _frame(
@@ -282,7 +279,6 @@ test.skip('register - sign - derive (SD(VC_ID)+RQ(VC_D)) - resolve - verify ', a
     )
     // Disclosure document for VC Diploma
     const disclosedDocVcD = readJsonFile('__tests__/__fixtures__/range-query/vc1-rq-001a.json')
-
     const body = {
         vcPairs: [
             {original: vcId, disclosed: disclosedDocVcId},
@@ -314,7 +310,7 @@ test.skip('register - sign - derive (SD(VC_ID)+RQ(VC_D)) - resolve - verify ', a
         ],
         challenge
     }
-    logv2({body})
+    
     const deriveResponse = await fetch(
         urlDerive,
         {

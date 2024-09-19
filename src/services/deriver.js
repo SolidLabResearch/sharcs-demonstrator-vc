@@ -5,6 +5,7 @@ import {Deriver} from "../controllers/deriver.js";
 import {RegistryWebserviceProxy} from "../proxies/RegistryWebserviceProxy.js";
 import cors from 'cors'
 import {documentLoaderAll} from "../documentloader.js";
+import {logv2} from "../utils.js";
 
 const deriver = new Deriver(
     new RegistryWebserviceProxy(config.registry.baseUrl, config.registry.port),
@@ -15,10 +16,15 @@ const app = express()
 const port = serviceConfig.port
 app.use(cors())
 app.use(bodyParser.json({limit: '50mb'}));
-app.use((req,res,next) =>{
-  console.log(`[⎔\t${serviceConfig.name}]`, req.method, req.path,);
-  next();
-});
+
+if (serviceConfig.logging.enabled) {
+  app.use((req,res,next) =>{
+    console.log(`[⎔\t${serviceConfig.name}] - method: ${req.method} - path: ${req.path}`);
+    if(serviceConfig.logging.body)
+      logv2({body: req.body})
+    next();
+  });
+}
 
 /**
  * @swagger
