@@ -34,6 +34,7 @@
     "cors": "^2.8.5",
     "deep-diff": "^1.0.2",
     "express": "^4.19.2",
+    "json-tree-walker": "^1.1.4",
     "jsonld": "^8.3.2",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1"
