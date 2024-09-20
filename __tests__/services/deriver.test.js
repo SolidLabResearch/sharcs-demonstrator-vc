@@ -69,6 +69,80 @@ test('vc1-rq-001a: One predicates (l < x). Proof should verify.', async () => {
     expect(verificationResult.verified).toEqual(true);
 })
 
+test('vc1-rq-001b: One predicates (l < x). Proof should verify.', async () => {
+    const unsignedDiplomaCredential = readJsonFile('__tests__/__fixtures__/vc/vc1.json')
+    const vc = await deriver.sign(unsignedDiplomaCredential, [issuer])
+    const disclosedDoc = readJsonFile('__tests__/__fixtures__/range-query/vc1-rq-001b.json')
+    const predicates = [
+        {
+            '@context': 'https://zkp-ld.org/context.jsonld',
+            type: 'Predicate',
+            circuit: 'circ:lessThanPubPrv',
+            private: [
+                {
+                    type: 'PrivateVariable',
+                    var: 'greater',
+                    val: '_:Y',
+                },
+            ],
+            public: [
+                {
+                    type: 'PublicVariable',
+                    var: 'lesser',
+                    val: {
+                        '@value': '2000-01-01T00:00:00.000Z',
+                        '@type': 'xsd:dateTime',
+                    },
+                },
+            ],
+        },
+    ]
+    const challenge = 'abc123'
+    const vcPairs = [{original: vc, disclosed: disclosedDoc}]
+    const result = await deriver.rq(vcPairs, predicates, challenge)
+    // Verify
+    const publicKeypair = await registry.resolve(issuer.id)
+    const verificationResult = await deriver.verifyProof(result, [publicKeypair], challenge)
+    expect(verificationResult.verified).toEqual(true);
+})
+
+test('vc1-rq-001b: One predicates (l < x). Proof should NOT verify.', async () => {
+    const unsignedDiplomaCredential = readJsonFile('__tests__/__fixtures__/vc/vc1.json')
+    const vc = await deriver.sign(unsignedDiplomaCredential, [issuer])
+    const disclosedDoc = readJsonFile('__tests__/__fixtures__/range-query/vc1-rq-001b.json')
+    const predicates = [
+        {
+            '@context': 'https://zkp-ld.org/context.jsonld',
+            type: 'Predicate',
+            circuit: 'circ:lessThanPubPrv',
+            private: [
+                {
+                    type: 'PrivateVariable',
+                    var: 'greater',
+                    val: '_:Y',
+                },
+            ],
+            public: [
+                {
+                    type: 'PublicVariable',
+                    var: 'lesser',
+                    val: {
+                        '@value': '2024-01-01T00:00:00.000Z',
+                        '@type': 'xsd:dateTime',
+                    },
+                },
+            ],
+        },
+    ]
+    const challenge = 'abc123'
+    const vcPairs = [{original: vc, disclosed: disclosedDoc}]
+    const result = await deriver.rq(vcPairs, predicates, challenge)
+    // Verify
+    const publicKeypair = await registry.resolve(issuer.id)
+    const verificationResult = await deriver.verifyProof(result, [publicKeypair], challenge)
+    expect(verificationResult.verified).toEqual(false);
+})
+
 test('vc2-rq-001: One predicate (l < x). Proof SHOULD verify.', async () => {
     // Unsigned credential
     const vcDraft = readJsonFile('__tests__/__fixtures__/vc/vc2.json')
