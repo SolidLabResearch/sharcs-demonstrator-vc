@@ -26,6 +26,33 @@ const schemeMapConfig = {
     'diploma-minimal': {
         disclosedDoc: '__tests__/__fixtures__/selective-disclosure/athumi/frame_leercredential_diplomaniveau-v2.json'
     },
+    'diploma-rq-toekenningsdatum-after-2000-01-01': {
+        disclosedDoc: '__tests__/__fixtures__/range-query/athumi/frame-rq-toekenningsdatum.json',
+        predicates: [
+            {
+                '@context': 'https://zkp-ld.org/context.jsonld',
+                type: 'Predicate',
+                circuit: 'circ:lessThanPubPrv',
+                private: [
+                    {
+                        type: 'PrivateVariable',
+                        var: 'greater',
+                        val: '_:Y',
+                    },
+                ],
+                public: [
+                    {
+                        type: 'PublicVariable',
+                        var: 'lesser',
+                        val: {
+                            '@value': '2000-01-01T00:00:00.000Z',
+                            '@type': 'xsd:dateTime',
+                        },
+                    },
+                ],
+            },
+        ]
+    },
     'diploma-minimal-example': {
         disclosedDoc: '__tests__/__fixtures__/selective-disclosure/vc1-sd-001c.json'
     },
@@ -35,7 +62,14 @@ const schemeMapConfig = {
 }
 const schemeMap = Object.fromEntries(
     Object.entries(schemeMapConfig)
-        .map(([k,v])=>[k, {disclosed: readJsonFile(v.disclosedDoc)}])
+        .map(([k,v])=>[
+            k,
+                {
+                    disclosed: readJsonFile(v.disclosedDoc),
+                    predicates: v.predicates
+                }
+            ]
+        )
 )
 
 /**
@@ -53,6 +87,8 @@ const schemeMap = Object.fromEntries(
  *           examples:
  *               Bachelor of Science Biologie:
  *                 $ref: '#/components/examples/bachelorofscience_biologie'
+ *               Bachelor of Science Biologie Range Query (Toekenningsdatum na 2020):
+ *                 $ref: '#/components/examples/bachelorofscience_biologie_rq_01'
  *               Getuigschrift Latijn eerste graad:
  *                 $ref: '#/components/examples/getuigschrift_latijn-eerstegraad'
  *               Licenciaat Sociologie:
@@ -61,7 +97,6 @@ const schemeMap = Object.fromEntries(
  *                 $ref: '#/components/examples/opticien-beroepskennis'
  *               Master of Science Biologie:
  *                  $ref: '#/components/examples/masterofscience-biologie'
- *
  *           schema:
  *             type: object
  *             properties:
@@ -105,6 +140,9 @@ app.post('/credentials/derive', async (req, res) => {
         schemeMap[scheme].disclosed,
         documentLoaderAll
     )
+
+    const {predicates} = schemeMap[scheme];
+
     // Backend: deriver
     // TODO: appropriate challenge generation & handling
     const challenge = 'abc123'
@@ -122,6 +160,7 @@ app.post('/credentials/derive', async (req, res) => {
                         disclosed,
                     }
                 ],
+                predicates,
                 challenge
             })
         }
