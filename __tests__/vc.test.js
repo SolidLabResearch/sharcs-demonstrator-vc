@@ -110,13 +110,12 @@ describe('VC tests: athumi',  () => {
         const options = {documentLoader: documentLoaderAll}
         // 1. Expand (expands every shorthand by its IRI)
         doc = await jsonld.expand(doc, options)
-        // 2. Compact using VC & Athumi contexts
+        // 2. Compact using Athumi & Data Integrity contexts
         const _ctx = {
             ...CONTEXTS_ATHUMI["https://www.w3.org/2018/credentials/v1"]['@context'],
             ...CONTEXTS[DATA_INTEGRITY_CONTEXT]['@context']
         }
         doc = await jsonld.compact(doc, _ctx, options)
-
         return doc;
     }
 
