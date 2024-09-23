@@ -7,7 +7,7 @@ export const createDocumentLoaderOptionsDefault = {
         loadedContextNames: false,
         urls: {
             present:false, // Log URLs present in contexts
-            missing: false}, // Log URLs not present in contexts
+            missing: true}, // Log URLs not present in contexts
         documents: false // Log resolved document
     }
 }

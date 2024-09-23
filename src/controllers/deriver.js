@@ -19,8 +19,18 @@ export class Deriver {
 
   async resolveControllerDocumentsForVcPairs(vcPairs) {
     return await Promise.all(
-        vcPairs.flatMap(({original}) => original.issuer)
+        vcPairs.flatMap(({original}) => {
+          let issuer = undefined
+          if('https://www.w3.org/2018/credentials#issuer' in original)
+            issuer = original['https://www.w3.org/2018/credentials#issuer']['@id']
+          else
+            issuer = original['issuer']
+
+          return issuer
+        })
             .map(async (issuer) => {
+              if(issuer === undefined)
+                throw new Error('Issuer is undefined!')
               return await this.registry.resolve(issuer)
             })
     )
