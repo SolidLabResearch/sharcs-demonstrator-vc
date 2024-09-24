@@ -6,11 +6,11 @@ import {checkVP, executeDeriveRequest, loadVcResources, preprocessContext, prepr
 import {documentLoaderAll} from "../../src/documentloader.js";
 import {
   _frame,
-  athumiSpecificPreprocessing, getNestedAttribute,
-  logv2,
+  getNestedAttribute,
   matchVariableAssignments,
-  readJsonFile, redactControllerDoc,
-  setNestedAttribute, writeJsonFile
+  readJsonFile,
+  redactControllerDoc,
+  setNestedAttribute
 } from "../../src/utils.js";
 import path from 'path';
 
