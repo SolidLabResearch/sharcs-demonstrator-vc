@@ -17,6 +17,13 @@ export const checkVP = (vp) => {
   expect(verifiableCredential.proof).toHaveProperty('verificationMethod')
 }
 
+/**
+ * TODO: refactor to src/utils
+ * @param vcPairs
+ * @param predicates
+ * @param challenge
+ * @returns {Promise<Response<any, Record<string, any>, number>>}
+ */
 export async function executeDeriveRequest(vcPairs, predicates, challenge) {
   return await fetch(
     urlDerive,

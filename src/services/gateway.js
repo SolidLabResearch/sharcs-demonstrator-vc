@@ -13,6 +13,7 @@ import {
 } from "../utils.js";
 import cors from 'cors'
 import {documentLoaderAll, documentLoaderAthumi} from "../documentloader.js";
+import {executeDeriveRequest} from "../../__tests__/helpers.js";
 
 const serviceConfig = config.gateway
 const app = express()
@@ -143,44 +144,32 @@ app.post('/credentials/derive', async (req, res) => {
     res.sendStatus(400) // Bad Request
   }
 
-
   let {disclosed, predicates} = schemeMap[scheme];
-  const matchedVariableAssignments = matchVariableAssignments(disclosed)
-  logv2(matchedVariableAssignments, 'matchedVariableAssignments')
 
-  // Process matched var assignments
-  const [ma,] = matchedVariableAssignments
-  const updatePath = ma.pathElements.slice(0, -1)
-  setNestedAttribute(disclosed, updatePath, getNestedAttribute(disclosed, updatePath))
+  // If predicates are defined, it's a RQ, which requires additional preprocessing.
+  if(!!predicates) {
+    const matchedVariableAssignments = matchVariableAssignments(disclosed)
+    logv2(matchedVariableAssignments, 'matchedVariableAssignments')
 
+    // Process matched var assignments
+    const [ma,] = matchedVariableAssignments
+    const updatePath = ma.pathElements.slice(0, -1)
+    setNestedAttribute(disclosed, updatePath, getNestedAttribute(disclosed, updatePath))
 
-  logv2(disclosed, 'disclosed')
-
+  }
   disclosed = await _frame(verifiableCredential, disclosed, documentLoaderAll)
-
-
-  // Backend: deriver
-  // TODO: appropriate challenge generation & handling
+// TODO: appropriate challenge generation & handling
   const challenge = 'abc123'
-  const deriveResponse = await fetch(
-    urlDerive,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        vcPairs: [
-          {
-            original: verifiableCredential,
-            disclosed,
-          }
-        ],
-        predicates,
-        challenge
-      })
-    }
+  // Backend: deriver
+  const deriveResponse = await executeDeriveRequest(
+    [
+      {
+        original: verifiableCredential,
+        disclosed,
+      }
+    ], predicates, challenge
   )
+
   try {
     const derivedResult = await deriveResponse.json()
     res.send(derivedResult)

@@ -78,26 +78,12 @@ npm run start
 docker run --rm --name carcharodon -p80:80 -p 3000:3000 -p 4000:4000 sharcs-poc:latest
 ```
 
-### Services
+### Run tests
 
-To test the services, execute
-
-```bash
-npm run test:service
-```
-
-### End-to-end
-
-To test end-to-end scenarios, execute:
+Run all tests as follows: 
 
 ```bash
-npm run test:e2e
-```
-
-### Athumi tests
-
-```bash
-npm run test:vc-athumi
+npm run test
 ```
 
 ### Teardown
