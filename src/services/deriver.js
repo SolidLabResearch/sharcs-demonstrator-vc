@@ -45,18 +45,25 @@ if (serviceConfig.logging.enabled) {
 app.post('/derive', async (req, res) => {
   let derivedResult = undefined
   const {vcPairs, predicates, challenge} = req.body
-  if (predicates) {
-    // When predicates are present, we execute a range query proof
-    derivedResult = await deriver.rq(vcPairs, predicates,challenge)
-  } else {
-    // Assuming selective-disclosure
-    derivedResult = await deriver.sd(vcPairs, challenge)
-  }
-  // Return result
-  if (derivedResult) {
-    res.send(derivedResult)
-  } else {
-    res.sendStatus(400)
+  try {
+    if (predicates) {
+      console.log('RQ TIME!')
+      // When predicates are present, we execute a range query proof
+      derivedResult = await deriver.rq(vcPairs, predicates,challenge)
+    } else {
+      console.log('SD TIME!')
+      // Assuming selective-disclosure
+      derivedResult = await deriver.sd(vcPairs, challenge)
+    }
+    // Return result
+    if (derivedResult)
+      res.send(derivedResult)
+    else
+      res.sendStatus(400)
+
+  } catch(error) {
+    console.error(error)
+    res.sendStatus(500)
   }
 })
 

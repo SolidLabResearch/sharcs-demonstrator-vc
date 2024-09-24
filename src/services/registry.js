@@ -20,6 +20,30 @@ if (serviceConfig.logging.enabled) {
         next();
     });
 }
+if(serviceConfig.preloadExampleIdentities === true) {
+    const exampleIdentities = {
+        issuer0: {
+            "@context": [
+                "https://www.w3.org/ns/did/v1",
+                "https://www.w3.org/ns/data-integrity/v1",
+                "https://w3id.org/security/multikey/v1"
+            ],
+            "id": "did:example:issuer0",
+            "verificationMethod": {
+                "id": "did:example:issuer0#bls12_381-g2-pub001",
+                "type": "Multikey",
+                "controller": "did:example:issuer0",
+                "secretKeyMultibase": "uekl-7abY7R84yTJEJ6JRqYohXxPZPDoTinJ7XCcBkmk",
+                "publicKeyMultibase": "ukiiQxfsSfV0E2QyBlnHTK2MThnd7_-Fyf6u76BUd24uxoDF4UjnXtxUo8b82iuPZBOa8BXd1NpE20x3Rfde9udcd8P8nPVLr80Xh6WLgI9SYR6piNzbHhEVIfgd_Vo9P"
+            }
+        }
+    }
+    Object.entries(exampleIdentities)
+        .forEach(([key, value]) => {
+            registry.register(value.id, value)
+            console.log(`[⎔\t${serviceConfig.name}] - Pre-registered: ${value.id}`);
+        })
+}
 
 /**
  * @swagger
@@ -247,3 +271,6 @@ app.post('/clear', async (req, res) => {
 app.listen(port, () => {
     console.log(`Service [${serviceConfig.name}] listening on port ${port}`)
 })
+
+
+

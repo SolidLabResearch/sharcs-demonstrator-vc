@@ -3,6 +3,7 @@ import {documentLoader as defaultDocumentLoader} from '../documentloader.js';
 import keypairsPublic from '../resources/keypairs-public.json' with {type: 'json'};
 import cLessThanPrvPub from "../resources/less_than_prv_pub_64.json" with {type: "json"}
 import cLessThanPubPrv from '../resources/less_than_pub_prv_64.json' with {type: 'json'};
+import {_frame, athumiSpecificPreprocessing, logv2, matchVariableAssignments} from "../utils.js";
 
 export class Deriver {
   constructor(registryProxy, documentLoader = defaultDocumentLoader) {
@@ -18,6 +19,11 @@ export class Deriver {
   }
 
   async resolveControllerDocumentsForVcPairs(vcPairs) {
+    if(!Array.isArray(vcPairs))
+      throw new Error('VC Pairs should be an array!')
+    if(Object.entries(vcPairs).length <= 0)
+      throw new Error('There are no VC Pairs')
+
     return await Promise.all(
         vcPairs.flatMap(({original}) => {
           let issuer = undefined
@@ -34,8 +40,24 @@ export class Deriver {
               return await this.registry.resolve(issuer)
             })
     )
+  }
 
+  async resolvePublicKeysForVP(vp) {
+    if(!vp.type === 'VerifiablePresentation')
+      throw new Error('Input object is not a VP')
+    let { verifiableCredential } = vp;
 
+    if(!Array.isArray(verifiableCredential))
+      verifiableCredential = [verifiableCredential]
+    const identifiersToResolve = verifiableCredential
+      .map(vci => vci.proof.verificationMethod)
+      .map(vm => vm.split('#')[0])
+
+    const controllerDocs = await Promise.all(
+      identifiersToResolve.map(async (id)=> await this.registry.resolve(id))
+    )
+    // TODO: check whether nr. resolved controller docs === nr. identifiersToResolve; if not --> Error!
+    return controllerDocs
   }
 
   async sd(vcPairs, challenge){
@@ -53,8 +75,9 @@ export class Deriver {
 
   async rq(vcPairs, predicates, challenge){
     const resolvedControllerDocuments = await this.resolveControllerDocumentsForVcPairs(vcPairs);
-
-    const deriveOptions = { challenge, predicates, circuits: this.circuits}
+    const deriveOptions = {
+        challenge, predicates, circuits: this.circuits
+    }
     return await zjp.deriveProof(
           vcPairs,
           resolvedControllerDocuments,
