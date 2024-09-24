@@ -89,12 +89,13 @@ export class Deriver {
       throw new Error(`${notVerifiedCredentials.length}/${vcPairs.length} VCs could not be verified! Cannot proceed to range query derivation!`)
 
 
-    return await zjp.deriveProof(
-          vcPairs,
-          resolvedControllerDocuments,
-          this.documentLoader,
-          deriveOptions
-      )
+    const result = await await zjp.deriveProof(
+      vcPairs,
+      resolvedControllerDocuments,
+      this.documentLoader,
+      deriveOptions
+    )
+    return result;
   }
 
   async sign(unsigned, privateKeypairs){
