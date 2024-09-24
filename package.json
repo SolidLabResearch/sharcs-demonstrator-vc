@@ -27,7 +27,7 @@
     "test:e2e:example:watch": "jest --watch __tests__/e2e/index.test.js",
     "test:e2e:athumi": "jest __tests__/e2e/athumi.test.js",
     "test:e2e:athumi:watch": "jest --watch __tests__/e2e/athumi.test.js",
-    "test": "npm run test:service && npm run test:e2e && npm run test:vc-athumi"
+    "test": "jest --watch __tests__/**/*.test.js --runInBand"
   },
   "keywords": [],
   "author": "Gertjan De Mulder",

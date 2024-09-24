@@ -50,11 +50,9 @@ app.post('/derive', async (req, res) => {
 
   try {
     if (predicates) {
-      console.log('RQ TIME!')
       // When predicates are present, we execute a range query proof
       derivedResult = await deriver.rq(vcPairs, predicates,challenge)
     } else {
-      console.log('SD TIME!')
       // Assuming selective-disclosure
       derivedResult = await deriver.sd(vcPairs, challenge)
     }

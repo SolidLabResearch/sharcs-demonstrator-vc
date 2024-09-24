@@ -10,8 +10,9 @@ import {
   logv2,
   matchVariableAssignments,
   readJsonFile, redactControllerDoc,
-  setNestedAttribute
+  setNestedAttribute, writeJsonFile
 } from "../../src/utils.js";
+import path from 'path';
 
 // Global variables
 const registry = new RegistryWebserviceProxy(
@@ -116,5 +117,89 @@ describe('E2E: Athumi', ()=>{
 
       })
     })
-
 })
+
+describe('E2E: Athumi (bbs-termwise-signature-2023)', ()=>{
+  loadVcResources(path.resolve(vcDir, 'bbs-termwise-signature-2023'))
+    .forEach(vrr => {
+      test(`Derive (RQ(Toekenningsproces.toekenningsdatum > 2000-01-01)) - Verify: ${vrr.fname}`,async ()=> {
+
+        /**
+         * The input VCs are resigned Athumi VC (using `bbs-termwise-signature-2023`).
+         */
+        const vr = await deriver.verify(vrr.vc, [issuer])
+        expect(vr.verified).toBe(true)
+
+        /**
+         * RQ Preprocessing.
+         */
+          // 1. The original JLD Frame is being applied on the signed VC
+        const oldFrame = readJsonFile('__tests__/__fixtures__/range-query/athumi/frame-rq-toekenningsdatum.json')
+        let newFrame = await _frame(vrr.vc, preprocessContext(oldFrame), dl)
+
+        // ?. TODO: briefly explain the Athumi specific preprocessing steps
+        // const preprocessedSignedVc = await athumiSpecificPreprocessing(signedVc)
+
+        // ?. Find & Match variable assignments
+        const matchedVariableAssignments = matchVariableAssignments(oldFrame)
+        expect(matchedVariableAssignments.length).toBe(1)
+
+        // ?. Process matched var assignments
+        const [ma,] = matchedVariableAssignments
+        const updatePath = ma.pathElements.slice(0, -1)
+        setNestedAttribute(newFrame, updatePath, getNestedAttribute(oldFrame, updatePath))
+
+        // ?. TODO: step description
+        const predicates = [
+          {
+            '@context': 'https://zkp-ld.org/context.jsonld',
+            type: 'Predicate',
+            circuit: 'circ:lessThanPubPrv',
+            private: [
+              {
+                type: 'PrivateVariable',
+                var: 'greater',
+                val: '_:Y',
+              },
+            ],
+            public: [
+              {
+                type: 'PublicVariable',
+                var: 'lesser',
+                val: {
+                  '@value': '2000-01-01T00:00:00.000Z',
+                  '@type': 'xsd:dateTime',
+                },
+              },
+            ],
+          },
+        ]
+
+        /**
+         * Execute RQ
+         */
+          // TODO: remove duplicate parameter: predicates!!!
+        const deriveResponse = await executeDeriveRequest(
+            [{original: vrr.vc, disclosed: newFrame, predicates }],
+            predicates,
+            challenge
+          )
+        expect(deriveResponse.ok).toBe(true)
+
+        // Derived result is a VP
+        const vp = await deriveResponse.json()
+        checkVP(vp)
+
+        /**
+         * Verify (context: Verifier)
+         */
+          // Public keys need to be obtained first (see https://github.com/zkp-ld/jsonld-proofs/issues/14)
+        const pubKeys = await deriver.resolvePublicKeysForVP(vp)
+        // Resolve the issuer's public key material from the registry
+        const verificationResult = await deriver.verifyProof(vp, pubKeys, challenge)
+        expect(verificationResult.verified).toBe(true)
+
+      })
+    })
+})
+

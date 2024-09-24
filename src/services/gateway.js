@@ -153,50 +153,25 @@ app.post('/credentials/derive', async (req, res) => {
     res.sendStatus(400) // Bad Request
   }
   const challenge = 'abc123' // TODO
-  const {disclosed, predicates} = schemeMap[scheme];
+  let {disclosed, predicates} = schemeMap[scheme];
 
-  /**
-   * HACK (TODO: find proper solution!!!)
-   * @param oldVc
-   * @returns {Promise<any>}
-   */
-  const resignVc = async (oldVc) => {
-    const res = await fetch(
-      `${config.derive.baseUrl}:${config.derive.port}/sign`,
-      {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ verifiableCredential: oldVc })
-      }
-    )
-    return await res.json()
-  }
+  if(disclosed['@context'].includes('https://solid.data.vlaanderen.be/doc/implementatiemodel/leercredential/2023-02-01/context/leercredential-ap.jsonld'))
+    disclosed = preprocessContext(disclosed)
 
-  console.log('@gateway - resigning vc')
-  const resignedVc = await resignVc(verifiableCredential) // TODO:!!!
-  let newFrame = undefined;
+  let newFrame = await _frame(verifiableCredential, disclosed, documentLoaderAll)
+
   if(!!predicates) {
-    console.log('>>>RQ<<<')
     // RQ
-    if(disclosed['@context'].includes('https://solid.data.vlaanderen.be/doc/implementatiemodel/leercredential/2023-02-01/context/leercredential-ap.jsonld'))
-      newFrame = await _frame(resignedVc, preprocessContext(disclosed), documentLoaderAll)
-    else
-      newFrame = await _frame(resignedVc, disclosed, documentLoaderAll)
-
     // ?. Find & Match variable assignments
     const matchedVariableAssignments = matchVariableAssignments(disclosed)
     // ?. Process matched var assignments
     const [ma,] = matchedVariableAssignments
     const updatePath = ma.pathElements.slice(0, -1)
     setNestedAttribute(newFrame, updatePath, getNestedAttribute(disclosed, updatePath))
-    logv2(newFrame, 'newFrame (updated)')
-  } else {
-    // SD
-    console.log('>>>SD<<<')
-    newFrame = await _frame(resignedVc, preprocessContext(disclosed), documentLoaderAll)
   }
   // Backend call (/derive)
   const deriveResponse = await executeDeriveRequest(
-    [{original: resignedVc, disclosed: newFrame, predicates }],
+    [{original: verifiableCredential, disclosed: newFrame, predicates }],
     predicates,
     challenge
   )

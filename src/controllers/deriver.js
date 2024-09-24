@@ -61,7 +61,6 @@ export class Deriver {
   }
 
   async sd(vcPairs, challenge){
-    logv2(vcPairs, '@sd - vcPairs')
     const resolvedControllerDocuments = keypairsPublic
 
     const deriveOptions = { challenge,}
@@ -75,8 +74,6 @@ export class Deriver {
   }
 
   async rq(vcPairs, predicates, challenge){
-    console.log('[@controllers/deriver] - rq')
-    logv2(vcPairs, '@rq - vcPairs')
     const resolvedControllerDocuments = await this.resolveControllerDocumentsForVcPairs(vcPairs);
     const deriveOptions = {
         challenge, predicates, circuits: this.circuits
