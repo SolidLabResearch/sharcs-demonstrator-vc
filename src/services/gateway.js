@@ -13,7 +13,8 @@ import {
 } from "../utils.js";
 import cors from 'cors'
 import {documentLoaderAll, documentLoaderAthumi} from "../documentloader.js";
-import {executeDeriveRequest} from "../../__tests__/helpers.js";
+import {executeDeriveRequest, preprocessContext} from "../../__tests__/helpers.js";
+import {CONTEXTS_ATHUMI} from "../resources/contexts/index.js";
 
 const serviceConfig = config.gateway
 const app = express()
@@ -100,12 +101,20 @@ const schemeMap = Object.fromEntries(
  *                 $ref: '#/components/examples/bachelorofscience_biologie_rq_01'
  *               Getuigschrift Latijn eerste graad:
  *                 $ref: '#/components/examples/getuigschrift_latijn-eerstegraad'
+ *               Getuigschrift Latijn eerste graad (Toekenningsdatum na 2020):
+ *                 $ref: '#/components/examples/getuigschrift_latijn-eerstegraad_rq_01'
  *               Licenciaat Sociologie:
  *                 $ref: '#/components/examples/licentiaat_sociologie'
+ *               Licenciaat Sociologie (Toekenningsdatum na 2020):
+ *                 $ref: '#/components/examples/licentiaat_sociologie_rq_01'
  *               Opticien:
  *                 $ref: '#/components/examples/opticien-beroepskennis'
+ *               Opticien (Toekenningsdatum na 2020):
+ *                 $ref: '#/components/examples/opticien-beroepskennis_rq_01'
  *               Master of Science Biologie:
  *                  $ref: '#/components/examples/masterofscience-biologie'
+ *               Master of Science Biologie (Toekenningsdatum na 2020):
+ *                  $ref: '#/components/examples/masterofscience-biologie_rq_01'
  *           schema:
  *             type: object
  *             properties:
@@ -143,39 +152,60 @@ app.post('/credentials/derive', async (req, res) => {
   if (!Object.keys(schemeMap).includes(scheme)) {
     res.sendStatus(400) // Bad Request
   }
+  const challenge = 'abc123' // TODO
+  const {disclosed, predicates} = schemeMap[scheme];
 
-  let {disclosed, predicates} = schemeMap[scheme];
+  /**
+   * HACK (TODO: find proper solution!!!)
+   * @param oldVc
+   * @returns {Promise<any>}
+   */
+  const resignVc = async (oldVc) => {
+    const res = await fetch(
+      `${config.derive.baseUrl}:${config.derive.port}/sign`,
+      {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ verifiableCredential: oldVc })
+      }
+    )
+    return await res.json()
+  }
 
-  // If predicates are defined, it's a RQ, which requires additional preprocessing.
+  console.log('@gateway - resigning vc')
+  const resignedVc = await resignVc(verifiableCredential) // TODO:!!!
+  let newFrame = undefined;
   if(!!predicates) {
-    const matchedVariableAssignments = matchVariableAssignments(disclosed)
-    logv2(matchedVariableAssignments, 'matchedVariableAssignments')
+    console.log('>>>RQ<<<')
+    // RQ
+    if(disclosed['@context'].includes('https://solid.data.vlaanderen.be/doc/implementatiemodel/leercredential/2023-02-01/context/leercredential-ap.jsonld'))
+      newFrame = await _frame(resignedVc, preprocessContext(disclosed), documentLoaderAll)
+    else
+      newFrame = await _frame(resignedVc, disclosed, documentLoaderAll)
 
-    // Process matched var assignments
+    // ?. Find & Match variable assignments
+    const matchedVariableAssignments = matchVariableAssignments(disclosed)
+    // ?. Process matched var assignments
     const [ma,] = matchedVariableAssignments
     const updatePath = ma.pathElements.slice(0, -1)
-    setNestedAttribute(disclosed, updatePath, getNestedAttribute(disclosed, updatePath))
-
+    setNestedAttribute(newFrame, updatePath, getNestedAttribute(disclosed, updatePath))
+    logv2(newFrame, 'newFrame (updated)')
+  } else {
+    // SD
+    console.log('>>>SD<<<')
+    newFrame = await _frame(resignedVc, preprocessContext(disclosed), documentLoaderAll)
   }
-  disclosed = await _frame(verifiableCredential, disclosed, documentLoaderAll)
-// TODO: appropriate challenge generation & handling
-  const challenge = 'abc123'
-  // Backend: deriver
+  // Backend call (/derive)
   const deriveResponse = await executeDeriveRequest(
-    [
-      {
-        original: verifiableCredential,
-        disclosed,
-      }
-    ], predicates, challenge
+    [{original: resignedVc, disclosed: newFrame, predicates }],
+    predicates,
+    challenge
   )
-
-  try {
+  if(!deriveResponse.ok) {
+    console.error('Error @ backend. Derive response NOT ok!')
+    res.send(500)
+  } else {
     const derivedResult = await deriveResponse.json()
     res.send(derivedResult)
-  } catch (err) {
-    console.error('Error while processing derive response: ', err)
-    res.sendStatus(500)
   }
 })
 

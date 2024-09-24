@@ -3,7 +3,7 @@ import {documentLoader as defaultDocumentLoader} from '../documentloader.js';
 import keypairsPublic from '../resources/keypairs-public.json' with {type: 'json'};
 import cLessThanPrvPub from "../resources/less_than_prv_pub_64.json" with {type: "json"}
 import cLessThanPubPrv from '../resources/less_than_pub_prv_64.json' with {type: 'json'};
-import {_frame, athumiSpecificPreprocessing, logv2, matchVariableAssignments} from "../utils.js";
+import {_frame, athumiSpecificPreprocessing, logv2, matchVariableAssignments, writeJsonFile} from "../utils.js";
 
 export class Deriver {
   constructor(registryProxy, documentLoader = defaultDocumentLoader) {
@@ -61,6 +61,7 @@ export class Deriver {
   }
 
   async sd(vcPairs, challenge){
+    logv2(vcPairs, '@sd - vcPairs')
     const resolvedControllerDocuments = keypairsPublic
 
     const deriveOptions = { challenge,}
@@ -74,10 +75,23 @@ export class Deriver {
   }
 
   async rq(vcPairs, predicates, challenge){
+    console.log('[@controllers/deriver] - rq')
+    logv2(vcPairs, '@rq - vcPairs')
     const resolvedControllerDocuments = await this.resolveControllerDocumentsForVcPairs(vcPairs);
     const deriveOptions = {
         challenge, predicates, circuits: this.circuits
     }
+
+    //
+    const vcVerificationResults = await Promise.all(
+      vcPairs.map(async (pair) =>  await this.verify(pair.original, resolvedControllerDocuments))
+    )
+    const notVerifiedCredentials = vcVerificationResults.filter(vr => !vr.verified)
+
+    if(notVerifiedCredentials.length > 0)
+      throw new Error(`${notVerifiedCredentials.length}/${vcPairs.length} VCs could not be verified! Cannot proceed to range query derivation!`)
+
+
     return await zjp.deriveProof(
           vcPairs,
           resolvedControllerDocuments,

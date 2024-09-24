@@ -4,7 +4,7 @@ components:
       value:
         scheme: diploma-minimal
         verifiableCredential:
-          '@context':
+          "@context":
             - https://www.w3.org/2018/credentials/v1
             - https://www.w3.org/ns/data-integrity/v1
             - https://solid.data.vlaanderen.be/doc/implementatiemodel/leercredential/2023-02-01/context/leercredential-ap.jsonld
@@ -28,8 +28,8 @@ components:
             Voorstelling.taal:
               - http://publications.europa.eu/resource/authority/language/NLD
             Voorstelling.titel:
-              - '@language': nl
-                '@value': Bachelor of Science in de Biologie
+              - "@language": nl
+                "@value": Bachelor of Science in de Biologie
           credentialSubject:
             id: https://webid.vlaanderen.be/profiles/11111111-1111-1111-1111-111111111111
             GeregistreerdPersoon.registratie:
@@ -50,8 +50,8 @@ components:
                     Identificator.notatie: e6247988-c016-47e7-8826-c21c2e14556a
                 Leerclaim.authenticiteit: https://solid.data.vlaanderen.be/id/concept/Leercredential-Authenticiteit/Authentiek
                 Leerclaim.titel:
-                  - '@language': nl
-                    '@value': Bachelor of Science in de Biologie
+                  - "@language": nl
+                    "@value": Bachelor of Science in de Biologie
                 Leerclaim.type:
                   - https://solid.data.vlaanderen.be/id/concept/Leercredential-Bewijstype/Diploma
                   - https://solid.data.vlaanderen.be/id/concept/Leercredential-Bewijsstaat/Eindbewijs
@@ -73,16 +73,16 @@ components:
                       - https://solid.data.vlaanderen.be/id/concept/Leercredential-Onderwerp/421001
                       - https://solid.data.vlaanderen.be/id/concept/Leercredential-ISCEDStudiegebied/421
                     Leerspecificatie.titel:
-                      - '@language': nl
-                        '@value': Bachelor of Science in de Biologie
+                      - "@language": nl
+                        "@value": Bachelor of Science in de Biologie
                     Leerprestatiespecificatie.onderwerp:
-                      - '@type': Concept
+                      - "@type": Concept
                         Concept.notation:
-                          - '@language': nl
-                            '@value': "027034"
+                          - "@language": nl
+                            "@value": "027034"
                         Concept.preferredLabel:
-                          - '@language': nl
-                            '@value': Biologie
+                          - "@language": nl
+                            "@value": Biologie
                         Concept.inScheme: https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-Studierichting
                         Concept.topConceptOf: https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-Studierichting
                     Leerprestatiespecificatie.beinvloedDoor:
@@ -90,8 +90,8 @@ components:
                           - Leerspecificatie
                           - Leeractiviteitspecificatie
                         Leerspecificatie.titel:
-                          - '@language': nl
-                            '@value': Bachelor of Science in de Biologie
+                          - "@language": nl
+                            "@value": Bachelor of Science in de Biologie
                         Leeractiviteitspecificatie.instructietaal:
                           - http://publications.europa.eu/resource/authority/language/NLD
                 Leerclaim.toegekendDoor:
@@ -107,8 +107,8 @@ components:
                   Toekenningsproces.uitgevoerdDoor:
                     - type: Organisatie
                       Organisatie.voorkeursnaam:
-                        - '@language': nl
-                          '@value': Katholieke Universiteit Leuven
+                        - "@language": nl
+                          "@value": Katholieke Universiteit Leuven
                       Organisatie.identificator:
                         - type: Identificator
                           Identificator.notatie: "110131"
@@ -116,7 +116,7 @@ components:
                         - https://solid.data.vlaanderen.be/id/concept/Leercredential-Instantie/Universiteit
                         - https://solid.data.vlaanderen.be/id/concept/Leercredential-Schooltype/NietVanToepassing
           proof:
-            '@context': https://www.w3.org/ns/data-integrity/v1
+            "@context": https://www.w3.org/ns/data-integrity/v1
             type: DataIntegrityProof
             created: "2024-09-16T10:59:47.613Z"
             cryptosuite: bbs-termwise-signature-2023
@@ -128,7 +128,7 @@ components:
       value:
         scheme: diploma-rq-toekenningsdatum-after-2000-01-01
         verifiableCredential:
-          '@context':
+          "@context":
             - https://www.w3.org/2018/credentials/v1
             - https://www.w3.org/ns/data-integrity/v1
             - https://solid.data.vlaanderen.be/doc/implementatiemodel/leercredential/2023-02-01/context/leercredential-ap.jsonld
@@ -145,15 +145,15 @@ components:
           Credential.uitgiftedatum: "2022-08-11T13:15:26.544Z"
           Credential.geldigVan: "2022-08-11T13:15:26.544Z"
           expirationDate: "2024-08-11T13:15:26.544Z"
-          issuer: https://solid.api.vlaanderen.be/v1/webid#magda
+          issuer: did:example:issuer0
           EuropeesDigitaalCredential.voorstelling:
             type: Voorstelling
             Voorstelling.hoofdtaal: http://publications.europa.eu/resource/authority/language/NLD
             Voorstelling.taal:
               - http://publications.europa.eu/resource/authority/language/NLD
             Voorstelling.titel:
-              - '@language': nl
-                '@value': Bachelor of Science in de Biologie
+              - "@language": nl
+                "@value": Bachelor of Science in de Biologie
           credentialSubject:
             id: https://webid.vlaanderen.be/profiles/11111111-1111-1111-1111-111111111111
             GeregistreerdPersoon.registratie:
@@ -174,8 +174,8 @@ components:
                     Identificator.notatie: e6247988-c016-47e7-8826-c21c2e14556a
                 Leerclaim.authenticiteit: https://solid.data.vlaanderen.be/id/concept/Leercredential-Authenticiteit/Authentiek
                 Leerclaim.titel:
-                  - '@language': nl
-                    '@value': Bachelor of Science in de Biologie
+                  - "@language": nl
+                    "@value": Bachelor of Science in de Biologie
                 Leerclaim.type:
                   - https://solid.data.vlaanderen.be/id/concept/Leercredential-Bewijstype/Diploma
                   - https://solid.data.vlaanderen.be/id/concept/Leercredential-Bewijsstaat/Eindbewijs
@@ -197,16 +197,16 @@ components:
                       - https://solid.data.vlaanderen.be/id/concept/Leercredential-Onderwerp/421001
                       - https://solid.data.vlaanderen.be/id/concept/Leercredential-ISCEDStudiegebied/421
                     Leerspecificatie.titel:
-                      - '@language': nl
-                        '@value': Bachelor of Science in de Biologie
+                      - "@language": nl
+                        "@value": Bachelor of Science in de Biologie
                     Leerprestatiespecificatie.onderwerp:
-                      - '@type': Concept
+                      - "@type": Concept
                         Concept.notation:
-                          - '@language': nl
-                            '@value': "027034"
+                          - "@language": nl
+                            "@value": "027034"
                         Concept.preferredLabel:
-                          - '@language': nl
-                            '@value': Biologie
+                          - "@language": nl
+                            "@value": Biologie
                         Concept.inScheme: https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-Studierichting
                         Concept.topConceptOf: https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-Studierichting
                     Leerprestatiespecificatie.beinvloedDoor:
@@ -214,8 +214,8 @@ components:
                           - Leerspecificatie
                           - Leeractiviteitspecificatie
                         Leerspecificatie.titel:
-                          - '@language': nl
-                            '@value': Bachelor of Science in de Biologie
+                          - "@language": nl
+                            "@value": Bachelor of Science in de Biologie
                         Leeractiviteitspecificatie.instructietaal:
                           - http://publications.europa.eu/resource/authority/language/NLD
                 Leerclaim.toegekendDoor:
@@ -231,8 +231,8 @@ components:
                   Toekenningsproces.uitgevoerdDoor:
                     - type: Organisatie
                       Organisatie.voorkeursnaam:
-                        - '@language': nl
-                          '@value': Katholieke Universiteit Leuven
+                        - "@language": nl
+                          "@value": Katholieke Universiteit Leuven
                       Organisatie.identificator:
                         - type: Identificator
                           Identificator.notatie: "110131"
@@ -240,7 +240,7 @@ components:
                         - https://solid.data.vlaanderen.be/id/concept/Leercredential-Instantie/Universiteit
                         - https://solid.data.vlaanderen.be/id/concept/Leercredential-Schooltype/NietVanToepassing
           proof:
-            '@context': https://www.w3.org/ns/data-integrity/v1
+            "@context": https://www.w3.org/ns/data-integrity/v1
             type: DataIntegrityProof
             created: "2024-09-16T10:59:47.613Z"
             cryptosuite: bbs-termwise-signature-2023
@@ -252,7 +252,7 @@ components:
       value:
         scheme: diploma-minimal
         verifiableCredential:
-          '@context':
+          "@context":
             - https://www.w3.org/2018/credentials/v1
             - https://www.w3.org/ns/data-integrity/v1
             - https://solid.data.vlaanderen.be/doc/implementatiemodel/leercredential/2023-02-01/context/leercredential-ap.jsonld
@@ -276,8 +276,8 @@ components:
             Voorstelling.taal:
               - http://publications.europa.eu/resource/authority/language/NLD
             Voorstelling.titel:
-              - '@language': nl
-                '@value': Getuigschrift A 1ste graad Secundair onderwijs Latijn
+              - "@language": nl
+                "@value": Getuigschrift A 1ste graad Secundair onderwijs Latijn
           credentialSubject:
             id: https://webid.vlaanderen.be/profiles/22222222-2222-2222-2222-222222222222
             GeregistreerdPersoon.registratie:
@@ -298,8 +298,8 @@ components:
                     Identificator.notatie: fc3a6b79-7e65-4a39-b1b4-26ca8bf3f204
                 Leerclaim.authenticiteit: https://solid.data.vlaanderen.be/id/concept/Leercredential-Authenticiteit/Authentiek
                 Leerclaim.titel:
-                  - '@language': nl
-                    '@value': Getuigschrift A 1ste graad Secundair onderwijs Latijn
+                  - "@language": nl
+                    "@value": Getuigschrift A 1ste graad Secundair onderwijs Latijn
                 Leerclaim.type:
                   - https://solid.data.vlaanderen.be/id/concept/Leercredential-Bewijstype/Getuigschrift
                   - https://solid.data.vlaanderen.be/id/concept/Leercredential-Bewijsstaat/Eindbewijs
@@ -320,23 +320,23 @@ components:
                       - https://solid.data.vlaanderen.be/id/concept/Leercredential-Onderwerp/10001
                       - https://solid.data.vlaanderen.be/id/concept/Leercredential-ISCEDStudiegebied/010
                     Leerspecificatie.titel:
-                      - '@language': nl
-                        '@value': Getuigschrift A 1ste graad Secundair onderwijs Latijn
+                      - "@language": nl
+                        "@value": Getuigschrift A 1ste graad Secundair onderwijs Latijn
                     Leerprestatiespecificatie.onderwerp:
-                      - '@type': Concept
+                      - "@type": Concept
                         Concept.notation:
-                          - '@language': nl
-                            '@value': "020096"
+                          - "@language": nl
+                            "@value": "020096"
                         Concept.preferredLabel:
-                          - '@language': nl
-                            '@value': Latijn
+                          - "@language": nl
+                            "@value": Latijn
                         Concept.inScheme: https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-Studierichting
                         Concept.topConceptOf: https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-Studierichting
                     Leerprestatiespecificatie.beinvloedDoor:
                       - type: Leeractiviteitspecificatie
                         Leerspecificatie.titel:
-                          - '@language': nl
-                            '@value': Getuigschrift A 1ste graad Secundair onderwijs Latijn
+                          - "@language": nl
+                            "@value": Getuigschrift A 1ste graad Secundair onderwijs Latijn
                         Leeractiviteitspecificatie.instructietaal:
                           - http://publications.europa.eu/resource/authority/language/NLD
                 Leerclaim.toegekendDoor:
@@ -352,8 +352,8 @@ components:
                   Toekenningsproces.uitgevoerdDoor:
                     - type: Organisatie
                       Organisatie.voorkeursnaam:
-                        - '@language': nl
-                          '@value': GO| middenschool Ekeren
+                        - "@language": nl
+                          "@value": GO| middenschool Ekeren
                       Organisatie.identificator:
                         - type: Identificator
                           Identificator.notatie: "40601"
@@ -361,7 +361,128 @@ components:
                         - https://solid.data.vlaanderen.be/id/concept/Leercredential-Instantie/SecundaireSchool
                         - https://solid.data.vlaanderen.be/id/concept/Leercredential-Schooltype/Gewoon
           proof:
-            '@context': https://www.w3.org/ns/data-integrity/v1
+            "@context": https://www.w3.org/ns/data-integrity/v1
+            type: DataIntegrityProof
+            created: "2024-09-16T10:59:49.066Z"
+            cryptosuite: bbs-termwise-signature-2023
+            proofPurpose: assertionMethod
+            proofValue: uoaKdHfYzYxg9sEePB0Uwx0LYbQ9teyJqiFBVKgAZ11IkyKvOJGTNdiLFapD2NxnA5bXfAJ3c7AhaXRZ7jwc92yAmlo5LxfoergoiaooJwFb6DUNOCzSpAK2a4m7gX-ryheKSrbL5xnpSV4jwd0ZSGw
+            verificationMethod: did:example:issuer0#bls12_381-g2-pub001
+
+    getuigschrift_latijn-eerstegraad_rq_01:
+      value:
+        scheme: diploma-rq-toekenningsdatum-after-2000-01-01
+        verifiableCredential:
+          "@context":
+            - https://www.w3.org/2018/credentials/v1
+            - https://www.w3.org/ns/data-integrity/v1
+            - https://solid.data.vlaanderen.be/doc/implementatiemodel/leercredential/2023-02-01/context/leercredential-ap.jsonld
+            - https://solid.data.vlaanderen.be/doc/implementatiemodel/skos/2023-02-01/context/skos-ap.jsonld
+          id: https://solid.api.vlaanderen.be/v1/credentials/8b3912tnc-4f42-2d35-4dk4-848kf84kd89k
+          Leercredential.identificator:
+            - type: Identificator
+              Identificator.notatie: https://solid.api.vlaanderen.be/v1/credentials/8b3912tnc-4f42-2d35-4dk4-848kf84kd89k
+          type:
+            - EuropeesDigitaalCredential
+            - Leercredential
+            - VerifiableCredential
+            - Credential
+          Credential.uitgiftedatum: "2022-08-11T13:15:26.544Z"
+          Credential.geldigVan: "2022-08-11T13:15:26.544Z"
+          expirationDate: "2024-08-11T13:15:26.544Z"
+          issuer: https://solid.api.vlaanderen.be/v1/webid#magda
+          EuropeesDigitaalCredential.voorstelling:
+            type: Voorstelling
+            Voorstelling.hoofdtaal: http://publications.europa.eu/resource/authority/language/NLD
+            Voorstelling.taal:
+              - http://publications.europa.eu/resource/authority/language/NLD
+            Voorstelling.titel:
+              - "@language": nl
+                "@value": Getuigschrift A 1ste graad Secundair onderwijs Latijn
+          credentialSubject:
+            id: https://webid.vlaanderen.be/profiles/22222222-2222-2222-2222-222222222222
+            GeregistreerdPersoon.registratie:
+              type: Identificator
+              Identificator.notatie: https://webid.vlaanderen.be/profiles/22222222-2222-2222-2222-222222222222
+            type:
+              - Persoon
+              - GeregistreerdPersoon
+            Persoon.heeftCredential:
+              - https://solid.api.vlaanderen.be/v1/credentials/8b3912tnc-4f42-2d35-4dk4-848kf84kd89k
+            Persoon.heeftClaim:
+              - id: https://solid.api.vlaanderen.be/v1/credentials/claims/leerclaims/fc3a6b79-7e65-4a39-b1b4-26ca8bf3f204
+                type:
+                  - Leerclaim
+                  - Leerprestatie
+                Leerclaim.identificator:
+                  - type: Identificator
+                    Identificator.notatie: fc3a6b79-7e65-4a39-b1b4-26ca8bf3f204
+                Leerclaim.authenticiteit: https://solid.data.vlaanderen.be/id/concept/Leercredential-Authenticiteit/Authentiek
+                Leerclaim.titel:
+                  - "@language": nl
+                    "@value": Getuigschrift A 1ste graad Secundair onderwijs Latijn
+                Leerclaim.type:
+                  - https://solid.data.vlaanderen.be/id/concept/Leercredential-Bewijstype/Getuigschrift
+                  - https://solid.data.vlaanderen.be/id/concept/Leercredential-Bewijsstaat/Eindbewijs
+                Leerclaim.uitgever: https://data.vlaanderen.be/id/organisatie/OVO000334
+                Leerprestatie.specificatie:
+                  - type:
+                      - Leerprestatiespecificatie
+                      - Kwalificatie
+                    Leerprestatiespecificatie.type:
+                      - https://solid.data.vlaanderen.be/id/concept/Leercredential-Categorie/SecundairOnderwijs
+                    Leerprestatiespecificatie.onderwijsniveau:
+                      - https://solid.data.vlaanderen.be/id/concept/Leercredential-Graad/1steGraad
+                      - https://solid.data.vlaanderen.be/id/concept/Leercredential-Onderwijsvorm/A
+                      - https://solid.data.vlaanderen.be/id/concept/Leercredential-ISCEDNiveau/2
+                      - https://solid.data.vlaanderen.be/id/concept/Leercredential-VKSNiveauOnderwijskwalificatie/NBS
+                      - https://solid.data.vlaanderen.be/id/concept/Leercredential-VKSNiveauBeroepskwalificatie/NBS
+                    Leerprestatiespecificatie.studiegebied:
+                      - https://solid.data.vlaanderen.be/id/concept/Leercredential-Onderwerp/10001
+                      - https://solid.data.vlaanderen.be/id/concept/Leercredential-ISCEDStudiegebied/010
+                    Leerspecificatie.titel:
+                      - "@language": nl
+                        "@value": Getuigschrift A 1ste graad Secundair onderwijs Latijn
+                    Leerprestatiespecificatie.onderwerp:
+                      - "@type": Concept
+                        Concept.notation:
+                          - "@language": nl
+                            "@value": "020096"
+                        Concept.preferredLabel:
+                          - "@language": nl
+                            "@value": Latijn
+                        Concept.inScheme: https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-Studierichting
+                        Concept.topConceptOf: https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-Studierichting
+                    Leerprestatiespecificatie.beinvloedDoor:
+                      - type: Leeractiviteitspecificatie
+                        Leerspecificatie.titel:
+                          - "@language": nl
+                            "@value": Getuigschrift A 1ste graad Secundair onderwijs Latijn
+                        Leeractiviteitspecificatie.instructietaal:
+                          - http://publications.europa.eu/resource/authority/language/NLD
+                Leerclaim.toegekendDoor:
+                  type: Toekenningsproces
+                  Toekenningsproces.kentToe:
+                    - https://solid.api.vlaanderen.be/v1/credentials/claims/leerclaims/fc3a6b79-7e65-4a39-b1b4-26ca8bf3f204
+                  Toekenningsproces.locatie:
+                    type: Locatie
+                    Locatie.adres:
+                      type: Adresvoorstelling
+                      Adresvoorstelling.land: http://publications.europa.eu/resource/authority/country/BEL
+                  Toekenningsproces.toekenningsdatum: "2014-06-30T00:00:00.000Z"
+                  Toekenningsproces.uitgevoerdDoor:
+                    - type: Organisatie
+                      Organisatie.voorkeursnaam:
+                        - "@language": nl
+                          "@value": GO| middenschool Ekeren
+                      Organisatie.identificator:
+                        - type: Identificator
+                          Identificator.notatie: "40601"
+                      Organisatie.classificatie:
+                        - https://solid.data.vlaanderen.be/id/concept/Leercredential-Instantie/SecundaireSchool
+                        - https://solid.data.vlaanderen.be/id/concept/Leercredential-Schooltype/Gewoon
+          proof:
+            "@context": https://www.w3.org/ns/data-integrity/v1
             type: DataIntegrityProof
             created: "2024-09-16T10:59:49.066Z"
             cryptosuite: bbs-termwise-signature-2023
@@ -373,7 +494,7 @@ components:
       value:
         scheme: diploma-minimal
         verifiableCredential:
-          '@context':
+          "@context":
             - https://www.w3.org/2018/credentials/v1
             - https://www.w3.org/ns/data-integrity/v1
             - https://solid.data.vlaanderen.be/doc/implementatiemodel/leercredential/2023-02-01/context/leercredential-ap.jsonld
@@ -397,8 +518,8 @@ components:
             Voorstelling.taal:
               - http://publications.europa.eu/resource/authority/language/NLD
             Voorstelling.titel:
-              - '@language': nl
-                '@value': Getuigschrift praktijk en beroepskennis ondernemersopleiding Opticien-optometrist
+              - "@language": nl
+                "@value": Getuigschrift praktijk en beroepskennis ondernemersopleiding Opticien-optometrist
           credentialSubject:
             id: https://webid.vlaanderen.be/profiles/33333333-3333-3333-3333-333333333333
             GeregistreerdPersoon.registratie:
@@ -419,8 +540,8 @@ components:
                     Identificator.notatie: e6247988-c016-47e7-8826-c21c2e14556a
                 Leerclaim.authenticiteit: https://solid.data.vlaanderen.be/id/concept/Leercredential-Authenticiteit/Authentiek
                 Leerclaim.titel:
-                  - '@language': nl
-                    '@value': Getuigschrift praktijk en beroepskennis ondernemersopleiding Opticien-optometrist
+                  - "@language": nl
+                    "@value": Getuigschrift praktijk en beroepskennis ondernemersopleiding Opticien-optometrist
                 Leerclaim.type:
                   - https://solid.data.vlaanderen.be/id/concept/Leercredential-Bewijstype/Gelijkwaardigheid
                   - https://solid.data.vlaanderen.be/id/concept/Leercredential-Bewijsstaat/Eindbewijs
@@ -438,34 +559,34 @@ components:
                       - https://solid.data.vlaanderen.be/id/concept/Leercredential-VKSNiveauOnderwijskwalificatie/Nbs
                       - https://solid.data.vlaanderen.be/id/concept/Leercredential-VKSNiveauBeroepskwalificatie/Nbs
                     Leerprestatiespecificatie.studiegebied:
-                      - '@type': Concept
+                      - "@type": Concept
                         Concept.notation:
-                          - '@language': nl
-                            '@value': "0"
+                          - "@language": nl
+                            "@value": "0"
                         Concept.preferredLabel:
-                          - '@language': nl
-                            '@value': Opticien-optometrist
+                          - "@language": nl
+                            "@value": Opticien-optometrist
                         Concept.inScheme: https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-Onderwerp
                         Concept.topConceptOf: https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-Onderwerp
                       - https://solid.data.vlaanderen.be/id/concept/Leercredential-ISCEDStudiegebied/725
                     Leerspecificatie.titel:
-                      - '@language': nl
-                        '@value': Getuigschrift praktijk en beroepskennis ondernemersopleiding Opticien-optometrist
+                      - "@language": nl
+                        "@value": Getuigschrift praktijk en beroepskennis ondernemersopleiding Opticien-optometrist
                     Leerprestatiespecificatie.onderwerp:
-                      - '@type': Concept
+                      - "@type": Concept
                         Concept.notation:
-                          '@language': nl
-                          '@value': "0"
+                          "@language": nl
+                          "@value": "0"
                         Concept.preferredLabel:
-                          '@language': nl
-                          '@value': Opticien-optometrist
+                          "@language": nl
+                          "@value": Opticien-optometrist
                         Concept.inScheme: https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-Studierichting
                         Concept.topConceptOf: https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-Studierichting
                     Leerprestatiespecificatie.beinvloedDoor:
                       - type: Leeractiviteitspecificatie
                         Leerspecificatie.titel:
-                          - '@language': nl
-                            '@value': Getuigschrift praktijk en beroepskennis ondernemersopleiding Opticien-optometrist
+                          - "@language": nl
+                            "@value": Getuigschrift praktijk en beroepskennis ondernemersopleiding Opticien-optometrist
                         Leeractiviteitspecificatie.instructietaal:
                           - http://publications.europa.eu/resource/authority/language/NLD
                 Leerclaim.toegekendDoor:
@@ -481,8 +602,8 @@ components:
                   Toekenningsproces.uitgevoerdDoor:
                     - type: Organisatie
                       Organisatie.voorkeursnaam:
-                        - '@language': nl
-                          '@value': SYNTRA Vlaanderen
+                        - "@language": nl
+                          "@value": SYNTRA Vlaanderen
                       Organisatie.identificator:
                         - type: Identificator
                           Identificator.notatie: "0"
@@ -490,7 +611,7 @@ components:
                         - https://solid.data.vlaanderen.be/id/concept/Leercredential-Instantie/SyntraVlaanderen
                         - https://solid.data.vlaanderen.be/id/concept/Leercredential-Schooltype/NietVanToepassing
           proof:
-            '@context': https://www.w3.org/ns/data-integrity/v1
+            "@context": https://www.w3.org/ns/data-integrity/v1
             type: DataIntegrityProof
             created: "2024-09-16T10:59:50.448Z"
             cryptosuite: bbs-termwise-signature-2023
@@ -498,12 +619,140 @@ components:
             proofValue: ugmiUaO9mbGJBBQiBRurJpBfA6ZP3UiMNKIqN41mcmDcqdD1HuULQrp9kbPNuVR4KEzznEF8KkL0cC1JOkOVBVoeDZrvueWl81LNhG4xCcCOzhi5SuxzjAPdImA8jBMf8zDE2kVctVuLLz2Pr83NzWw
             verificationMethod: did:example:issuer0#bls12_381-g2-pub001
 
+    opticien-beroepskennis_rq_01:
+      value:
+        scheme: diploma-rq-toekenningsdatum-after-2000-01-01
+        verifiableCredential:
+          "@context":
+            - https://www.w3.org/2018/credentials/v1
+            - https://www.w3.org/ns/data-integrity/v1
+            - https://solid.data.vlaanderen.be/doc/implementatiemodel/leercredential/2023-02-01/context/leercredential-ap.jsonld
+            - https://solid.data.vlaanderen.be/doc/implementatiemodel/skos/2023-02-01/context/skos-ap.jsonld
+          id: https://solid.api.vlaanderen.be/v1/credentials/2ddh35kd-8djd-d3jr-k32l-k3d83lkcje8jcny6
+          Leercredential.identificator:
+            - type: Identificator
+              Identificator.notatie: https://solid.api.vlaanderen.be/v1/credentials/2ddh35kd-8djd-d3jr-k32l-k3d83lkcje8jcny6
+          type:
+            - EuropeesDigitaalCredential
+            - Leercredential
+            - VerifiableCredential
+            - Credential
+          Credential.uitgiftedatum: "2022-08-11T13:15:26.544Z"
+          Credential.geldigVan: "2022-08-11T13:15:26.544Z"
+          expirationDate: "2024-08-11T13:15:26.544Z"
+          issuer: https://solid.api.vlaanderen.be/v1/webid#magda
+          EuropeesDigitaalCredential.voorstelling:
+            type: Voorstelling
+            Voorstelling.hoofdtaal: http://publications.europa.eu/resource/authority/language/NLD
+            Voorstelling.taal:
+              - http://publications.europa.eu/resource/authority/language/NLD
+            Voorstelling.titel:
+              - "@language": nl
+                "@value": Getuigschrift praktijk en beroepskennis ondernemersopleiding Opticien-optometrist
+          credentialSubject:
+            id: https://webid.vlaanderen.be/profiles/33333333-3333-3333-3333-333333333333
+            GeregistreerdPersoon.registratie:
+              type: Identificator
+              Identificator.notatie: https://webid.vlaanderen.be/profiles/33333333-3333-3333-3333-333333333333
+            type:
+              - Persoon
+              - GeregistreerdPersoon
+            Persoon.heeftCredential:
+              - https://solid.api.vlaanderen.be/v1/credentials/2ddh35kd-8djd-d3jr-k32l-k3d83lkcje8jcny6
+            Persoon.heeftClaim:
+              - id: https://solid.api.vlaanderen.be/v1/credentials/claims/leerclaims/e6247988-c016-47e7-8826-c21c2e14556a
+                type:
+                  - Leerclaim
+                  - Leerprestatie
+                Leerclaim.identificator:
+                  - type: Identificator
+                    Identificator.notatie: e6247988-c016-47e7-8826-c21c2e14556a
+                Leerclaim.authenticiteit: https://solid.data.vlaanderen.be/id/concept/Leercredential-Authenticiteit/Authentiek
+                Leerclaim.titel:
+                  - "@language": nl
+                    "@value": Getuigschrift praktijk en beroepskennis ondernemersopleiding Opticien-optometrist
+                Leerclaim.type:
+                  - https://solid.data.vlaanderen.be/id/concept/Leercredential-Bewijstype/Gelijkwaardigheid
+                  - https://solid.data.vlaanderen.be/id/concept/Leercredential-Bewijsstaat/Eindbewijs
+                Leerclaim.uitgever: https://data.vlaanderen.be/id/organisatie/OVO000854
+                Leerprestatie.specificatie:
+                  - type:
+                      - Leerprestatiespecificatie
+                      - Kwalificatie
+                    Leerprestatiespecificatie.type:
+                      - https://solid.data.vlaanderen.be/id/concept/Leercredential-Categorie/Ondernemersopleidingen
+                    Leerprestatiespecificatie.onderwijsniveau:
+                      - https://solid.data.vlaanderen.be/id/concept/Leercredential-Graad/NietVanToepassing
+                      - https://solid.data.vlaanderen.be/id/concept/Leercredential-Onderwijsvorm/NietVanToepassing
+                      - https://solid.data.vlaanderen.be/id/concept/Leercredential-ISCEDNiveau/Nbs
+                      - https://solid.data.vlaanderen.be/id/concept/Leercredential-VKSNiveauOnderwijskwalificatie/Nbs
+                      - https://solid.data.vlaanderen.be/id/concept/Leercredential-VKSNiveauBeroepskwalificatie/Nbs
+                    Leerprestatiespecificatie.studiegebied:
+                      - "@type": Concept
+                        Concept.notation:
+                          - "@language": nl
+                            "@value": "0"
+                        Concept.preferredLabel:
+                          - "@language": nl
+                            "@value": Opticien-optometrist
+                        Concept.inScheme: https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-Onderwerp
+                        Concept.topConceptOf: https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-Onderwerp
+                      - https://solid.data.vlaanderen.be/id/concept/Leercredential-ISCEDStudiegebied/725
+                    Leerspecificatie.titel:
+                      - "@language": nl
+                        "@value": Getuigschrift praktijk en beroepskennis ondernemersopleiding Opticien-optometrist
+                    Leerprestatiespecificatie.onderwerp:
+                      - "@type": Concept
+                        Concept.notation:
+                          "@language": nl
+                          "@value": "0"
+                        Concept.preferredLabel:
+                          "@language": nl
+                          "@value": Opticien-optometrist
+                        Concept.inScheme: https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-Studierichting
+                        Concept.topConceptOf: https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-Studierichting
+                    Leerprestatiespecificatie.beinvloedDoor:
+                      - type: Leeractiviteitspecificatie
+                        Leerspecificatie.titel:
+                          - "@language": nl
+                            "@value": Getuigschrift praktijk en beroepskennis ondernemersopleiding Opticien-optometrist
+                        Leeractiviteitspecificatie.instructietaal:
+                          - http://publications.europa.eu/resource/authority/language/NLD
+                Leerclaim.toegekendDoor:
+                  type: Toekenningsproces
+                  Toekenningsproces.kentToe:
+                    - https://solid.api.vlaanderen.be/v1/credentials/claims/leerclaims/e6247988-c016-47e7-8826-c21c2e14556a
+                  Toekenningsproces.locatie:
+                    type: Locatie
+                    Locatie.adres:
+                      type: Adresvoorstelling
+                      Adresvoorstelling.land: http://publications.europa.eu/resource/authority/country/BEL
+                  Toekenningsproces.toekenningsdatum: "2006-01-01T00:00:00.000Z"
+                  Toekenningsproces.uitgevoerdDoor:
+                    - type: Organisatie
+                      Organisatie.voorkeursnaam:
+                        - "@language": nl
+                          "@value": SYNTRA Vlaanderen
+                      Organisatie.identificator:
+                        - type: Identificator
+                          Identificator.notatie: "0"
+                      Organisatie.classificatie:
+                        - https://solid.data.vlaanderen.be/id/concept/Leercredential-Instantie/SyntraVlaanderen
+                        - https://solid.data.vlaanderen.be/id/concept/Leercredential-Schooltype/NietVanToepassing
+          proof:
+            "@context": https://www.w3.org/ns/data-integrity/v1
+            type: DataIntegrityProof
+            created: "2024-09-16T10:59:50.448Z"
+            cryptosuite: bbs-termwise-signature-2023
+            proofPurpose: assertionMethod
+            proofValue: ugmiUaO9mbGJBBQiBRurJpBfA6ZP3UiMNKIqN41mcmDcqdD1HuULQrp9kbPNuVR4KEzznEF8KkL0cC1JOkOVBVoeDZrvueWl81LNhG4xCcCOzhi5SuxzjAPdImA8jBMf8zDE2kVctVuLLz2Pr83NzWw
+            verificationMethod: did:example:issuer0#bls12_381-g2-pub001
 
     licentiaat_sociologie:
       value:
         scheme: diploma-minimal
         verifiableCredential:
-          '@context':
+          "@context":
             - https://www.w3.org/2018/credentials/v1
             - https://www.w3.org/ns/data-integrity/v1
             - https://solid.data.vlaanderen.be/doc/implementatiemodel/leercredential/2023-02-01/context/leercredential-ap.jsonld
@@ -527,8 +776,8 @@ components:
             Voorstelling.taal:
               - http://publications.europa.eu/resource/authority/language/NLD
             Voorstelling.titel:
-              - '@language': nl
-                '@value': Diploma Licentiaat Sociologie
+              - "@language": nl
+                "@value": Diploma Licentiaat Sociologie
           credentialSubject:
             id: https://webid.vlaanderen.be/profiles/11111111-1111-1111-1111-111111111111
             GeregistreerdPersoon.registratie:
@@ -549,8 +798,8 @@ components:
                     Identificator.notatie: e6247988-c016-47e7-8826-c21c2e14556a
                 Leerclaim.authenticiteit: https://solid.data.vlaanderen.be/id/concept/Leercredential-Authenticiteit/Authentiek
                 Leerclaim.titel:
-                  - '@language': nl
-                    '@value': Diploma Licentiaat Sociologie
+                  - "@language": nl
+                    "@value": Diploma Licentiaat Sociologie
                 Leerclaim.type:
                   - https://solid.data.vlaanderen.be/id/concept/Leercredential-Bewijstype/NietBeschikbaar
                   - https://solid.data.vlaanderen.be/id/concept/Leercredential-Bewijsstaat/Eindbewijs
@@ -572,34 +821,34 @@ components:
                       - https://solid.data.vlaanderen.be/id/concept/Leercredential-Onderwerp/312002
                       - https://solid.data.vlaanderen.be/id/concept/Leercredential-ISCEDStudiegebied/312
                     Leerspecificatie.titel:
-                      - '@language': nl
-                        '@value': Diploma Licentiaat Sociologie
+                      - "@language": nl
+                        "@value": Diploma Licentiaat Sociologie
                     Leerprestatiespecificatie.onderwerp:
-                      - '@type': Concept
+                      - "@type": Concept
                         Concept.notation:
-                          - '@language': nl
-                            '@value': "027034"
+                          - "@language": nl
+                            "@value": "027034"
                         Concept.preferredLabel:
-                          - '@language': nl
-                            '@value': Sociologie
+                          - "@language": nl
+                            "@value": Sociologie
                         Concept.inScheme: https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-Studierichting
                         Concept.topConceptOf: https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-Studierichting
-                      - '@type': Concept
+                      - "@type": Concept
                         Concept.notation:
-                          - '@language': nl
-                            '@value': "012345"
+                          - "@language": nl
+                            "@value": "012345"
                         Concept.preferredLabel:
-                          - '@language': nl
-                            '@value': Arbeidssociologie
+                          - "@language": nl
+                            "@value": Arbeidssociologie
                         Concept.inScheme: https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-Specialisatie
                         Concept.topConceptOf: https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-Specialisatie
-                      - '@type': Concept
+                      - "@type": Concept
                         Concept.notation:
-                          - '@language': nl
-                            '@value': "054321"
+                          - "@language": nl
+                            "@value": "054321"
                         Concept.preferredLabel:
-                          - '@language': nl
-                            '@value': Arbeidsorganisatie
+                          - "@language": nl
+                            "@value": Arbeidsorganisatie
                         Concept.inScheme: https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-DetailOnderwerp
                         Concept.topConceptOf: https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-DetailOnderwerp
                     Leerprestatiespecificatie.beinvloedDoor:
@@ -607,8 +856,8 @@ components:
                           - Leerspecificatie
                           - Leeractiviteitspecificatie
                         Leerspecificatie.titel:
-                          - '@language': nl
-                            '@value': Diploma Licentiaat Sociologie
+                          - "@language": nl
+                            "@value": Diploma Licentiaat Sociologie
                         Leeractiviteitspecificatie.instructietaal:
                           - http://publications.europa.eu/resource/authority/language/NLD
                 Leerclaim.toegekendDoor:
@@ -624,8 +873,8 @@ components:
                   Toekenningsproces.uitgevoerdDoor:
                     - type: Organisatie
                       Organisatie.voorkeursnaam:
-                        - '@language': nl
-                          '@value': Katholieke Universiteit Leuven
+                        - "@language": nl
+                          "@value": Katholieke Universiteit Leuven
                       Organisatie.identificator:
                         - type: Identificator
                           Identificator.notatie: "110131"
@@ -633,7 +882,149 @@ components:
                         - https://solid.data.vlaanderen.be/id/concept/Leercredential-Instantie/Universiteit
                         - https://solid.data.vlaanderen.be/id/concept/Leercredential-Schooltype/NietVanToepassing
           proof:
-            '@context': https://www.w3.org/ns/data-integrity/v1
+            "@context": https://www.w3.org/ns/data-integrity/v1
+            type: DataIntegrityProof
+            created: "2024-09-16T10:59:51.895Z"
+            cryptosuite: bbs-termwise-signature-2023
+            proofPurpose: assertionMethod
+            proofValue: ujOqVxVdvMVTDoICCgszXEa6NYJPHnE_-fg1nPAnfZ4j9AgOI8TMgzicqcbKNLBrkUL06UCqXSf_kAsTzaJ5SBzTsjWqYgUnHQJVSMT-oMiSDiCUcsavbTUhm6hapgjiaehe7_0Asw648C0yCtOaxGw
+            verificationMethod: did:example:issuer0#bls12_381-g2-pub001
+
+    licentiaat_sociologie_rq_01:
+      value:
+        scheme: diploma-rq-toekenningsdatum-after-2000-01-01
+        verifiableCredential:
+          "@context":
+            - https://www.w3.org/2018/credentials/v1
+            - https://www.w3.org/ns/data-integrity/v1
+            - https://solid.data.vlaanderen.be/doc/implementatiemodel/leercredential/2023-02-01/context/leercredential-ap.jsonld
+            - https://solid.data.vlaanderen.be/doc/implementatiemodel/skos/2023-02-01/context/skos-ap.jsonld
+          id: https://solid.api.vlaanderen.be/v1/credentials/0a781bac-9e99-4d81-9e58-642967be620d
+          Leercredential.identificator:
+            - type: Identificator
+              Identificator.notatie: https://solid.api.vlaanderen.be/v1/credentials/0a781bac-9e99-4d81-9e58-642967be620d
+          type:
+            - EuropeesDigitaalCredential
+            - Leercredential
+            - VerifiableCredential
+            - Credential
+          Credential.uitgiftedatum: "2022-08-11T13:15:26.544Z"
+          Credential.geldigVan: "2022-08-11T13:15:26.544Z"
+          expirationDate: "2024-08-11T13:15:26.544Z"
+          issuer: https://solid.api.vlaanderen.be/v1/webid#magda
+          EuropeesDigitaalCredential.voorstelling:
+            type: Voorstelling
+            Voorstelling.hoofdtaal: http://publications.europa.eu/resource/authority/language/NLD
+            Voorstelling.taal:
+              - http://publications.europa.eu/resource/authority/language/NLD
+            Voorstelling.titel:
+              - "@language": nl
+                "@value": Diploma Licentiaat Sociologie
+          credentialSubject:
+            id: https://webid.vlaanderen.be/profiles/11111111-1111-1111-1111-111111111111
+            GeregistreerdPersoon.registratie:
+              type: Identificator
+              Identificator.notatie: https://webid.vlaanderen.be/profiles/11111111-1111-1111-1111-111111111111
+            type:
+              - Persoon
+              - GeregistreerdPersoon
+            Persoon.heeftCredential:
+              - https://solid.api.vlaanderen.be/v1/credentials/0a781bac-9e99-4d81-9e58-642967be620d
+            Persoon.heeftClaim:
+              - id: https://solid.api.vlaanderen.be/v1/credentials/claims/leerclaims/e6247988-c016-47e7-8826-c21c2e14556a
+                type:
+                  - Leerclaim
+                  - Leerprestatie
+                Leerclaim.identificator:
+                  - type: Identificator
+                    Identificator.notatie: e6247988-c016-47e7-8826-c21c2e14556a
+                Leerclaim.authenticiteit: https://solid.data.vlaanderen.be/id/concept/Leercredential-Authenticiteit/Authentiek
+                Leerclaim.titel:
+                  - "@language": nl
+                    "@value": Diploma Licentiaat Sociologie
+                Leerclaim.type:
+                  - https://solid.data.vlaanderen.be/id/concept/Leercredential-Bewijstype/NietBeschikbaar
+                  - https://solid.data.vlaanderen.be/id/concept/Leercredential-Bewijsstaat/Eindbewijs
+                Leerclaim.uitgever: https://data.vlaanderen.be/id/organisatie/OVO001957
+                Leerprestatie.specificatie:
+                  - type:
+                      - Leerspecificatie
+                      - Leerprestatiespecificatie
+                      - Kwalificatie
+                    Leerprestatiespecificatie.type:
+                      - https://solid.data.vlaanderen.be/id/concept/Leercredential-Categorie/HogerOnderwijs
+                    Leerprestatiespecificatie.onderwijsniveau:
+                      - https://solid.data.vlaanderen.be/id/concept/Leercredential-Graad/Licentiaat
+                      - https://solid.data.vlaanderen.be/id/concept/Leercredential-Onderwijsvorm/NietVanToepassing
+                      - https://solid.data.vlaanderen.be/id/concept/Leercredential-ISCEDNiveau/5A
+                      - https://solid.data.vlaanderen.be/id/concept/Leercredential-VKSNiveauOnderwijskwalificatie/7
+                      - https://solid.data.vlaanderen.be/id/concept/Leercredential-VKSNiveauBeroepskwalificatie/NBS
+                    Leerprestatiespecificatie.studiegebied:
+                      - https://solid.data.vlaanderen.be/id/concept/Leercredential-Onderwerp/312002
+                      - https://solid.data.vlaanderen.be/id/concept/Leercredential-ISCEDStudiegebied/312
+                    Leerspecificatie.titel:
+                      - "@language": nl
+                        "@value": Diploma Licentiaat Sociologie
+                    Leerprestatiespecificatie.onderwerp:
+                      - "@type": Concept
+                        Concept.notation:
+                          - "@language": nl
+                            "@value": "027034"
+                        Concept.preferredLabel:
+                          - "@language": nl
+                            "@value": Sociologie
+                        Concept.inScheme: https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-Studierichting
+                        Concept.topConceptOf: https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-Studierichting
+                      - "@type": Concept
+                        Concept.notation:
+                          - "@language": nl
+                            "@value": "012345"
+                        Concept.preferredLabel:
+                          - "@language": nl
+                            "@value": Arbeidssociologie
+                        Concept.inScheme: https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-Specialisatie
+                        Concept.topConceptOf: https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-Specialisatie
+                      - "@type": Concept
+                        Concept.notation:
+                          - "@language": nl
+                            "@value": "054321"
+                        Concept.preferredLabel:
+                          - "@language": nl
+                            "@value": Arbeidsorganisatie
+                        Concept.inScheme: https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-DetailOnderwerp
+                        Concept.topConceptOf: https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-DetailOnderwerp
+                    Leerprestatiespecificatie.beinvloedDoor:
+                      - type:
+                          - Leerspecificatie
+                          - Leeractiviteitspecificatie
+                        Leerspecificatie.titel:
+                          - "@language": nl
+                            "@value": Diploma Licentiaat Sociologie
+                        Leeractiviteitspecificatie.instructietaal:
+                          - http://publications.europa.eu/resource/authority/language/NLD
+                Leerclaim.toegekendDoor:
+                  type: Toekenningsproces
+                  Toekenningsproces.kentToe:
+                    - https://solid.api.vlaanderen.be/v1/credentials/claims/leerclaims/e6247988-c016-47e7-8826-c21c2e14556a
+                  Toekenningsproces.locatie:
+                    type: Locatie
+                    Locatie.adres:
+                      - type: Adresvoorstelling
+                        Adresvoorstelling.land: http://publications.europa.eu/resource/authority/country/BEL
+                  Toekenningsproces.toekenningsdatum: "2001-06-30T00:00:00.000Z"
+                  Toekenningsproces.uitgevoerdDoor:
+                    - type: Organisatie
+                      Organisatie.voorkeursnaam:
+                        - "@language": nl
+                          "@value": Katholieke Universiteit Leuven
+                      Organisatie.identificator:
+                        - type: Identificator
+                          Identificator.notatie: "110131"
+                      Organisatie.classificatie:
+                        - https://solid.data.vlaanderen.be/id/concept/Leercredential-Instantie/Universiteit
+                        - https://solid.data.vlaanderen.be/id/concept/Leercredential-Schooltype/NietVanToepassing
+          proof:
+            "@context": https://www.w3.org/ns/data-integrity/v1
             type: DataIntegrityProof
             created: "2024-09-16T10:59:51.895Z"
             cryptosuite: bbs-termwise-signature-2023
@@ -645,7 +1036,7 @@ components:
       value:
         scheme: diploma-minimal
         verifiableCredential:
-          '@context':
+          "@context":
             - https://www.w3.org/2018/credentials/v1
             - https://www.w3.org/ns/data-integrity/v1
             - https://solid.data.vlaanderen.be/doc/implementatiemodel/leercredential/2023-02-01/context/leercredential-ap.jsonld
@@ -669,8 +1060,8 @@ components:
             Voorstelling.taal:
               - http://publications.europa.eu/resource/authority/language/NLD
             Voorstelling.titel:
-              - '@language': nl
-                '@value': Master of Science in de Biologie
+              - "@language": nl
+                "@value": Master of Science in de Biologie
           credentialSubject:
             id: https://webid.vlaanderen.be/profiles/11111111-1111-1111-1111-111111111111
             GeregistreerdPersoon.registratie:
@@ -691,8 +1082,8 @@ components:
                     Identificator.notatie: e6247988-c016-47e7-8826-c21c2e14556a
                 Leerclaim.authenticiteit: https://solid.data.vlaanderen.be/id/concept/Leercredential-Authenticiteit/Authentiek
                 Leerclaim.titel:
-                  - '@language': nl
-                    '@value': Master of Science in de Biologie
+                  - "@language": nl
+                    "@value": Master of Science in de Biologie
                 Leerclaim.type:
                   - https://solid.data.vlaanderen.be/id/concept/Leercredential-Bewijstype/Diploma
                   - https://solid.data.vlaanderen.be/id/concept/Leercredential-Bewijsstaat/Eindbewijs
@@ -714,16 +1105,16 @@ components:
                       - https://solid.data.vlaanderen.be/id/concept/Leercredential-Onderwerp/421001
                       - https://solid.data.vlaanderen.be/id/concept/Leercredential-ISCEDStudiegebied/421
                     Leerspecificatie.titel:
-                      - '@language': nl
-                        '@value': Master of Science in de Biologie
+                      - "@language": nl
+                        "@value": Master of Science in de Biologie
                     Leerprestatiespecificatie.onderwerp:
-                      - '@type': Concept
+                      - "@type": Concept
                         Concept.notation:
-                          - '@language': nl
-                            '@value': "027034"
+                          - "@language": nl
+                            "@value": "027034"
                         Concept.preferredLabel:
-                          - '@language': nl
-                            '@value': Biologie
+                          - "@language": nl
+                            "@value": Biologie
                         Concept.inScheme: https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-Studierichting
                         Concept.topConceptOf: https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-Studierichting
                     Leerprestatiespecificatie.beinvloedDoor:
@@ -731,8 +1122,8 @@ components:
                           - Leerspecificatie
                           - Leeractiviteitspecificatie
                         Leerspecificatie.titel:
-                          - '@language': nl
-                            '@value': Master of Science in de Biologie
+                          - "@language": nl
+                            "@value": Master of Science in de Biologie
                         Leeractiviteitspecificatie.instructietaal:
                           - http://publications.europa.eu/resource/authority/language/NLD
                 Leerclaim.toegekendDoor:
@@ -748,8 +1139,8 @@ components:
                   Toekenningsproces.uitgevoerdDoor:
                     - type: Organisatie
                       Organisatie.voorkeursnaam:
-                        - '@language': nl
-                          '@value': Katholieke Universiteit Leuven
+                        - "@language": nl
+                          "@value": Katholieke Universiteit Leuven
                       Organisatie.identificator:
                         - type: Identificator
                           Identificator.notatie: "110131"
@@ -757,7 +1148,7 @@ components:
                         - https://solid.data.vlaanderen.be/id/concept/Leercredential-Instantie/Universiteit
                         - https://solid.data.vlaanderen.be/id/concept/Leercredential-Schooltype/NietVanToepassing
           proof:
-            '@context': https://www.w3.org/ns/data-integrity/v1
+            "@context": https://www.w3.org/ns/data-integrity/v1
             type: DataIntegrityProof
             created: "2024-09-16T10:59:53.519Z"
             cryptosuite: bbs-termwise-signature-2023
@@ -765,5 +1156,126 @@ components:
             proofValue: urZLoBMWf9SOrnoGzi4olvcXQOIupmVVlj6SUOBVtfAc35fbLXjSDND0KmMy8RqcM9HIglCeHqO5bnd09IKaD_dW0q7e3MtRihs93g0ffJWD9mTiXmKSG0LlJOrqSaOi7O-_SozyWayl5cWQam8HGFw
             verificationMethod: did:example:issuer0#bls12_381-g2-pub001
 
-
-
+    masterofscience-biologie_rq_01:
+      value:
+        scheme: diploma-rq-toekenningsdatum-after-2000-01-01
+        verifiableCredential:
+          "@context":
+            - https://www.w3.org/2018/credentials/v1
+            - https://www.w3.org/ns/data-integrity/v1
+            - https://solid.data.vlaanderen.be/doc/implementatiemodel/leercredential/2023-02-01/context/leercredential-ap.jsonld
+            - https://solid.data.vlaanderen.be/doc/implementatiemodel/skos/2023-02-01/context/skos-ap.jsonld
+          id: https://solid.api.vlaanderen.be/v1/credentials/0a781bac-9e99-4d81-9e58-642967be620e
+          Leercredential.identificator:
+            - type: Identificator
+              Identificator.notatie: https://solid.api.vlaanderen.be/v1/credentials/0a781bac-9e99-4d81-9e58-642967be620e
+          type:
+            - EuropeesDigitaalCredential
+            - Leercredential
+            - VerifiableCredential
+            - Credential
+          Credential.uitgiftedatum: "2022-08-11T13:15:26.544Z"
+          Credential.geldigVan: "2022-08-11T13:15:26.544Z"
+          expirationDate: "2024-08-11T13:15:26.544Z"
+          issuer: https://solid.api.vlaanderen.be/v1/webid#magda
+          EuropeesDigitaalCredential.voorstelling:
+            type: Voorstelling
+            Voorstelling.hoofdtaal: http://publications.europa.eu/resource/authority/language/NLD
+            Voorstelling.taal:
+              - http://publications.europa.eu/resource/authority/language/NLD
+            Voorstelling.titel:
+              - "@language": nl
+                "@value": Master of Science in de Biologie
+          credentialSubject:
+            id: https://webid.vlaanderen.be/profiles/11111111-1111-1111-1111-111111111111
+            GeregistreerdPersoon.registratie:
+              type: Identificator
+              Identificator.notatie: https://webid.vlaanderen.be/profiles/11111111-1111-1111-1111-111111111111
+            type:
+              - Persoon
+              - GeregistreerdPersoon
+            Persoon.heeftCredential:
+              - https://solid.api.vlaanderen.be/v1/credentials/0a781bac-9e99-4d81-9e58-642967be620e
+            Persoon.heeftClaim:
+              - id: https://solid.api.vlaanderen.be/v1/credentials/claims/leerclaims/e6247988-c016-47e7-8826-c21c2e14556a
+                type:
+                  - Leerclaim
+                  - Leerprestatie
+                Leerclaim.identificator:
+                  - type: Identificator
+                    Identificator.notatie: e6247988-c016-47e7-8826-c21c2e14556a
+                Leerclaim.authenticiteit: https://solid.data.vlaanderen.be/id/concept/Leercredential-Authenticiteit/Authentiek
+                Leerclaim.titel:
+                  - "@language": nl
+                    "@value": Master of Science in de Biologie
+                Leerclaim.type:
+                  - https://solid.data.vlaanderen.be/id/concept/Leercredential-Bewijstype/Diploma
+                  - https://solid.data.vlaanderen.be/id/concept/Leercredential-Bewijsstaat/Eindbewijs
+                Leerclaim.uitgever: https://data.vlaanderen.be/id/organisatie/OVO001957
+                Leerprestatie.specificatie:
+                  - type:
+                      - Leerspecificatie
+                      - Leerprestatiespecificatie
+                      - Kwalificatie
+                    Leerprestatiespecificatie.type:
+                      - https://solid.data.vlaanderen.be/id/concept/Leercredential-Categorie/HogerOnderwijs
+                    Leerprestatiespecificatie.onderwijsniveau:
+                      - https://solid.data.vlaanderen.be/id/concept/Leercredential-Graad/Master
+                      - https://solid.data.vlaanderen.be/id/concept/Leercredential-Onderwijsvorm/NietVanToepassing
+                      - https://solid.data.vlaanderen.be/id/concept/Leercredential-ISCEDNiveau/5A
+                      - https://solid.data.vlaanderen.be/id/concept/Leercredential-VKSNiveauOnderwijskwalificatie/7
+                      - https://solid.data.vlaanderen.be/id/concept/Leercredential-VKSNiveauBeroepskwalificatie/NBS
+                    Leerprestatiespecificatie.studiegebied:
+                      - https://solid.data.vlaanderen.be/id/concept/Leercredential-Onderwerp/421001
+                      - https://solid.data.vlaanderen.be/id/concept/Leercredential-ISCEDStudiegebied/421
+                    Leerspecificatie.titel:
+                      - "@language": nl
+                        "@value": Master of Science in de Biologie
+                    Leerprestatiespecificatie.onderwerp:
+                      - "@type": Concept
+                        Concept.notation:
+                          - "@language": nl
+                            "@value": "027034"
+                        Concept.preferredLabel:
+                          - "@language": nl
+                            "@value": Biologie
+                        Concept.inScheme: https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-Studierichting
+                        Concept.topConceptOf: https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-Studierichting
+                    Leerprestatiespecificatie.beinvloedDoor:
+                      - type:
+                          - Leerspecificatie
+                          - Leeractiviteitspecificatie
+                        Leerspecificatie.titel:
+                          - "@language": nl
+                            "@value": Master of Science in de Biologie
+                        Leeractiviteitspecificatie.instructietaal:
+                          - http://publications.europa.eu/resource/authority/language/NLD
+                Leerclaim.toegekendDoor:
+                  type: Toekenningsproces
+                  Toekenningsproces.kentToe:
+                    - https://solid.api.vlaanderen.be/v1/credentials/claims/leerclaims/e6247988-c016-47e7-8826-c21c2e14556a
+                  Toekenningsproces.locatie:
+                    type: Locatie
+                    Locatie.adres:
+                      - type: Adresvoorstelling
+                        Adresvoorstelling.land: http://publications.europa.eu/resource/authority/country/BEL
+                  Toekenningsproces.toekenningsdatum: "2001-06-30T00:00:00.000Z"
+                  Toekenningsproces.uitgevoerdDoor:
+                    - type: Organisatie
+                      Organisatie.voorkeursnaam:
+                        - "@language": nl
+                          "@value": Katholieke Universiteit Leuven
+                      Organisatie.identificator:
+                        - type: Identificator
+                          Identificator.notatie: "110131"
+                      Organisatie.classificatie:
+                        - https://solid.data.vlaanderen.be/id/concept/Leercredential-Instantie/Universiteit
+                        - https://solid.data.vlaanderen.be/id/concept/Leercredential-Schooltype/NietVanToepassing
+          proof:
+            "@context": https://www.w3.org/ns/data-integrity/v1
+            type: DataIntegrityProof
+            created: "2024-09-16T10:59:53.519Z"
+            cryptosuite: bbs-termwise-signature-2023
+            proofPurpose: assertionMethod
+            proofValue: urZLoBMWf9SOrnoGzi4olvcXQOIupmVVlj6SUOBVtfAc35fbLXjSDND0KmMy8RqcM9HIglCeHqO5bnd09IKaD_dW0q7e3MtRihs93g0ffJWD9mTiXmKSG0LlJOrqSaOi7O-_SozyWayl5cWQam8HGFw
+            verificationMethod: did:example:issuer0#bls12_381-g2-pub001

@@ -6,6 +6,8 @@ import {RegistryWebserviceProxy} from "../proxies/RegistryWebserviceProxy.js";
 import cors from 'cors'
 import {documentLoaderAll} from "../documentloader.js";
 import {logv2} from "../utils.js";
+import {preprocessVC} from "../../__tests__/helpers.js";
+import {actors} from "../../__tests__/actors.js";
 
 const deriver = new Deriver(
     new RegistryWebserviceProxy(config.registry.baseUrl, config.registry.port),
@@ -45,6 +47,7 @@ if (serviceConfig.logging.enabled) {
 app.post('/derive', async (req, res) => {
   let derivedResult = undefined
   const {vcPairs, predicates, challenge} = req.body
+
   try {
     if (predicates) {
       console.log('RQ TIME!')
@@ -65,6 +68,29 @@ app.post('/derive', async (req, res) => {
     console.error(error)
     res.sendStatus(500)
   }
+})
+
+/**
+ * @swagger
+ * /sign:
+ *   post:
+ *     tags:
+ *        - Deriver service
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: verifiableCredential
+ *         in: body
+ *         required: true
+ *         type: object
+ */
+app.post('/sign', async (req, res) => {
+
+  let {verifiableCredential} = req.body
+  verifiableCredential = await preprocessVC(verifiableCredential)
+  // TODO: !!! Signing currently fixed to issuer0 keypair
+  const signedVc = await deriver.sign(verifiableCredential, [actors.issuer0])
+  res.send(signedVc)
 })
 
 app.listen(port, () => {

@@ -9,7 +9,7 @@ import {
   athumiSpecificPreprocessing, getNestedAttribute,
   logv2,
   matchVariableAssignments,
-  readJsonFile,
+  readJsonFile, redactControllerDoc,
   setNestedAttribute
 } from "../../src/utils.js";
 
@@ -28,9 +28,10 @@ const challenge = 'abc123'
 beforeEach(async () => {
   // Register (context: Issuer)
   await registry.clearRegistry()
-  await registry.register(issuer.id, issuer)
+  await registry.register(issuer.id,
+    redactControllerDoc(issuer) // redact secret key material
+  )
 })
-
 
 describe('E2E: Athumi', ()=>{
   vcResourceRecords
@@ -92,6 +93,7 @@ describe('E2E: Athumi', ()=>{
         /**
          * Execute RQ
          */
+          // TODO: remove duplicate parameter: predicates!!!
         const deriveResponse = await executeDeriveRequest(
           [{original: signedVc, disclosed: newFrame, predicates }],
           predicates,
