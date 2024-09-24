@@ -43,7 +43,7 @@ export async function executeDeriveRequest(vcPairs, predicates, challenge) {
  */
 export function loadVcResources(directory) {
   return fs.readdirSync(directory)
-    // TODO: filter (only keep .json or .jsonld files)
+    .filter(x => x.endsWith('.json')||x.endsWith('.jsonld'))
     .map(f => {
       const fpath = path.join(directory, f)
 
