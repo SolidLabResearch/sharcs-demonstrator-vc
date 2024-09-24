@@ -3,7 +3,6 @@ import {documentLoader as defaultDocumentLoader} from '../documentloader.js';
 import keypairsPublic from '../resources/keypairs-public.json' with {type: 'json'};
 import cLessThanPrvPub from "../resources/less_than_prv_pub_64.json" with {type: "json"}
 import cLessThanPubPrv from '../resources/less_than_pub_prv_64.json' with {type: 'json'};
-import {_frame, athumiSpecificPreprocessing, logv2, matchVariableAssignments, writeJsonFile} from "../utils.js";
 
 export class Deriver {
   constructor(registryProxy, documentLoader = defaultDocumentLoader) {

@@ -2,7 +2,8 @@ components:
   examples:
     bachelorofscience_biologie:
       value:
-        scheme: diploma-minimal
+        options:
+          scheme: diploma-minimal
         verifiableCredential:
           "@context":
             - https://www.w3.org/2018/credentials/v1
@@ -126,7 +127,8 @@ components:
 
     bachelorofscience_biologie_rq_01:
       value:
-        scheme: diploma-rq-toekenningsdatum-after-2000-01-01
+        options:
+          scheme: diploma-rq-toekenningsdatum-after-2000-01-01
         verifiableCredential:
           '@context':
             - https://www.w3.org/2018/credentials/v1
@@ -248,10 +250,10 @@ components:
             proofValue: utpRZNSH5vglRcSi-gd-rgDsuKwM5JQyyXYW5DipGkTJA9xp15fNWcsMJ_YxuYQS4-7b9sxOm_T7p1BxE6mRamGE-yVMetMd5i1XRkyIlVCYrsA5h2C6lpqKZWkyVroD595bhgEDHyy2bLkltRuboSQ
             verificationMethod: did:example:issuer0#bls12_381-g2-pub001
 
-
     getuigschrift_latijn-eerstegraad:
       value:
-        scheme: diploma-minimal
+        options:
+          scheme: diploma-minimal
         verifiableCredential:
           "@context":
             - https://www.w3.org/2018/credentials/v1
@@ -372,7 +374,8 @@ components:
 
     getuigschrift_latijn-eerstegraad_rq_01:
       value:
-        scheme: diploma-rq-toekenningsdatum-after-2000-01-01
+        options:
+          scheme: diploma-rq-toekenningsdatum-after-2000-01-01
         verifiableCredential:
           '@context':
             - https://www.w3.org/2018/credentials/v1
@@ -491,10 +494,10 @@ components:
             proofValue: ukPVSyEcfwp00yH1DA5CijvDypDjiXxOOhI6wIP_uAYGVOhS6pmEF_4kTg3Hmvf4vA101KzOlBhXIEkJj4iKN1qX7OHFq9KImquCGEmF5aUlSEENDYHMfNnJ8uPcdxvIzOgFCIle861TEFrmESfgYJQ
             verificationMethod: did:example:issuer0#bls12_381-g2-pub001
 
-
     opticien-beroepskennis:
       value:
-        scheme: diploma-minimal
+        options:
+          scheme: diploma-minimal
         verifiableCredential:
           "@context":
             - https://www.w3.org/2018/credentials/v1
@@ -623,7 +626,8 @@ components:
 
     opticien-beroepskennis_rq_01:
       value:
-        scheme: diploma-rq-toekenningsdatum-after-2000-01-01
+        options:
+          scheme: diploma-rq-toekenningsdatum-after-2000-01-01
         verifiableCredential:
           '@context':
             - https://www.w3.org/2018/credentials/v1
@@ -752,7 +756,8 @@ components:
 
     licentiaat_sociologie:
       value:
-        scheme: diploma-minimal
+        options:
+          scheme: diploma-minimal
         verifiableCredential:
           "@context":
             - https://www.w3.org/2018/credentials/v1
@@ -894,7 +899,8 @@ components:
 
     licentiaat_sociologie_rq_01:
       value:
-        scheme: diploma-rq-toekenningsdatum-after-2000-01-01
+        options:
+          scheme: diploma-rq-toekenningsdatum-after-2000-01-01
         verifiableCredential:
           '@context':
             - https://www.w3.org/2018/credentials/v1
@@ -1034,10 +1040,10 @@ components:
             proofValue: uj8eWRoQ7gG0JcuXfku4yGe-touAA-CeOyslj5M4ebzbFtXVZCgA6VbXQjJL1-oyL9VdUzVqiez95nzbj4a6NQT7_YxG8GtjEONAJOwLkGlukQEP9lWgNkiXPCcTQS5p9hM-FPdon4tm-g2Zb3D6LAA
             verificationMethod: did:example:issuer0#bls12_381-g2-pub001
 
-
     masterofscience-biologie:
       value:
-        scheme: diploma-minimal
+        options:
+          scheme: diploma-minimal
         verifiableCredential:
           "@context":
             - https://www.w3.org/2018/credentials/v1
@@ -1161,7 +1167,8 @@ components:
 
     masterofscience-biologie_rq_01:
       value:
-        scheme: diploma-rq-toekenningsdatum-after-2000-01-01
+        options:
+          scheme: diploma-rq-toekenningsdatum-after-2000-01-01
         verifiableCredential:
           '@context':
             - https://www.w3.org/2018/credentials/v1
@@ -1283,4 +1290,3 @@ components:
             proofValue: uk2Fk7GO97l2LYdtC6TefHuQPW0lWJBQbxZhe2hkkRg59OmyybhVPprcWpLnXfSSlJ-yCLRfKy0j7Q6zo4pQCUDhA1kgg63NxFdItCanWNFPTqaxXemyeyg7xgfRFpeF8BjiyvP0MODavtRFedhmuBA
             verificationMethod: did:example:issuer0#bls12_381-g2-pub001
 
-       

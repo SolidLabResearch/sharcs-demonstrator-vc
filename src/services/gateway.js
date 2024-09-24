@@ -148,8 +148,14 @@ const schemeMap = Object.fromEntries(
  *         description: Internal server error.
  */
 app.post('/credentials/derive', async (req, res) => {
-  const {verifiableCredential, scheme} = req.body;
+  const {verifiableCredential, options } = req.body;
+
+  if (!!!options)
+    res.sendStatus(400) // Bad Request
+
+  const { scheme } = options;
   if (!Object.keys(schemeMap).includes(scheme)) {
+    console.error(`scheme: ${scheme} does not exist!`)
     res.sendStatus(400) // Bad Request
   }
   const challenge = 'abc123' // TODO
@@ -162,10 +168,10 @@ app.post('/credentials/derive', async (req, res) => {
 
   if(!!predicates) {
     // RQ
-    // ?. Find & Match variable assignments
+    // Find & Match variable assignments
     const matchedVariableAssignments = matchVariableAssignments(disclosed)
-    // ?. Process matched var assignments
-    const [ma,] = matchedVariableAssignments
+    // Process matched var assignments
+    const [ma,] = matchedVariableAssignments // TODO: iteratively process all matched var assignments (currently only 1st)
     const updatePath = ma.pathElements.slice(0, -1)
     setNestedAttribute(newFrame, updatePath, getNestedAttribute(disclosed, updatePath))
   }

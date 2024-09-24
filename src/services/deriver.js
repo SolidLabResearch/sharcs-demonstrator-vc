@@ -69,6 +69,7 @@ app.post('/derive', async (req, res) => {
 })
 
 /**
+ * TODO: safe delete
  * @swagger
  * /sign:
  *   post:
