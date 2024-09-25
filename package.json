@@ -7,6 +7,10 @@
   "scripts": {
     "start": "pm2 start ecosystem.config.cjs",
     "stop": "pm2 stop all",
+    "docker:build": "./docker-build-image.sh",
+    "docker:start": "docker run --rm --name carcharodon -p 8080:8080 -p 3000:3000 -p 4000:4000 sharcs-poc:latest",
+    "docker:stop": "docker stop -t 0 carcharodon",
+    "docker:pm2:logs": "docker exec -it carcharodon pm2 logs",
     "service:gateway": "node src/services/gateway.js",
     "service:gateway:watch": "nodemon src/services/gateway.js",
     "service:deriver": "node src/services/deriver.js",

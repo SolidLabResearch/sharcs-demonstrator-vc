@@ -1,6 +1,6 @@
 const baseUrl = 'http://localhost';
 let config = {
-    gateway: { baseUrl, port: 80, logging: {enabled: true, body: false} },
+    gateway: { baseUrl, port: 8080, logging: {enabled: true, body: false} },
     derive: { baseUrl,  port: 3000, logging: {enabled: true, body: false} },
     registry: { baseUrl,  port: 4000, logging: {enabled: true, body: false}, preloadExampleIdentities: true },
 }

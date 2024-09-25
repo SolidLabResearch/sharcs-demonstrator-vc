@@ -29,7 +29,7 @@ applied on Verifiable Credentials.
 Each service's API is documented according to the Open API Specification 3.0.0.
 Once the services are started (for which you should follow [these instruction](#usage)).
 As shown in the following figure,
-each service API documentation can be found at <http://localhost/api-docs>.
+each service API documentation can be found at <http://localhost:8080/api-docs>.
 
 ![Swagger Service API Documentation](./img/swagger-api-docs.png)
 
@@ -74,8 +74,8 @@ npm run start
 #### Docker setup
 
 ```bash
-./docker-build-image.sh
-docker run --rm --name carcharodon -p80:80 -p 3000:3000 -p 4000:4000 sharcs-poc:latest
+npm run docker:build
+npm run docker:start
 ```
 
 ### Run tests
@@ -88,7 +88,7 @@ npm run test
 
 ### Teardown
 
-Tearding down the test setup depends on the chosen test setup (i.e., [local](#local-setup) or [Docker](#docker-setup)) and is explained in the following. 
+Tearing down the test setup depends on the chosen test setup (i.e., [local](#local-setup) or [Docker](#docker-setup)) and is explained in the following. 
 
 #### Local teardown
 
@@ -103,5 +103,5 @@ pm2 stop all
 Running Docker containers can be stopped as follows:
 
 ```bash
-docker ps -aq | xargs docker stop -t 0
+npm run docker:stop
 ```
