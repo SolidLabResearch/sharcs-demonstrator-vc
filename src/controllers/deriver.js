@@ -1,11 +1,12 @@
 import * as zjp from '@zkp-ld/jsonld-proofs';
-import {documentLoader} from '../documentloader.js';
+import {documentLoader as defaultDocumentLoader} from '../documentloader.js';
 import keypairsPublic from '../resources/keypairs-public.json' with {type: 'json'};
 import cLessThanPrvPub from "../resources/less_than_prv_pub_64.json" with {type: "json"}
 import cLessThanPubPrv from '../resources/less_than_pub_prv_64.json' with {type: 'json'};
 
 export class Deriver {
-  constructor(registryProxy) {
+  constructor(registryProxy, documentLoader = defaultDocumentLoader) {
+    this.documentLoader = documentLoader;
     this.registry = registryProxy;
     this.circuits = {
       [cLessThanPrvPub.id]: cLessThanPrvPub,
@@ -17,15 +18,45 @@ export class Deriver {
   }
 
   async resolveControllerDocumentsForVcPairs(vcPairs) {
+    if(!Array.isArray(vcPairs))
+      throw new Error('VC Pairs should be an array!')
+    if(Object.entries(vcPairs).length <= 0)
+      throw new Error('There are no VC Pairs')
 
     return await Promise.all(
-        vcPairs.flatMap(({original}) => original.issuer)
+        vcPairs.flatMap(({original}) => {
+          let issuer = undefined
+          if('https://www.w3.org/2018/credentials#issuer' in original)
+            issuer = original['https://www.w3.org/2018/credentials#issuer']['@id']
+          else
+            issuer = original['issuer']
+
+          return issuer
+        })
             .map(async (issuer) => {
+              if(issuer === undefined)
+                throw new Error('Issuer is undefined!')
               return await this.registry.resolve(issuer)
             })
     )
+  }
 
+  async resolvePublicKeysForVP(vp) {
+    if(!vp.type === 'VerifiablePresentation')
+      throw new Error('Input object is not a VP')
+    let { verifiableCredential } = vp;
 
+    if(!Array.isArray(verifiableCredential))
+      verifiableCredential = [verifiableCredential]
+    const identifiersToResolve = verifiableCredential
+      .map(vci => vci.proof.verificationMethod)
+      .map(vm => vm.split('#')[0])
+
+    const controllerDocs = await Promise.all(
+      identifiersToResolve.map(async (id)=> await this.registry.resolve(id))
+    )
+    // TODO: check whether nr. resolved controller docs === nr. identifiersToResolve; if not --> Error!
+    return controllerDocs
   }
 
   async sd(vcPairs, challenge){
@@ -35,7 +66,7 @@ export class Deriver {
     const deriveResult = await zjp.deriveProof(
         vcPairs,
         resolvedControllerDocuments,
-        documentLoader,
+        this.documentLoader,
         deriveOptions
     )
     return deriveResult
@@ -43,29 +74,42 @@ export class Deriver {
 
   async rq(vcPairs, predicates, challenge){
     const resolvedControllerDocuments = await this.resolveControllerDocumentsForVcPairs(vcPairs);
+    const deriveOptions = {
+        challenge, predicates, circuits: this.circuits
+    }
 
-    const deriveOptions = { challenge, predicates, circuits: this.circuits}
-    return await zjp.deriveProof(
-          vcPairs,
-          resolvedControllerDocuments,
-          documentLoader,
-          deriveOptions
-      )
+    //
+    const vcVerificationResults = await Promise.all(
+      vcPairs.map(async (pair) =>  await this.verify(pair.original, resolvedControllerDocuments))
+    )
+    const notVerifiedCredentials = vcVerificationResults.filter(vr => !vr.verified)
+
+    if(notVerifiedCredentials.length > 0)
+      throw new Error(`${notVerifiedCredentials.length}/${vcPairs.length} VCs could not be verified! Cannot proceed to range query derivation!`)
+
+
+    const result = await await zjp.deriveProof(
+      vcPairs,
+      resolvedControllerDocuments,
+      this.documentLoader,
+      deriveOptions
+    )
+    return result;
   }
 
   async sign(unsigned, privateKeypairs){
-    return await zjp.sign(unsigned, privateKeypairs, documentLoader)
+    return await zjp.sign(unsigned, privateKeypairs, this.documentLoader)
   }
 
   async verify(vc, keypairs) {
-    return await zjp.verify(vc, keypairs, documentLoader)
+    return await zjp.verify(vc, keypairs, this.documentLoader)
   }
 
   async verifyProof(vp, publicKeys, challenge){
     return await zjp.verifyProof(
         vp,
         publicKeys,
-        documentLoader,
+        this.documentLoader,
         {
           challenge,
           snarkVerifyingKeys: this.snarkVerifyingKeys

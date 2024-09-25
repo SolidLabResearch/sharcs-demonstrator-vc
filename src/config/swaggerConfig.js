@@ -31,9 +31,11 @@ const swaggerOptions = {
     apis: [
         './src/services/gateway.js',
         // Note: comment following path out to hide backend services in the API docs
-        './src/services/*.js'
+        './src/services/*.js',
+        './src/swagger/components.yaml'
+        // './src/swagger/components.json'
 
-    ],
+    ]
 };
 
 const swaggerSpec = swaggerJSDoc(swaggerOptions);

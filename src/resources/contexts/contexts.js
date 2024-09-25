@@ -8,6 +8,8 @@ import diploma from './diploma.json' with { type: "json" };
 
 export const DATA_INTEGRITY_CONTEXT = 'https://www.w3.org/ns/data-integrity/v1';
 
+
+
 export const CONTEXTS = {
   'https://www.w3.org/2018/credentials/v1': credentials_v1,
   'https://schema.org/': schemaorg,

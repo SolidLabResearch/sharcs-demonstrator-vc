@@ -20,8 +20,14 @@
     "test:service:registry:watch": "jest --watch __tests__/services/registry.test.js",
     "test:service:gateway": "jest __tests__/services/gateway.test.js",
     "test:service:gateway:watch": "jest --watch __tests__/services/gateway.test.js",
-    "test:e2e": "jest --watch __tests__/e2e/index.test.js",
-    "test:e2e:watch": "jest --watch __tests__/e2e/index.test.js"
+    "test:vc-athumi": "jest __tests__/vc.test.js",
+    "test:vc-athumi:watch": "jest --watch __tests__/vc.test.js",
+    "test:e2e": "npm run test:e2e:example && npm run test:e2e:athumi",
+    "test:e2e:example": "jest __tests__/e2e/index.test.js",
+    "test:e2e:example:watch": "jest --watch __tests__/e2e/index.test.js",
+    "test:e2e:athumi": "jest __tests__/e2e/athumi.test.js",
+    "test:e2e:athumi:watch": "jest --watch __tests__/e2e/athumi.test.js",
+    "test": "jest --watch __tests__/**/*.test.js --runInBand"
   },
   "keywords": [],
   "author": "Gertjan De Mulder",
@@ -32,6 +38,7 @@
     "cors": "^2.8.5",
     "deep-diff": "^1.0.2",
     "express": "^4.19.2",
+    "json-tree-walker": "^1.1.4",
     "jsonld": "^8.3.2",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1"

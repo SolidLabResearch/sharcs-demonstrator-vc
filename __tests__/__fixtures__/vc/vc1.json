@@ -19,7 +19,10 @@
     "degreeLevel": "https://schema.org/Bachelor",
     "degreeMajor": "Mechanical Engineering",
     "degreeMinor": "Mathematics",
-    "graduationDate": "2023-01-01",
+    "graduationDate":  {
+      "@value": "2023-01-01T00:00:00.000Z",
+      "@type": "xsd:dateTime"
+    },
     "gradePointAverage": {
       "@value": "3",
       "@type": "xsd:integer"

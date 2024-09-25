@@ -19,16 +19,15 @@
     "degreeLevel": "https://schema.org/Bachelor",
     "degreeMajor": "Mechanical Engineering",
     "degreeMinor": "Mathematics",
-    "graduationDate":  {
-      "@value": "2023-01-01T00:00:00.000Z",
+    "graduationDate": {
+      "@value": "_:Y",
       "@type": "xsd:dateTime"
     },
     "gradePointAverage": {
-      "@value": "_:Y",
+      "@value": "3",
       "@type": "xsd:integer"
     },
     "awardingInstitution": "https://ugent.be"
-    
   },
   "proof": {
     "type": "DataIntegrityProof",

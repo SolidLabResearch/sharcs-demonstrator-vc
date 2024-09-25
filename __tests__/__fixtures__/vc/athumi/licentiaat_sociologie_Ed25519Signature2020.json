@@ -1,0 +1,223 @@
+{
+    "@context": [
+      "https://solid.data.vlaanderen.be/doc/implementatiemodel/leercredential/2023-02-01/context/leercredential-ap.jsonld",
+      "https://solid.data.vlaanderen.be/doc/implementatiemodel/skos/2023-02-01/context/skos-ap.jsonld",
+      "https://www.w3.org/2018/credentials/v1",
+      "https://w3id.org/vc-revocation-list-2020/v1",
+      "https://w3id.org/security/suites/ed25519-2020/v1"
+    ],
+    "id": "https://solid.api.vlaanderen.be/v1/credentials/0a781bac-9e99-4d81-9e58-642967be620d",
+    "Leercredential.identificator": [
+      {
+        "type": "Identificator",
+        "Identificator.notatie": "https://solid.api.vlaanderen.be/v1/credentials/0a781bac-9e99-4d81-9e58-642967be620d"
+      }
+    ],
+    "type": [
+      "EuropeesDigitaalCredential",
+      "Leercredential",
+      "VerifiableCredential",
+      "Credential"
+    ],
+    "Credential.uitgiftedatum": "2022-08-11T13:15:26.544Z",
+    "Credential.geldigVan": "2022-08-11T13:15:26.544Z",
+    "expirationDate": "2024-08-11T13:15:26.544Z",
+    "issuer": "https://solid.api.vlaanderen.be/v1/webid#magda",
+    "EuropeesDigitaalCredential.voorstelling": {
+      "type": "Voorstelling",
+      "Voorstelling.hoofdtaal": "http://publications.europa.eu/resource/authority/language/NLD",
+      "Voorstelling.taal": [
+        "http://publications.europa.eu/resource/authority/language/NLD"
+      ],
+      "Voorstelling.titel": [
+        {
+          "@language": "nl",
+          "@value": "Diploma Licentiaat Sociologie"
+        }
+      ]
+    },
+    "credentialSubject": {
+      "id": "https://webid.vlaanderen.be/profiles/11111111-1111-1111-1111-111111111111",
+      "GeregistreerdPersoon.registratie":  {
+        "type": "Identificator",
+        "Identificator.notatie": "https://webid.vlaanderen.be/profiles/11111111-1111-1111-1111-111111111111"
+      },
+      "type": [
+        "Persoon",
+        "GeregistreerdPersoon"
+      ],
+      "Persoon.heeftCredential": [
+        "https://solid.api.vlaanderen.be/v1/credentials/0a781bac-9e99-4d81-9e58-642967be620d"
+      ],
+      "Persoon.heeftClaim": [
+        {
+          "id": "https://solid.api.vlaanderen.be/v1/credentials/claims/leerclaims/e6247988-c016-47e7-8826-c21c2e14556a",
+          "type": [
+            "Leerclaim",
+            "Leerprestatie"
+          ],
+          "Leerclaim.identificator": [
+            {
+              "type": "Identificator",
+              "Identificator.notatie": "e6247988-c016-47e7-8826-c21c2e14556a"
+            }
+          ],
+          "Leerclaim.authenticiteit": "https://solid.data.vlaanderen.be/id/concept/Leercredential-Authenticiteit/Authentiek",
+          "Leerclaim.titel": [
+            {
+              "@language": "nl",
+              "@value": "Diploma Licentiaat Sociologie"
+            }
+          ],
+          "Leerclaim.type": [
+            "https://solid.data.vlaanderen.be/id/concept/Leercredential-Bewijstype/NietBeschikbaar",
+            "https://solid.data.vlaanderen.be/id/concept/Leercredential-Bewijsstaat/Eindbewijs"
+          ],
+          "Leerclaim.uitgever": "https://data.vlaanderen.be/id/organisatie/OVO001957",
+          "Leerprestatie.specificatie": [
+            {
+              "type": [
+                "Leerspecificatie",
+                "Leerprestatiespecificatie",
+                "Kwalificatie"
+              ],
+              "Leerprestatiespecificatie.type": [
+                "https://solid.data.vlaanderen.be/id/concept/Leercredential-Categorie/HogerOnderwijs"
+              ],
+              "Leerprestatiespecificatie.onderwijsniveau": [
+                "https://solid.data.vlaanderen.be/id/concept/Leercredential-Graad/Licentiaat",
+                "https://solid.data.vlaanderen.be/id/concept/Leercredential-Onderwijsvorm/NietVanToepassing",
+                "https://solid.data.vlaanderen.be/id/concept/Leercredential-ISCEDNiveau/5A",
+                "https://solid.data.vlaanderen.be/id/concept/Leercredential-VKSNiveauOnderwijskwalificatie/7",
+                "https://solid.data.vlaanderen.be/id/concept/Leercredential-VKSNiveauBeroepskwalificatie/NBS"
+              ],
+              "Leerprestatiespecificatie.studiegebied": [
+                "https://solid.data.vlaanderen.be/id/concept/Leercredential-Onderwerp/312002",
+                "https://solid.data.vlaanderen.be/id/concept/Leercredential-ISCEDStudiegebied/312"
+              ],
+              "Leerspecificatie.titel": [
+                {
+                  "@language": "nl",
+                  "@value": "Diploma Licentiaat Sociologie"
+                }
+              ],
+              "Leerprestatiespecificatie.onderwerp": [
+                {
+                  "@type": "Concept",
+                  "Concept.notation": [
+                    {
+                      "@language": "nl",
+                      "@value": "027034"
+                    }
+                  ],
+                  "Concept.preferredLabel": [
+                    {
+                      "@language": "nl",
+                      "@value": "Sociologie"
+                    }
+                  ],
+                  "Concept.inScheme": "https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-Studierichting",
+                  "Concept.topConceptOf": "https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-Studierichting"
+                },
+                {
+                  "@type": "Concept",
+                  "Concept.notation": [
+                    {
+                    "@language": "nl",
+                    "@value": "012345"
+                    }
+                  ],
+                  "Concept.preferredLabel": [
+                    {
+                      "@language": "nl",
+                      "@value": "Arbeidssociologie"
+                    }
+                  ],
+                  "Concept.inScheme": "https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-Specialisatie",
+                  "Concept.topConceptOf": "https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-Specialisatie"
+                },
+                {
+                  "@type": "Concept",
+                  "Concept.notation": [
+                    {
+                      "@language": "nl",
+                      "@value": "054321"
+                    }
+                  ],
+                  "Concept.preferredLabel": [
+                    {
+                      "@language": "nl",
+                      "@value": "Arbeidsorganisatie"
+                    }
+                  ],
+                  "Concept.inScheme": "https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-DetailOnderwerp",
+                  "Concept.topConceptOf": "https://solid.data.vlaanderen.be/id/conceptscheme/Leercredential-DetailOnderwerp"
+                }
+              ],
+              "Leerprestatiespecificatie.beinvloedDoor": [
+                {
+                  "type": [
+                    "Leerspecificatie",
+                    "Leeractiviteitspecificatie"
+                  ],
+                  "Leerspecificatie.titel": [
+                    {
+                      "@language": "nl",
+                      "@value": "Diploma Licentiaat Sociologie"
+                    }
+                  ],
+                  "Leeractiviteitspecificatie.instructietaal": [
+                    "http://publications.europa.eu/resource/authority/language/NLD"
+                  ]
+                }
+              ]
+            }
+          ],
+          "Leerclaim.toegekendDoor": {
+            "type": "Toekenningsproces",
+            "Toekenningsproces.kentToe": [
+              "https://solid.api.vlaanderen.be/v1/credentials/claims/leerclaims/e6247988-c016-47e7-8826-c21c2e14556a"
+            ],
+            "Toekenningsproces.locatie": {
+              "type": "Locatie",
+              "Locatie.adres": [
+                {
+                  "type": "Adresvoorstelling",
+                  "Adresvoorstelling.land": "http://publications.europa.eu/resource/authority/country/BEL"
+                }
+              ]
+            },
+            "Toekenningsproces.toekenningsdatum": "2001-06-30T00:00:00.000Z",
+            "Toekenningsproces.uitgevoerdDoor": [
+              {
+                "type": "Organisatie",
+                "Organisatie.voorkeursnaam": [
+                  {
+                    "@language": "nl",
+                    "@value": "Katholieke Universiteit Leuven"
+                  }
+                ],
+                "Organisatie.identificator": [
+                  {
+                    "type": "Identificator",
+                    "Identificator.notatie": "110131"
+                  }
+                ],
+                "Organisatie.classificatie": [
+                  "https://solid.data.vlaanderen.be/id/concept/Leercredential-Instantie/Universiteit",
+                  "https://solid.data.vlaanderen.be/id/concept/Leercredential-Schooltype/NietVanToepassing"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "proof": {
+      "type": "Ed25519Signature2020",
+      "created": "2022-08-11T13:15:26.544Z",
+      "verificationMethod": "https://solid.api.vlaanderen.be/v1/issuers/123/keys#key-0",
+      "proofPurpose": "assertionMethod",
+      "proofValue": "z5SpZtDGGz5a89PJbQT2sgbRUiyyAGhhgjcf86aJHfYcfvPjxn6vej5na6kUzmw1jMAR9PJU9mowshQFFdGmDN14D"
+    }
+  }

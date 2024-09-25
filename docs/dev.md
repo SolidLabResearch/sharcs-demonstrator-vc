@@ -18,6 +18,27 @@
                 - `challenge`: Challenge string for the blind signature.
             - Output: Verifiable Presentation with derived credentials.
 
+## Debugging JSON-LD Errors
+
+Debugging VC test: `bachelorofscience_biologie_Ed25519Signature2020.json`
+
+- Expand: PASS
+- Verify:
+  - Code: invalid property | Property: created ; Expanded property: created 
+  - Code: invalid property | Property: created ; Expanded property: controller
+  - etc.
+
+New approach: Create an update version of the VC, but using recent contexts (i.e., Data Integrity Proof) and signed using the bbs termwise 2023 suite that supports RQ and SD.
+
+- ⚠️ Resigning with 'bbs-termwise-signature-2023' works.
+- ⚠️ Verification of resigned VC with 'bbs-termwise-signature-2023' works.
+- 
+
+
+
+
+
+
 ## Resources
 
 Swagger docs
