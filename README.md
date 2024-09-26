@@ -15,6 +15,7 @@ This repository provides a PoC for applying **selective disclosure** and **range
     - [Configuration](#configuration)
   - [Tests](#tests)
     - [Teardown](#teardown)
+  - [Resources](#resources)
   - [License](#license)
 
 ## Overview
@@ -80,7 +81,8 @@ the holder minimizes one of its credentials. In order to do that, the holder exe
 ### Configuration
 
 - Contexts: this PoC uses pre-downloaded contexts (cfr. [`./src/resources/contexts`](./src/resources/contexts/)) and, thereby, does not rely on public resources/internet connection.
-- Credentials: the example diploma credentials can be found at </br>
+- Credentials:
+  - The [original diploma credentials](./__tests__/__fixtures__/vc/athumi/) are signed using the `Ed25519` cryptosuite which does not support selective disclosure and range query proofs. Therefore, several transformations (i.e., preprocessing & resigning using the `bbs-termwise-signature-2023` cryptosuite) were required (cfr., [`E2E: Athumi` testsuite](./__tests__/e2e/athumi.test.js)). The updated version of these credentials can be found at </br>
 [`./__tests__/__fixtures__/vc/athumi/bbs-termwise-signature-2023/`](./__tests__/__fixtures__/vc/athumi/bbs-termwise-signature-2023/).
 - Selective disclosure: JSON-LD Framing is used to describe which attributes to selectively disclose. The JSON-LD Frames used in this PoC can be found at </br>
 [`./__tests__/__fixtures__/selective-disclosure/athumi/`](./__tests__/__fixtures__/selective-disclosure/athumi/).
@@ -109,6 +111,17 @@ The running services can be stopped as follows:
 ```bash
 npm run stop
 ```
+
+## Resources
+
+To support selective disclosure and range query proofs,
+this PoC uses <https://github.com/zkp-ld/jsonld-proofs>.
+
+JSON-LD Framing is used to express the disclosure documents.
+The interested reader can find more details in [JSON-LD 1.1 Framing
+](https://www.w3.org/TR/json-ld11-framing/).
+The adventurous developer can explore and experiment with JSON-LD Frames using the
+[JSON-LD Playground](https://json-ld.org/playground/).
 
 
 ## License
