@@ -47,14 +47,16 @@ the holder minimizes one of its credentials. In order to do that, the holder exe
 - (#4) Upon receiving the minimized VP, the verifier needs to verify the authenticity and integrity of the data.
   For this, the verifier needs to resolve the issuer's ID.
 
-
-
+  
 ## Usage
 
 ```bash
 npm install
 npm run start
 ```
+
+Navigate to
+<http://localhost:8080/api-docs> to explore the Swagger API Docs.
 
 ## Tests
 
