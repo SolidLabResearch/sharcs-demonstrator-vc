@@ -86,8 +86,14 @@ const schemeMap = Object.fromEntries(
  * @swagger
  * /credentials/derive:
  *   post:
- *     summary: Derives a Verifiable Credential
- *     description: Takes a Verifiable Credential as input and derives a new credential based on a minimization scheme.
+ *     summary: Allows for applying selective disclosure (SD) and range query (RQ) proofs on Verifiable Credentials (VCs).
+ *     description: Takes a Verifiable Credential and minimization scheme as input and results in a Verifiable Presentation
+ *      (VP) containing the derived credential.
+ *      The current examples allow you to apply two different minimization schemes
+ *      on different diploma credentials. More specifically, scheme "diploma-minimal" selectively discloses a subset of
+ *      the diploma credential's attributes,
+ *      while "diploma-rq-toekenningsdatum-after-2000-01-01" creates a range query proof allowing the holder to prove
+ *      that the diploma credential's rewarding date is post 01/01/2000.
  *     tags:
  *       - Gateway service
  *     requestBody:
