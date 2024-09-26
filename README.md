@@ -6,10 +6,19 @@ applied on Verifiable Credentials.
 **Outline**
 
 - [README](#readme)
-  - [Features](#features)
-    - [Components](#components)
-  - [Installation](#installation)
+  - [Overview](#overview)
+    - [Services](#services)
+      - [Documentation](#documentation)
+    - [Sequence flow](#sequence-flow)
+  - [Usage](#usage)
   - [Tests](#tests)
+    - [Setup](#setup)
+      - [Local setup](#local-setup)
+      - [Docker setup](#docker-setup)
+    - [Run tests](#run-tests)
+    - [Teardown](#teardown)
+      - [Local teardown](#local-teardown)
+      - [Docker teardown](#docker-teardown)
 
 ## Overview
 
