@@ -44,7 +44,7 @@ const swaggerOptions = {
         openapi: '3.0.0',
         info: {
             title: 'SHARCS APIs',
-            version: '0.0.1',
+            version: '0.0.2',
             description: 'Documentation for the SHARCS APIs',
             contact: {
                 name: 'Gertjan De Mulder',
