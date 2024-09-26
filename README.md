@@ -63,7 +63,6 @@ Navigate to
 Before executing tests,
 make sure that all services are up and running.
 These services can be run **locally** or in a **Docker** container.
-> More information about the tests can be found in [here](./docs/tests.md)
 
 ### Setup
 
