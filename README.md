@@ -1,7 +1,6 @@
 # README
 
-This repository enables **selective disclosure** and **range query proofs**,
-applied on Verifiable Credentials.
+This repository provides a PoC for applying **selective disclosure** and **range query proofs** on Verifiable Credentials.
 
 **Outline**
 
