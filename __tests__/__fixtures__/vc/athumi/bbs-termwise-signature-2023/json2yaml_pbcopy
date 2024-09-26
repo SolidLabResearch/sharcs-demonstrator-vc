@@ -1,4 +1,0 @@
-set -e
-set -u
-
-yq --input-format json -oy $1 |pbcopy
