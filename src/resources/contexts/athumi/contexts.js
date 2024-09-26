@@ -7,11 +7,9 @@ import suiteContext from "./suite.json" with { type: "json" };
 import leercredentialContext from "./leercredential-ap.json" with { type: "json" };
 import leercredentialskosContext from "./skos-ap.json" with { type: "json" };
 
-// added
 import revocationListContext from "./revocationlist.json" with { type: "json" };
 import data_integrity_v1 from '../data-integrity-v1.json' with { type: "json" };
 import {DATA_INTEGRITY_CONTEXT} from "../contexts.js";
-import * as assert from "node:assert";
 
 const mocks = {
     magda: {
