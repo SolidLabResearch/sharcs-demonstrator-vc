@@ -86,7 +86,7 @@ const schemeMap = Object.fromEntries(
  * @swagger
  * /credentials/derive:
  *   post:
- *     summary: Allows for applying selective disclosure (SD) and range query (RQ) proofs on Verifiable Credentials (VCs).
+ *     summary: Apply selective disclosure (SD) and range query (RQ) proofs on Verifiable Credentials (VCs).
  *     description: Takes a Verifiable Credential and minimization scheme as input and results in a Verifiable Presentation
  *      (VP) containing the derived credential.
  *      The current examples allow you to apply two different minimization schemes
@@ -129,7 +129,9 @@ const schemeMap = Object.fromEntries(
  *                  properties:
  *                      method:
  *                          type: string
- *                          example: "diploma-minimal"
+ *                          examples:
+ *                            - "diploma-minimal"
+ *                            - "diploma-rq-toekenningsdatum-after-2000-01-01"
  *               verifiableCredential:
  *                 type: object
  *                 description: A verifiable credential in JSON-LD or JWT format.
@@ -201,6 +203,7 @@ app.post('/credentials/derive', async (req, res) => {
  *
  * /schemes:
  *   get:
+ *     summary: Retrieve the available minimization schemes.
  *     tags:
  *      - Gateway service
  *     produces:
