@@ -18,18 +18,15 @@ applied on Verifiable Credentials.
 ### Services
 
 - Backend
-  - Registry is used to register and resolve public key material.
-  - Signer is used to sign an (unsigned) credential.
-  - Deriver allows for selective disclosure and range queries.
+  - **Registry** is used to register and resolve public key material.
+  - **Deriver** allows for selective disclosure and range queries.
 - Public
-  - Gateway is exposed to the end-users. Internally, the Gateway service coordinates how the backend services work together to apply minimization.
+  - **Gateway** is exposed to the end-users. Internally, the Gateway service coordinates the backend services.
 
 #### Documentation
 
 Each service's API is documented according to the Open API Specification 3.0.0.
-Once the services are started (for which you should follow [these instruction](#usage)).
-As shown in the following figure,
-each service API documentation can be found at <http://localhost:8080/api-docs>.
+Once the services are started (for which you should follow [these instructions](#usage)), API documentation can be found at <http://localhost:8080/api-docs>.
 
 ![Swagger Service API Documentation](./img/swagger-api-docs.png)
 
