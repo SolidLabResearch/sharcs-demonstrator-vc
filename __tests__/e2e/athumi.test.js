@@ -53,19 +53,16 @@ describe('E2E: Athumi', ()=>{
         const oldFrame = readJsonFile('__tests__/__fixtures__/range-query/athumi/frame-rq-toekenningsdatum.json')
         let newFrame = await _frame(signedVc, preprocessContext(oldFrame), dl)
 
-        // ?. TODO: briefly explain the Athumi specific preprocessing steps
-        // const preprocessedSignedVc = await athumiSpecificPreprocessing(signedVc)
-
-        // ?. Find & Match variable assignments
+        // 2. Find & Match variable assignments
         const matchedVariableAssignments = matchVariableAssignments(oldFrame)
         expect(matchedVariableAssignments.length).toBe(1)
 
-        // ?. Process matched var assignments
+        // 3. Process matched var assignments
         const [ma,] = matchedVariableAssignments
         const updatePath = ma.pathElements.slice(0, -1)
         setNestedAttribute(newFrame, updatePath, getNestedAttribute(oldFrame, updatePath))
 
-        // ?. TODO: step description
+        // 4. Define range query predicates
         const predicates = [
           {
             '@context': 'https://zkp-ld.org/context.jsonld',
@@ -94,7 +91,6 @@ describe('E2E: Athumi', ()=>{
         /**
          * Execute RQ
          */
-          // TODO: remove duplicate parameter: predicates!!!
         const deriveResponse = await executeDeriveRequest(
           [{original: signedVc, disclosed: newFrame, predicates }],
           predicates,

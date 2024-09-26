@@ -19,6 +19,7 @@ export const checkVP = (vp) => {
 
 /**
  * TODO: refactor to src/utils
+ * TODO: remove duplicate parameter: predicates!!!
  * @param vcPairs
  * @param predicates
  * @param challenge
