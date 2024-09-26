@@ -38,6 +38,19 @@ Once the services are started (for which you should follow [these instructions](
 
 ![Swagger Service API Documentation](./img/swagger-api-docs.png)
 
+The Gateway service provides the following endpoints:
+
+- `/credentials/derive`: Apply selective disclosure (SD) and range query (RQ) proofs on Verifiable Credentials (VCs).<br><br>
+This endpoint takes a Verifiable Credential and minimization scheme as input and results in a Verifiable Presentation
+(VP) containing the derived credential.<br><br>
+The current examples allow you to apply two different minimization schemes
+on different diploma credentials. More specifically, scheme "diploma-minimal" selectively discloses a subset of
+the diploma credential's attributes,
+while "diploma-rq-toekenningsdatum-after-2000-01-01" creates a range query proof allowing the holder to prove
+that the diploma credential's rewarding date is post 01/01/2000.
+
+- `schemes`: Retrieve the available minimization schemes.
+
 ### Sequence flow
 
 As can be seen in the overview diagram, the sequences are as follows:
