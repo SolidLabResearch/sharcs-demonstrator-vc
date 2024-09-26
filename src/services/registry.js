@@ -4,6 +4,7 @@ import {Registry} from "../controllers/registry.js";
 import config from '../config/config.js'
 import {logv2} from "../utils.js";
 import cors from 'cors'
+import {actors} from "../../__tests__/actors.js";
 const serviceConfig = config.registry
 const app = express()
 
@@ -20,23 +21,11 @@ if (serviceConfig.logging.enabled) {
         next();
     });
 }
+
 if(serviceConfig.preloadExampleIdentities === true) {
+    const { issuer0} = actors
     const exampleIdentities = {
-        issuer0: {
-            "@context": [
-                "https://www.w3.org/ns/did/v1",
-                "https://www.w3.org/ns/data-integrity/v1",
-                "https://w3id.org/security/multikey/v1"
-            ],
-            "id": "did:example:issuer0",
-            "verificationMethod": {
-                "id": "did:example:issuer0#bls12_381-g2-pub001",
-                "type": "Multikey",
-                "controller": "did:example:issuer0",
-                "secretKeyMultibase": "uekl-7abY7R84yTJEJ6JRqYohXxPZPDoTinJ7XCcBkmk",
-                "publicKeyMultibase": "ukiiQxfsSfV0E2QyBlnHTK2MThnd7_-Fyf6u76BUd24uxoDF4UjnXtxUo8b82iuPZBOa8BXd1NpE20x3Rfde9udcd8P8nPVLr80Xh6WLgI9SYR6piNzbHhEVIfgd_Vo9P"
-            }
-        }
+        issuer0
     }
     Object.entries(exampleIdentities)
         .forEach(([key, value]) => {
@@ -144,14 +133,12 @@ app.post('/register', async (req, res) => {
     const {id, controllerDoc} = req.body
     try {
         registry.register(id, controllerDoc)
-        // TODO: catch & handle potential errors
         res.send({ id })
     } catch (err) {
         console.error(err)
         res.sendStatus(500)
     }
 })
-
 
 /**
  * @swagger
@@ -255,13 +242,12 @@ app.post('/resolve', async (req, res) => {
         console.error(err)
         res.sendStatus(404)
     }
-
 })
 
 app.post('/clear', async (req, res) => {
     try {
         registry.clear()
-        res.send(200)
+        res.sendStatus(200)
     } catch (err) {
         console.error(err)
         res.sendStatus(500)
@@ -271,6 +257,3 @@ app.post('/clear', async (req, res) => {
 app.listen(port, () => {
     console.log(`Service [${serviceConfig.name}] listening on port ${port}`)
 })
-
-
-
