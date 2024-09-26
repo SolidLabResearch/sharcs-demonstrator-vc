@@ -10,14 +10,12 @@ This repository provides a PoC for applying **selective disclosure** and **range
       - [Documentation](#documentation)
     - [Sequence flow](#sequence-flow)
   - [Usage](#usage)
-  - [Tests](#tests)
+    - [Prerequisites](#prerequisites)
     - [Setup](#setup)
-      - [Local setup](#local-setup)
-      - [Docker setup](#docker-setup)
-    - [Run tests](#run-tests)
+    - [Configuration](#configuration)
+  - [Tests](#tests)
     - [Teardown](#teardown)
-      - [Local teardown](#local-teardown)
-      - [Docker teardown](#docker-teardown)
+  - [License](#license)
 
 ## Overview
 
@@ -49,7 +47,7 @@ the diploma credential's attributes,
 while "diploma-rq-toekenningsdatum-after-2000-01-01" creates a range query proof allowing the holder to prove
 that the diploma credential's rewarding date is post 01/01/2000.
 
-- `schemes`: Retrieve the available minimization schemes.
+- `/schemes`: Retrieve the available minimization schemes.
 
 ### Sequence flow
 
@@ -64,42 +62,41 @@ the holder minimizes one of its credentials. In order to do that, the holder exe
 
 - (#4) Upon receiving the minimized VP, the verifier needs to verify the authenticity and integrity of the data.
   For this, the verifier needs to resolve the issuer's ID.
-
   
 ## Usage
 
-```bash
-npm install
-npm run start
-```
+### Prerequisites
 
-Navigate to
-<http://localhost:8080/api-docs> to explore the Swagger API Docs.
+- Node (developed & tested using Node v20.11.1)
+- NPM (developed & tested NPM v10.2.4)
+- Docker (developed & tested using Docker v27.2.0)
+
+### Setup
+
+- First time: `npm run docker:build`
+- Start server: `npm run docker:start`
+- [API documentation](#documentation) available at <http://localhost:8080/api-docs>
+
+### Configuration
+
+- Contexts: this PoC uses pre-downloaded contexts (cfr. [`./src/resources/contexts`](./src/resources/contexts/)) and, thereby, does not rely on public resources/internet connection.
+- Credentials: the example diploma credentials can be found at </br>
+[`./__tests__/__fixtures__/vc/athumi/bbs-termwise-signature-2023/`](./__tests__/__fixtures__/vc/athumi/bbs-termwise-signature-2023/).
+- Selective disclosure: JSON-LD Framing is used to describe which attributes to selectively disclose. The JSON-LD Frames used in this PoC can be found at </br>
+[`./__tests__/__fixtures__/selective-disclosure/athumi/`](./__tests__/__fixtures__/selective-disclosure/athumi/).
+- Range query: JSON-LD Frames are used to describe which attributes will serve as public and private variables for the range query proof. The JSON-LD Frames used in this PoC can be found at </br>
+[`./__tests__/__fixtures__/range-query/athumi/`](./__tests__/__fixtures__/range-query/athumi/)
 
 ## Tests
 
 Before executing tests,
-make sure that all services are up and running.
-These services can be run **locally** or in a **Docker** container.
-
-### Setup
-
-#### Local setup
+make sure that all services are up and running:
 
 ```bash
 npm run start
 ```
 
-#### Docker setup
-
-```bash
-npm run docker:build
-npm run docker:start
-```
-
-### Run tests
-
-Run all tests as follows: 
+Run all tests as follows:
 
 ```bash
 npm run test
@@ -107,20 +104,14 @@ npm run test
 
 ### Teardown
 
-Tearing down the test setup depends on the chosen test setup (i.e., [local](#local-setup) or [Docker](#docker-setup)) and is explained in the following. 
-
-#### Local teardown
-
 The running services can be stopped as follows:
 
 ```bash
-pm2 stop all
+npm run stop
 ```
 
-#### Docker teardown
 
-Running Docker containers can be stopped as follows:
+## License
 
-```bash
-npm run docker:stop
-```
+This code is copyrighted by [Ghent University – imec](http://idlab.ugent.be/)
+and released under the [MIT license](http://opensource.org/licenses/MIT).
