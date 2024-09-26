@@ -21,7 +21,7 @@ applied on Verifiable Credentials.
   - **Registry** is used to register and resolve public key material.
   - **Deriver** allows for selective disclosure and range queries.
 - Public
-  - **Gateway** is exposed to the end-users. Internally, the Gateway service coordinates the backend services.
+  - **Gateway** is exposed to the end-users. Internally, this service coordinates the backend services.
 
 #### Documentation
 
