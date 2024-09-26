@@ -12,9 +12,8 @@ import {
   setNestedAttribute
 } from "../utils.js";
 import cors from 'cors'
-import {documentLoaderAll, documentLoaderAthumi} from "../documentloader.js";
+import {documentLoaderAll} from "../documentloader.js";
 import {executeDeriveRequest, preprocessContext} from "../../__tests__/helpers.js";
-import {CONTEXTS_ATHUMI} from "../resources/contexts/index.js";
 
 const serviceConfig = config.gateway
 const app = express()
