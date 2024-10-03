@@ -81,8 +81,9 @@ the holder minimizes one of its credentials. In order to do that, the holder exe
 
 ### Setup - Docker
 
-- First time: `npm run docker:build`
-- Start server: `npm run docker:start`
+- First time: `./docker-build-image.sh`
+- Start server:
+  `docker run --rm --name carcharodon -p 8080:8080 sharcs-poc:latest`
 - [API documentation](#documentation) available at <http://localhost:8080/api-docs>
 
 ### Configuration
