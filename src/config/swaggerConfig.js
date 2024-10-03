@@ -13,8 +13,7 @@ const configRecords = [
       description: 'Gateway service',
     },
     apis: [
-      './src/services/gateway.js',
-      './src/swagger/components.yaml'
+      './src/services/gateway.js'
     ]
   },
   {

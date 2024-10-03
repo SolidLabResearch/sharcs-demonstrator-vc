@@ -96,30 +96,13 @@ const schemeMap = Object.fromEntries(
  *     tags:
  *       - Gateway service
  *     requestBody:
+ *       description: |
+ *        Verifiable Credential and minimization scheme.
+ *          - VC examples can be found in `<repo-root>/__tests__/__fixtures__/vc/athumi/bbs-termwise-signature-2023/`
+ *          - Supported minimization schemes: `diploma-minimal`, `diploma-rq-toekenningsdatum-after-2000-01-01`
  *       required: true
  *       content:
  *         application/json:
- *           examples:
- *               Bachelor of Science Biologie:
- *                 $ref: '#/components/examples/bachelorofscience_biologie'
- *               Bachelor of Science Biologie Range Query (Toekenningsdatum na 2000):
- *                 $ref: '#/components/examples/bachelorofscience_biologie_rq_01'
- *               Getuigschrift Latijn eerste graad:
- *                 $ref: '#/components/examples/getuigschrift_latijn-eerstegraad'
- *               Getuigschrift Latijn eerste graad (Toekenningsdatum na 2000):
- *                 $ref: '#/components/examples/getuigschrift_latijn-eerstegraad_rq_01'
- *               Licenciaat Sociologie:
- *                 $ref: '#/components/examples/licentiaat_sociologie'
- *               Licenciaat Sociologie (Toekenningsdatum na 2000):
- *                 $ref: '#/components/examples/licentiaat_sociologie_rq_01'
- *               Opticien:
- *                 $ref: '#/components/examples/opticien-beroepskennis'
- *               Opticien (Toekenningsdatum na 2000):
- *                 $ref: '#/components/examples/opticien-beroepskennis_rq_01'
- *               Master of Science Biologie:
- *                  $ref: '#/components/examples/masterofscience-biologie'
- *               Master of Science Biologie (Toekenningsdatum na 2000):
- *                  $ref: '#/components/examples/masterofscience-biologie_rq_01'
  *           schema:
  *             type: object
  *             properties:
@@ -133,7 +116,7 @@ const schemeMap = Object.fromEntries(
  *                            - "diploma-rq-toekenningsdatum-after-2000-01-01"
  *               verifiableCredential:
  *                 type: object
- *                 description: A verifiable credential in JSON-LD or JWT format.
+ *                 description: VC examples can be found in `<repo-root>/__tests__/__fixtures__/vc/athumi/bbs-termwise-signature-2023/`
  *     responses:
  *       200:
  *         description: Verifiable Presentation with derived credential
