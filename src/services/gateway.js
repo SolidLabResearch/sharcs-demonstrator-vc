@@ -126,7 +126,7 @@ const schemeMap = Object.fromEntries(
  *               options:
  *                  type: object
  *                  properties:
- *                      method:
+ *                      scheme:
  *                          type: string
  *                          examples:
  *                            - "diploma-minimal"
