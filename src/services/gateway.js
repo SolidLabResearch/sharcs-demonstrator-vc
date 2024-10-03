@@ -102,23 +102,23 @@ const schemeMap = Object.fromEntries(
  *           examples:
  *               Bachelor of Science Biologie:
  *                 $ref: '#/components/examples/bachelorofscience_biologie'
- *               Bachelor of Science Biologie Range Query (Toekenningsdatum na 2020):
+ *               Bachelor of Science Biologie Range Query (Toekenningsdatum na 2000):
  *                 $ref: '#/components/examples/bachelorofscience_biologie_rq_01'
  *               Getuigschrift Latijn eerste graad:
  *                 $ref: '#/components/examples/getuigschrift_latijn-eerstegraad'
- *               Getuigschrift Latijn eerste graad (Toekenningsdatum na 2020):
+ *               Getuigschrift Latijn eerste graad (Toekenningsdatum na 2000):
  *                 $ref: '#/components/examples/getuigschrift_latijn-eerstegraad_rq_01'
  *               Licenciaat Sociologie:
  *                 $ref: '#/components/examples/licentiaat_sociologie'
- *               Licenciaat Sociologie (Toekenningsdatum na 2020):
+ *               Licenciaat Sociologie (Toekenningsdatum na 2000):
  *                 $ref: '#/components/examples/licentiaat_sociologie_rq_01'
  *               Opticien:
  *                 $ref: '#/components/examples/opticien-beroepskennis'
- *               Opticien (Toekenningsdatum na 2020):
+ *               Opticien (Toekenningsdatum na 2000):
  *                 $ref: '#/components/examples/opticien-beroepskennis_rq_01'
  *               Master of Science Biologie:
  *                  $ref: '#/components/examples/masterofscience-biologie'
- *               Master of Science Biologie (Toekenningsdatum na 2020):
+ *               Master of Science Biologie (Toekenningsdatum na 2000):
  *                  $ref: '#/components/examples/masterofscience-biologie_rq_01'
  *           schema:
  *             type: object
