@@ -98,8 +98,9 @@ const schemeMap = Object.fromEntries(
  *     requestBody:
  *       description: |
  *        Verifiable Credential and minimization scheme.
- *          - VC examples can be found in `<repo-root>/__tests__/__fixtures__/vc/athumi/bbs-termwise-signature-2023/`
- *          - Supported minimization schemes: `diploma-minimal`, `diploma-rq-toekenningsdatum-after-2000-01-01`
+ *          - VC examples can be found in <https://github.com/SolidLabResearch/sharcs-demonstrator-vc/tree/main/__tests__/__fixtures__/vc/athumi/bbs-termwise-signature-2023/>
+ *          - Supported minimization schemes: 'diploma-minimal', 'diploma-rq-toekenningsdatum-after-2000-01-01'
+ * 
  *       required: true
  *       content:
  *         application/json:
@@ -116,7 +117,7 @@ const schemeMap = Object.fromEntries(
  *                            - "diploma-rq-toekenningsdatum-after-2000-01-01"
  *               verifiableCredential:
  *                 type: object
- *                 description: VC examples can be found in `<repo-root>/__tests__/__fixtures__/vc/athumi/bbs-termwise-signature-2023/`
+ *                 description: VC examples can be found in <https://github.com/SolidLabResearch/sharcs-demonstrator-vc/tree/main/__tests__/__fixtures__/vc/athumi/bbs-termwise-signature-2023/>
  *     responses:
  *       200:
  *         description: Verifiable Presentation with derived credential
