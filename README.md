@@ -11,7 +11,8 @@ This repository provides a PoC for applying **selective disclosure** and **range
     - [Sequence flow](#sequence-flow)
   - [Usage](#usage)
     - [Prerequisites](#prerequisites)
-    - [Setup](#setup)
+    - [Setup - Local](#setup---local)
+    - [Setup - Docker](#setup---docker)
     - [Configuration](#configuration)
   - [Tests](#tests)
     - [Teardown](#teardown)
@@ -72,7 +73,13 @@ the holder minimizes one of its credentials. In order to do that, the holder exe
 - NPM (developed & tested NPM v10.2.4)
 - Docker (developed & tested using Docker v27.2.0)
 
-### Setup
+### Setup - Local
+
+- First time: `npm install`
+- Start server: `npm run start`
+- [API documentation](#documentation) available at <http://localhost:8080/api-docs>
+
+### Setup - Docker
 
 - First time: `npm run docker:build`
 - Start server: `npm run docker:start`
